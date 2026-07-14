@@ -7,6 +7,8 @@ workflows:
     integrations:
       app_store_connect: THE_VIRAL_API_KEY
     environment:
+      groups:
+        - signing   # CERTIFICATE_PRIVATE_KEY bu grupta (Codemagic panelinde tanımlı)
       vars:
         BUNDLE_ID: "com.sharkvision.manifestalarm"
         XCODE_PROJECT: "ios/ManifestAlarm.xcodeproj"
@@ -20,10 +22,10 @@ workflows:
       - name: İmzalama dosyalarını al/oluştur (sertifika + profil)
         script: |
           keychain initialize
-          openssl genrsa -out /tmp/manifestalarm_cert_key.pem 2048
+          # Sabit anahtar: her derlemede aynı sertifika yeniden kullanılır
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
             --type IOS_APP_STORE \
-            --certificate-key=@file:/tmp/manifestalarm_cert_key.pem \
+            --certificate-key=@env:CERTIFICATE_PRIVATE_KEY \
             --create
           keychain add-certificates
           xcode-project use-profiles
