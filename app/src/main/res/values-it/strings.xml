@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Manifest Alarm</string>
+
+    <string name="alarm_time_title">Ora della sveglia</string>
+    <string name="manifest_title">La tua frase manifesto</string>
+    <string name="manifest_hint">Es.: Ogni giorno, sotto ogni aspetto, sto migliorando</string>
+    <string name="alarm_enabled">Sveglia attiva</string>
+    <string name="save">Salva</string>
+    <string name="test_alarm">Prova la sveglia ora</string>
+    <string name="next_alarm">Prossima sveglia: %1$s</string>
+    <string name="alarm_off">La sveglia è spenta</string>
+    <string name="exact_permission_needed">Concedi il permesso per sveglie esatte</string>
+    <string name="how_it_works">Quando suona la sveglia, l\'unico modo per spegnerla è dire ad alta voce la tua frase manifesto. Inizia la giornata con intenzione! 🌞</string>
+    <string name="default_manifest">Ogni giorno, sotto ogni aspetto, sto migliorando sempre di più</string>
+
+    <string name="say_your_manifest">Di\' il tuo manifesto per fermare la sveglia</string>
+    <string name="btn_speak">🎤 Di\' il manifesto</string>
+    <string name="listening">Sto ascoltando…</string>
+    <string name="speak_now">Parla ora!</string>
+    <string name="checking">Sto controllando…</string>
+    <string name="not_heard">Non ti ho sentito, riprova</string>
+    <string name="recognition_error">Qualcosa è andato storto, riprova</string>
+    <string name="try_again_percent">%1$d%% di corrispondenza — parla più chiaramente</string>
+    <string name="success">Fantastico! Il tuo manifesto è stato accettato. Ti aspetta una bella giornata 🌞</string>
+    <string name="type_fallback_hint">La voce non funziona? Scrivi il tuo manifesto:</string>
+    <string name="typed_wrong">Il testo digitato non corrisponde al tuo manifesto</string>
+    <string name="confirm">Conferma</string>
+
+    <string name="alarm_channel_name">Sveglia Manifesto</string>
+    <string name="alarm_channel_desc">Notifica mostrata quando suona la sveglia</string>
+    <string name="alarm_notification_title">⏰ Sveglia Manifesto</string>
+    <string name="alarm_notification_text">Di\' il tuo manifesto per fermarla</string>
+</resources>

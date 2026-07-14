@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Güneş -->
+    <path
+        android:fillColor="#FFC94D"
+        android:pathData="M54,54m-16,0a16,16 0,1 1,32 0a16,16 0,1 1,-32 0" />
+    <!-- Işınlar -->
+    <group>
+        <path android:strokeColor="#FFC94D" android:strokeWidth="4" android:strokeLineCap="round" android:pathData="M54,26 L54,32" />
+        <path android:strokeColor="#FFC94D" android:strokeWidth="4" android:strokeLineCap="round" android:pathData="M54,76 L54,82" />
+        <path android:strokeColor="#FFC94D" android:strokeWidth="4" android:strokeLineCap="round" android:pathData="M26,54 L32,54" />
+        <path android:strokeColor="#FFC94D" android:strokeWidth="4" android:strokeLineCap="round" android:pathData="M76,54 L82,54" />
+        <path android:strokeColor="#FFC94D" android:strokeWidth="4" android:strokeLineCap="round" android:pathData="M34.2,34.2 L38.5,38.5" />
+        <path android:strokeColor="#FFC94D" android:strokeWidth="4" android:strokeLineCap="round" android:pathData="M69.5,69.5 L73.8,73.8" />
+        <path android:strokeColor="#FFC94D" android:strokeWidth="4" android:strokeLineCap="round" android:pathData="M34.2,73.8 L38.5,69.5" />
+        <path android:strokeColor="#FFC94D" android:strokeWidth="4" android:strokeLineCap="round" android:pathData="M69.5,38.5 L73.8,34.2" />
+    </group>
+    <!-- Mikrofon silueti güneşin içinde -->
+    <path
+        android:fillColor="#141433"
+        android:pathData="M54,46c-1.9,0 -3.4,1.5 -3.4,3.4v5.2c0,1.9 1.5,3.4 3.4,3.4s3.4,-1.5 3.4,-3.4v-5.2C57.4,47.5 55.9,46 54,46zM60.2,54.6c0,3.1 -2.6,5.6 -6.2,5.6s-6.2,-2.5 -6.2,-5.6h-2c0,3.9 3,7 7.2,7.5v3h2v-3c4.2,-0.5 7.2,-3.6 7.2,-7.5H60.2z" />
+</vector>

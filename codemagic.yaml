@@ -1,0 +1,40 @@
+# Manifest Alarm — Mac'siz iOS derleme (Codemagic)
+# theviral'daki kurulumla aynı Apple entegrasyonunu kullanır.
+workflows:
+  ios-testflight:
+    name: Manifest Alarm iOS
+    max_build_duration: 60
+    integrations:
+      app_store_connect: THE_VIRAL_API_KEY
+    environment:
+      vars:
+        BUNDLE_ID: "com.sharkvision.manifestalarm"
+        XCODE_PROJECT: "ios/ManifestAlarm.xcodeproj"
+        XCODE_SCHEME: "ManifestAlarm"
+      xcode: latest
+    scripts:
+      - name: Xcode projesini üret (XcodeGen)
+        script: |
+          brew install xcodegen || true
+          xcodegen generate --spec ios/project.yml --project ios
+      - name: İmzalama dosyalarını al/oluştur (sertifika + profil)
+        script: |
+          keychain initialize
+          openssl genrsa -out /tmp/manifestalarm_cert_key.pem 2048
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --certificate-key=@file:/tmp/manifestalarm_cert_key.pem \
+            --create
+          keychain add-certificates
+          xcode-project use-profiles
+      - name: iOS uygulamasını derle (.ipa)
+        script: |
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true

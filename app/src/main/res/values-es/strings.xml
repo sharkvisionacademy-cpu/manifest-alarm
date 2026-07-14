@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Manifest Alarm</string>
+
+    <string name="alarm_time_title">Hora de la alarma</string>
+    <string name="manifest_title">Tu frase manifiesto</string>
+    <string name="manifest_hint">Ej.: Cada día, en todos los sentidos, estoy mejorando</string>
+    <string name="alarm_enabled">Alarma activada</string>
+    <string name="save">Guardar</string>
+    <string name="test_alarm">Probar la alarma ahora</string>
+    <string name="next_alarm">Próxima alarma: %1$s</string>
+    <string name="alarm_off">La alarma está apagada</string>
+    <string name="exact_permission_needed">Conceder permiso de alarma exacta</string>
+    <string name="how_it_works">Cuando suene la alarma, la única forma de apagarla es decir tu frase manifiesto en voz alta. ¡Empieza el día con intención! 🌞</string>
+    <string name="default_manifest">Cada día, en todos los sentidos, estoy mejorando más y más</string>
+
+    <string name="say_your_manifest">Di tu manifiesto para detener la alarma</string>
+    <string name="btn_speak">🎤 Decir el manifiesto</string>
+    <string name="listening">Escuchando…</string>
+    <string name="speak_now">¡Habla ahora!</string>
+    <string name="checking">Comprobando…</string>
+    <string name="not_heard">No te escuché, inténtalo de nuevo</string>
+    <string name="recognition_error">Algo salió mal, inténtalo de nuevo</string>
+    <string name="try_again_percent">%1$d%% de coincidencia — dilo con más claridad</string>
+    <string name="success">¡Genial! Tu manifiesto fue aceptado. Te espera un hermoso día 🌞</string>
+    <string name="type_fallback_hint">¿No funciona la voz? Escribe tu manifiesto:</string>
+    <string name="typed_wrong">Lo que escribiste no coincide con tu manifiesto</string>
+    <string name="confirm">Confirmar</string>
+
+    <string name="alarm_channel_name">Alarma Manifiesto</string>
+    <string name="alarm_channel_desc">Notificación mostrada cuando suena la alarma</string>
+    <string name="alarm_notification_title">⏰ Alarma Manifiesto</string>
+    <string name="alarm_notification_text">Di tu manifiesto para detenerla</string>
+</resources>

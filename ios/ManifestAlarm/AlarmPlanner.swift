@@ -1,0 +1,101 @@
+import Foundation
+import SwiftUI
+import AlarmKit
+
+struct ManifestMetadata: AlarmMetadata {
+    init() {}
+}
+
+enum PlanError: Error {
+    case denied
+}
+
+/// AlarmKit üzerinden alarm kurma/durdurma işlemleri.
+enum AlarmPlanner {
+
+    static let tint = Color(red: 1.0, green: 0.79, blue: 0.30)
+
+    private static let everyDay: [Locale.Weekday] = [
+        .sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday
+    ]
+
+    static func ensureAuthorized() async throws {
+        let manager = AlarmManager.shared
+        switch manager.authorizationState {
+        case .authorized:
+            return
+        case .notDetermined:
+            let state = try await manager.requestAuthorization()
+            guard state == .authorized else { throw PlanError.denied }
+        default:
+            throw PlanError.denied
+        }
+    }
+
+    private static func attributes() -> AlarmAttributes<ManifestMetadata> {
+        let stopButton = AlarmButton(
+            text: LocalizedStringResource("alert_stop"),
+            textColor: .white,
+            systemImageName: "xmark.circle.fill"
+        )
+        let speakButton = AlarmButton(
+            text: LocalizedStringResource("alert_speak"),
+            textColor: .yellow,
+            systemImageName: "mic.fill"
+        )
+        let alert = AlarmPresentation.Alert(
+            title: LocalizedStringResource("alert_title"),
+            stopButton: stopButton,
+            secondaryButton: speakButton,
+            secondaryButtonBehavior: .custom
+        )
+        return AlarmAttributes(
+            presentation: AlarmPresentation(alert: alert),
+            tintColor: tint
+        )
+    }
+
+    /// Her gün belirlenen saatte çalan asıl alarmı kurar.
+    static func rescheduleDaily(hour: Int, minute: Int, enabled: Bool) async throws {
+        let manager = AlarmManager.shared
+        let defaults = UserDefaults.standard
+        if let oldID = defaults.string(forKey: "alarmID").flatMap(UUID.init) {
+            try? await manager.cancel(id: oldID)
+        }
+        defaults.removeObject(forKey: "alarmID")
+        guard enabled else { return }
+        try await ensureAuthorized()
+
+        let id = UUID()
+        let time = Alarm.Schedule.Relative.Time(hour: hour, minute: minute)
+        let schedule = Alarm.Schedule.relative(
+            Alarm.Schedule.Relative(time: time, repeats: .weekly(everyDay))
+        )
+        let configuration = AlarmManager.AlarmConfiguration(
+            schedule: schedule,
+            attributes: attributes(),
+            stopIntent: StopPenaltyIntent(alarmID: id.uuidString),
+            secondaryIntent: OpenSpeechIntent(alarmID: id.uuidString)
+        )
+        try await manager.schedule(id: id, configuration: configuration)
+        defaults.set(id.uuidString, forKey: "alarmID")
+    }
+
+    /// Tek seferlik alarm: test için ve manifest söylenmeden durdurma cezası için.
+    static func scheduleOneShot(after seconds: TimeInterval) async throws {
+        try await ensureAuthorized()
+        let id = UUID()
+        let configuration = AlarmManager.AlarmConfiguration(
+            schedule: .fixed(Date().addingTimeInterval(seconds)),
+            attributes: attributes(),
+            stopIntent: StopPenaltyIntent(alarmID: id.uuidString),
+            secondaryIntent: OpenSpeechIntent(alarmID: id.uuidString)
+        )
+        try await AlarmManager.shared.schedule(id: id, configuration: configuration)
+    }
+
+    static func stopRinging(idString: String) {
+        guard let id = UUID(uuidString: idString) else { return }
+        try? AlarmManager.shared.stop(id: id)
+    }
+}

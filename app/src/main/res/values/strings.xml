@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Manifest Alarm</string>
+
+    <string name="alarm_time_title">Alarm Time</string>
+    <string name="manifest_title">Your Manifest Sentence</string>
+    <string name="manifest_hint">E.g., Every day, in every way, I am getting better</string>
+    <string name="alarm_enabled">Alarm on</string>
+    <string name="save">Save</string>
+    <string name="test_alarm">Test Alarm Now</string>
+    <string name="next_alarm">Next alarm: %1$s</string>
+    <string name="alarm_off">Alarm is off</string>
+    <string name="exact_permission_needed">Grant exact alarm permission</string>
+    <string name="how_it_works">When the alarm rings, the only way to stop it is to say your manifest sentence out loud. Start your day with intention! 🌞</string>
+    <string name="default_manifest">Every day, in every way, I am getting better and better</string>
+
+    <string name="say_your_manifest">Say your manifest to stop the alarm</string>
+    <string name="btn_speak">🎤 Say the Manifest</string>
+    <string name="listening">Listening…</string>
+    <string name="speak_now">Speak now!</string>
+    <string name="checking">Checking…</string>
+    <string name="not_heard">I couldn\'t hear you, try again</string>
+    <string name="recognition_error">Something went wrong, try again</string>
+    <string name="try_again_percent">%1$d%% match — say it more clearly</string>
+    <string name="success">Great! Your manifest was accepted. A beautiful day awaits 🌞</string>
+    <string name="type_fallback_hint">Voice not working? Type your manifest:</string>
+    <string name="typed_wrong">What you typed doesn\'t match your manifest</string>
+    <string name="confirm">Confirm</string>
+
+    <string name="alarm_channel_name">Manifest Alarm</string>
+    <string name="alarm_channel_desc">Notification shown when the alarm rings</string>
+    <string name="alarm_notification_title">⏰ Manifest Alarm</string>
+    <string name="alarm_notification_text">Say your manifest to stop it</string>
+</resources>

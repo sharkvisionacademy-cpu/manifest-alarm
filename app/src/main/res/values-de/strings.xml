@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Manifest Alarm</string>
+
+    <string name="alarm_time_title">Weckzeit</string>
+    <string name="manifest_title">Dein Manifest-Satz</string>
+    <string name="manifest_hint">Z. B.: Jeden Tag werde ich in jeder Hinsicht besser</string>
+    <string name="alarm_enabled">Wecker an</string>
+    <string name="save">Speichern</string>
+    <string name="test_alarm">Wecker jetzt testen</string>
+    <string name="next_alarm">Nächster Wecker: %1$s</string>
+    <string name="alarm_off">Wecker ist aus</string>
+    <string name="exact_permission_needed">Berechtigung für exakte Wecker erteilen</string>
+    <string name="how_it_works">Wenn der Wecker klingelt, kannst du ihn nur ausschalten, indem du deinen Manifest-Satz laut aussprichst. Starte deinen Tag mit Intention! 🌞</string>
+    <string name="default_manifest">Jeden Tag werde ich in jeder Hinsicht besser und besser</string>
+
+    <string name="say_your_manifest">Sprich dein Manifest, um den Wecker zu stoppen</string>
+    <string name="btn_speak">🎤 Manifest sprechen</string>
+    <string name="listening">Ich höre zu…</string>
+    <string name="speak_now">Sprich jetzt!</string>
+    <string name="checking">Wird geprüft…</string>
+    <string name="not_heard">Ich konnte dich nicht hören, versuch es nochmal</string>
+    <string name="recognition_error">Etwas ist schiefgelaufen, versuch es nochmal</string>
+    <string name="try_again_percent">%1$d%% Übereinstimmung — sprich deutlicher</string>
+    <string name="success">Super! Dein Manifest wurde akzeptiert. Ein schöner Tag wartet 🌞</string>
+    <string name="type_fallback_hint">Sprache funktioniert nicht? Tippe dein Manifest:</string>
+    <string name="typed_wrong">Der eingegebene Text stimmt nicht mit deinem Manifest überein</string>
+    <string name="confirm">Bestätigen</string>
+
+    <string name="alarm_channel_name">Manifest-Wecker</string>
+    <string name="alarm_channel_desc">Benachrichtigung beim Klingeln des Weckers</string>
+    <string name="alarm_notification_title">⏰ Manifest-Wecker</string>
+    <string name="alarm_notification_text">Sprich dein Manifest, um ihn zu stoppen</string>
+</resources>

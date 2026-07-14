@@ -1,0 +1,28 @@
+name: ManifestAlarm
+options:
+  developmentLanguage: en
+  bundleIdPrefix: com.sharkvision
+targets:
+  ManifestAlarm:
+    type: application
+    platform: iOS
+    deploymentTarget: "26.0"
+    sources:
+      - path: ManifestAlarm
+    info:
+      path: ManifestAlarm/Info.plist
+      properties:
+        CFBundleDisplayName: Manifest Alarm
+        UILaunchScreen: {}
+        ITSAppUsesNonExemptEncryption: false
+        NSAlarmKitUsageDescription: "Scheduling your manifest alarm requires alarm access."
+        NSMicrophoneUsageDescription: "The microphone is used to hear you say your manifest sentence to stop the alarm."
+        NSSpeechRecognitionUsageDescription: "Speech recognition checks that you said your manifest sentence to stop the alarm."
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.sharkvision.manifestalarm
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: 1
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.0"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon

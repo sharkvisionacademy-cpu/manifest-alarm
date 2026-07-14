@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Manifest Alarm</string>
+
+    <string name="alarm_time_title">アラーム時刻</string>
+    <string name="manifest_title">あなたのマニフェスト文</string>
+    <string name="manifest_hint">例：私は毎日あらゆる面でどんどん良くなっている</string>
+    <string name="alarm_enabled">アラームオン</string>
+    <string name="save">保存</string>
+    <string name="test_alarm">今すぐアラームを試す</string>
+    <string name="next_alarm">次のアラーム: %1$s</string>
+    <string name="alarm_off">アラームはオフです</string>
+    <string name="exact_permission_needed">正確なアラームの権限を許可</string>
+    <string name="how_it_works">アラームが鳴ったら、止める唯一の方法はマニフェスト文を声に出して言うことです。意図を持って一日を始めましょう！🌞</string>
+    <string name="default_manifest">私は毎日あらゆる面でどんどん良くなっている</string>
+
+    <string name="say_your_manifest">アラームを止めるにはマニフェストを言ってください</string>
+    <string name="btn_speak">🎤 マニフェストを言う</string>
+    <string name="listening">聞いています…</string>
+    <string name="speak_now">今、話してください！</string>
+    <string name="checking">確認中…</string>
+    <string name="not_heard">聞き取れませんでした。もう一度どうぞ</string>
+    <string name="recognition_error">問題が発生しました。もう一度どうぞ</string>
+    <string name="try_again_percent">一致率 %1$d%% — もっとはっきり言ってください</string>
+    <string name="success">素晴らしい！マニフェストが受け付けられました。素敵な一日が待っています 🌞</string>
+    <string name="type_fallback_hint">音声が使えませんか？マニフェストを入力してください：</string>
+    <string name="typed_wrong">入力されたテキストはマニフェストと一致しません</string>
+    <string name="confirm">確認</string>
+
+    <string name="alarm_channel_name">マニフェストアラーム</string>
+    <string name="alarm_channel_desc">アラームが鳴ったときに表示される通知</string>
+    <string name="alarm_notification_title">⏰ マニフェストアラーム</string>
+    <string name="alarm_notification_text">止めるにはマニフェストを言ってください</string>
+</resources>

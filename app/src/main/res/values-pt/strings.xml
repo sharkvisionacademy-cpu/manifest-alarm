@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Manifest Alarm</string>
+
+    <string name="alarm_time_title">Hora do alarme</string>
+    <string name="manifest_title">Sua frase manifesto</string>
+    <string name="manifest_hint">Ex.: A cada dia, em todos os sentidos, estou melhorando</string>
+    <string name="alarm_enabled">Alarme ligado</string>
+    <string name="save">Salvar</string>
+    <string name="test_alarm">Testar o alarme agora</string>
+    <string name="next_alarm">Próximo alarme: %1$s</string>
+    <string name="alarm_off">O alarme está desligado</string>
+    <string name="exact_permission_needed">Conceder permissão de alarme exato</string>
+    <string name="how_it_works">Quando o alarme tocar, a única forma de desligá-lo é dizer sua frase manifesto em voz alta. Comece o dia com intenção! 🌞</string>
+    <string name="default_manifest">A cada dia, em todos os sentidos, estou melhorando cada vez mais</string>
+
+    <string name="say_your_manifest">Diga seu manifesto para parar o alarme</string>
+    <string name="btn_speak">🎤 Dizer o manifesto</string>
+    <string name="listening">Ouvindo…</string>
+    <string name="speak_now">Fale agora!</string>
+    <string name="checking">Verificando…</string>
+    <string name="not_heard">Não consegui ouvir você, tente novamente</string>
+    <string name="recognition_error">Algo deu errado, tente novamente</string>
+    <string name="try_again_percent">%1$d%% de correspondência — fale com mais clareza</string>
+    <string name="success">Ótimo! Seu manifesto foi aceito. Um lindo dia espera por você 🌞</string>
+    <string name="type_fallback_hint">A voz não funciona? Digite seu manifesto:</string>
+    <string name="typed_wrong">O texto digitado não corresponde ao seu manifesto</string>
+    <string name="confirm">Confirmar</string>
+
+    <string name="alarm_channel_name">Alarme Manifesto</string>
+    <string name="alarm_channel_desc">Notificação exibida quando o alarme toca</string>
+    <string name="alarm_notification_title">⏰ Alarme Manifesto</string>
+    <string name="alarm_notification_text">Diga seu manifesto para pará-lo</string>
+</resources>
