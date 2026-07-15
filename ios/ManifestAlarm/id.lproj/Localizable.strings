@@ -36,3 +36,12 @@
 "manifest_pool_7" = "Aku melepaskan masa lalu dan fokus pada hari ini; aku bahagia di sini dan sekarang";
 "manifest_pool_8" = "Aku berharga dan aku cukup; semesta memberiku yang terbaik";
 "manifest_pool_9" = "Hari ini aku terbuka pada keajaiban; setiap saat membawa peluang baru untukku";
+
+"alarm_sound" = "Suara Alarm";
+"sound_default" = "Klasik (suara sistem)";
+"sound_432" = "432 Hz — Frekuensi Alam";
+"sound_528" = "528 Hz — Frekuensi Cinta";
+"sound_639" = "639 Hz — Frekuensi Harmoni";
+"sound_852" = "852 Hz — Frekuensi Intuisi";
+"preview" = "Dengarkan";
+"stop_preview" = "Hentikan";

@@ -36,3 +36,12 @@
 "manifest_pool_7" = "Geçmişi bırakıyorum, bugüne odaklanıyorum; şimdi ve burada mutluyum";
 "manifest_pool_8" = "Ben değerliyim, ben yeterliyim; evren bana en iyisini sunuyor";
 "manifest_pool_9" = "Bugün mucizelere açığım; her an yeni bir fırsat bana geliyor";
+
+"alarm_sound" = "Alarm Sesi";
+"sound_default" = "Klasik (sistem sesi)";
+"sound_432" = "432 Hz — Doğa Frekansı";
+"sound_528" = "528 Hz — Sevgi Frekansı";
+"sound_639" = "639 Hz — Uyum Frekansı";
+"sound_852" = "852 Hz — Sezgi Frekansı";
+"preview" = "Dinle";
+"stop_preview" = "Durdur";

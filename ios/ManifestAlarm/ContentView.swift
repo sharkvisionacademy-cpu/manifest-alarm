@@ -1,5 +1,15 @@
 import SwiftUI
 import AlarmKit
+import AVFoundation
+
+// Alarm sesi seçenekleri: (kayıt anahtarı, çeviri anahtarı)
+let soundOptions: [(key: String, label: String)] = [
+    ("default", "sound_default"),
+    ("freq432", "sound_432"),
+    ("freq528", "sound_528"),
+    ("freq639", "sound_639"),
+    ("freq852", "sound_852")
+]
 
 // MARK: - Renk paleti (enerji/frekans teması)
 
@@ -41,15 +51,19 @@ struct HomeView: View {
     @StateObject private var store = AlarmStore()
     @AppStorage("dailyMode") private var dailyMode = true
     @AppStorage("manifest") private var customManifest = ""
+    @AppStorage("alarmSound") private var alarmSound = "default"
     @State private var showAdd = false
     @State private var editing: AlarmItem?
     @State private var status = ""
+    @State private var previewPlayer: AVAudioPlayer?
+    @State private var previewing = false
 
     var body: some View {
         NavigationStack {
             List {
                 manifestSection
                 manifestSettingsSection
+                soundSection
                 alarmsSection
                 footerSection
             }
@@ -122,6 +136,60 @@ struct HomeView: View {
                 .foregroundStyle(.white.opacity(0.55))
         }
         .listRowBackground(Palette.card)
+    }
+
+    private var soundSection: some View {
+        Section {
+            Picker(selection: $alarmSound) {
+                ForEach(soundOptions, id: \.key) { option in
+                    Text(LocalizedStringKey(option.label)).tag(option.key)
+                }
+            } label: {
+                Label("alarm_sound", systemImage: "speaker.wave.2.fill")
+                    .foregroundStyle(.white)
+            }
+            .pickerStyle(.menu)
+            .onChange(of: alarmSound) { _, _ in
+                stopPreview()
+                store.sync()
+            }
+            if alarmSound != "default" {
+                Button {
+                    togglePreview()
+                } label: {
+                    Label(
+                        previewing
+                            ? String(localized: "stop_preview")
+                            : String(localized: "preview"),
+                        systemImage: previewing ? "stop.circle.fill" : "play.circle.fill"
+                    )
+                    .foregroundStyle(Palette.gold)
+                }
+            }
+        }
+        .listRowBackground(Palette.card)
+    }
+
+    private func togglePreview() {
+        if previewing {
+            stopPreview()
+            return
+        }
+        guard let url = Bundle.main.url(forResource: alarmSound, withExtension: "wav") else { return }
+        try? AVAudioSession.sharedInstance().setCategory(.playback)
+        try? AVAudioSession.sharedInstance().setActive(true)
+        previewPlayer = try? AVAudioPlayer(contentsOf: url)
+        previewPlayer?.play()
+        previewing = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 21) {
+            if previewing { stopPreview() }
+        }
+    }
+
+    private func stopPreview() {
+        previewPlayer?.stop()
+        previewPlayer = nil
+        previewing = false
     }
 
     private var alarmsSection: some View {

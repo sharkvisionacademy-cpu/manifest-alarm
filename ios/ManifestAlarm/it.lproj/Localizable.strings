@@ -36,3 +36,12 @@
 "manifest_pool_7" = "Lascio andare il passato e vivo il presente; sono felice qui e ora";
 "manifest_pool_8" = "Ho valore e sono abbastanza; l'universo mi offre il meglio";
 "manifest_pool_9" = "Oggi sono aperto ai miracoli; ogni momento mi porta una nuova opportunità";
+
+"alarm_sound" = "Suono sveglia";
+"sound_default" = "Classico (suono di sistema)";
+"sound_432" = "432 Hz — Frequenza della natura";
+"sound_528" = "528 Hz — Frequenza dell'amore";
+"sound_639" = "639 Hz — Frequenza dell'armonia";
+"sound_852" = "852 Hz — Frequenza dell'intuizione";
+"preview" = "Ascolta";
+"stop_preview" = "Ferma";

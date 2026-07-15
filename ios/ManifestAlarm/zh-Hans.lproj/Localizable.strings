@@ -36,3 +36,12 @@
 "manifest_pool_7" = "我放下过去，专注当下；此时此刻我很幸福";
 "manifest_pool_8" = "我有价值，我已足够；宇宙给我最好的安排";
 "manifest_pool_9" = "今天我向奇迹敞开；每一刻都为我带来新的机会";
+
+"alarm_sound" = "闹钟铃声";
+"sound_default" = "经典（系统铃声）";
+"sound_432" = "432 Hz — 自然频率";
+"sound_528" = "528 Hz — 爱的频率";
+"sound_639" = "639 Hz — 和谐频率";
+"sound_852" = "852 Hz — 直觉频率";
+"preview" = "试听";
+"stop_preview" = "停止";

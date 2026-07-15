@@ -36,3 +36,12 @@
 "manifest_pool_7" = "Ich lasse die Vergangenheit los und lebe im Heute; ich bin glücklich im Hier und Jetzt";
 "manifest_pool_8" = "Ich bin wertvoll und ich bin genug; das Universum schenkt mir sein Bestes";
 "manifest_pool_9" = "Ich bin heute offen für Wunder; jeder Moment bringt mir eine neue Chance";
+
+"alarm_sound" = "Weckton";
+"sound_default" = "Klassisch (Systemton)";
+"sound_432" = "432 Hz — Naturfrequenz";
+"sound_528" = "528 Hz — Liebesfrequenz";
+"sound_639" = "639 Hz — Harmoniefrequenz";
+"sound_852" = "852 Hz — Intuitionsfrequenz";
+"preview" = "Anhören";
+"stop_preview" = "Stopp";

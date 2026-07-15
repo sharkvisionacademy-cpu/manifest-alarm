@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 import AlarmKit
+import ActivityKit
 
 struct ManifestMetadata: AlarmMetadata {
     init() {}
@@ -55,6 +56,12 @@ enum AlarmPlanner {
         )
     }
 
+    /// Kullanıcının seçtiği alarm sesi ("default" ya da paket içindeki frekans dosyası).
+    private static func currentSound() -> AlertConfiguration.AlertSound {
+        let name = UserDefaults.standard.string(forKey: "alarmSound") ?? "default"
+        return name == "default" ? .default : .named("\(name).wav")
+    }
+
     /// Her gün, belirtilen saatte tekrarlayan alarm kurar.
     static func schedule(item: AlarmItem) async throws {
         try await ensureAuthorized()
@@ -66,7 +73,8 @@ enum AlarmPlanner {
             schedule: schedule,
             attributes: attributes(),
             stopIntent: StopPenaltyIntent(alarmID: item.id.uuidString),
-            secondaryIntent: OpenSpeechIntent(alarmID: item.id.uuidString)
+            secondaryIntent: OpenSpeechIntent(alarmID: item.id.uuidString),
+            sound: currentSound()
         )
         try await AlarmManager.shared.schedule(id: item.id, configuration: configuration)
     }
@@ -83,7 +91,8 @@ enum AlarmPlanner {
             schedule: .fixed(Date().addingTimeInterval(seconds)),
             attributes: attributes(),
             stopIntent: StopPenaltyIntent(alarmID: id.uuidString),
-            secondaryIntent: OpenSpeechIntent(alarmID: id.uuidString)
+            secondaryIntent: OpenSpeechIntent(alarmID: id.uuidString),
+            sound: currentSound()
         )
         try await AlarmManager.shared.schedule(id: id, configuration: configuration)
     }

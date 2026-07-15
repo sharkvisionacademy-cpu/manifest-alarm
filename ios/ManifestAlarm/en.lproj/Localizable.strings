@@ -36,3 +36,12 @@
 "manifest_pool_7" = "I release the past and focus on today; I am happy here and now";
 "manifest_pool_8" = "I am worthy and I am enough; the universe offers me its very best";
 "manifest_pool_9" = "I am open to miracles today; every moment brings me a new opportunity";
+
+"alarm_sound" = "Alarm Sound";
+"sound_default" = "Classic (system sound)";
+"sound_432" = "432 Hz — Nature Frequency";
+"sound_528" = "528 Hz — Love Frequency";
+"sound_639" = "639 Hz — Harmony Frequency";
+"sound_852" = "852 Hz — Intuition Frequency";
+"preview" = "Listen";
+"stop_preview" = "Stop";
