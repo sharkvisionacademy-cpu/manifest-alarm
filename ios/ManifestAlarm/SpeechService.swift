@@ -33,6 +33,10 @@ final class SpeechService: NSObject, ObservableObject {
 
             let request = SFSpeechAudioBufferRecognitionRequest()
             request.shouldReportPartialResults = true
+            // Cihaz üzerinde tanıma varsa ses hiç dışarı çıkmaz (çevrimdışı da çalışır)
+            if recognizer?.supportsOnDeviceRecognition == true {
+                request.requiresOnDeviceRecognition = true
+            }
             self.request = request
 
             let input = audioEngine.inputNode
