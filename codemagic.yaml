@@ -19,6 +19,9 @@ workflows:
         script: |
           brew install xcodegen || true
           xcodegen generate --spec ios/project.yml --project ios
+          # Build numarasını Codemagic sayacından al (her derlemede otomatik artar)
+          plutil -replace CFBundleVersion -string "$BUILD_NUMBER" ios/ManifestAlarm/Info.plist
+          echo "CFBundleVersion = $BUILD_NUMBER"
       - name: İmzalama dosyalarını al/oluştur (sertifika + profil)
         script: |
           keychain initialize
