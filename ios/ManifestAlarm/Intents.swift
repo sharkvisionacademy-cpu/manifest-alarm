@@ -23,8 +23,8 @@ struct OpenSpeechIntent: LiveActivityIntent {
     }
 }
 
-/// Sistem alarm ekranındaki zorunlu "Durdur" düğmesi: manifest söylenmeden
-/// basıldıysa ceza olarak 2 dakika sonra yeni bir alarm kurar.
+/// Sistem alarm ekranındaki zorunlu "Durdur" düğmesi. Tekrar çalma işini
+/// koruma alarmı (resyncShadows) üstlendiği için burada sadece durum temizlenir.
 struct StopPenaltyIntent: LiveActivityIntent {
     static var title: LocalizedStringResource = "Stop Alarm"
     static var openAppWhenRun: Bool = false

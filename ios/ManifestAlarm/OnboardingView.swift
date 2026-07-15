@@ -60,7 +60,7 @@ struct OnboardingView: View {
                             .buttonStyle(.plain)
                         }
                     }
-                    Text(LocalizedStringKey("theme_\(bgTheme)"))
+                    Text(String(localized: String.LocalizationValue("theme_\(bgTheme)")))
                         .font(.footnote)
                         .foregroundStyle(.white.opacity(0.7))
                 }
