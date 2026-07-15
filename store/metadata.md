@@ -14,8 +14,25 @@ Uygulama kimliği: `com.sharkvision.manifestalarm` · App ID: 6790958826
 | Yaş sınırı | 4+ |
 | Fiyat | Ücretsiz |
 | Gizlilik | Veri Toplanmıyor (Data Not Collected) |
-| Destek URL | (gizlilik sayfasıyla aynı adres) |
-| Gizlilik URL | (yayınlanınca buraya) |
+| Destek URL | https://manifest-alarm.aether-proxy.workers.dev |
+| Gizlilik URL | https://manifest-alarm.aether-proxy.workers.dev |
+
+## Durum (16 Tem 2026)
+
+App Store Connect'te GİRİLDİ ✅
+- Alt başlık, tanıtım metni, açıklama, anahtar kelimeler (TR), destek/gizlilik URL
+- Kategoriler: Sağlık ve Fitness + Yaşam Tarzı · İçerik hakları: üçüncü taraf içerik yok
+- Yaş sınırı: 4+ (172 ülke) · Tıbbi cihaz değil beyanı
+- Gizlilik: "Veri Toplanmıyor" yayınlandı · Gizlilik sayfası Cloudflare'de canlı
+- Fiyat: Ücretsiz · Dağıtım: 175 ülke
+- Derleme: Build 11 (v1.0) sürüme bağlandı
+- İnceleme notları (reviewer'a nasıl test edileceği) girildi
+- Yayın şekli: elle yayınla (onaydan sonra kontrol kullanıcıda)
+
+EKSİK (kullanıcı gerekli) ⏳
+- Ekran görüntüleri: 1242×2688 veya 1284×2778 (0/10). iPhone'dan çekilip bana verilecek, ben ölçeklerim.
+- App Review iletişim: ad, soyad, telefon, e-posta (kişisel veri — kullanıcı kendi girmeli)
+- Son "Add for Review" + Submit onayı
 
 ---
 
