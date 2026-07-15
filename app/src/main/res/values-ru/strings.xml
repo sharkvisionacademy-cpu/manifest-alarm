@@ -12,7 +12,7 @@
     <string name="alarm_off">Будильник выключен</string>
     <string name="exact_permission_needed">Разрешить точные будильники</string>
     <string name="how_it_works">Когда зазвонит будильник, выключить его можно только произнеся вслух свою фразу-манифест. Начни день с намерения! 🌞</string>
-    <string name="default_manifest">С каждым днём я становлюсь всё лучше и лучше во всех отношениях</string>
+    <string name="default_manifest">С каждым днём я становлюсь всё лучше и лучше во всех отношениях; я притягиваю в свою жизнь здоровье, изобилие и счастье</string>
 
     <string name="say_your_manifest">Произнеси свой манифест, чтобы остановить будильник</string>
     <string name="btn_speak">🎤 Произнести манифест</string>

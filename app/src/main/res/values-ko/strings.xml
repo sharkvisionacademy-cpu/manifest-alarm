@@ -12,7 +12,7 @@
     <string name="alarm_off">알람이 꺼져 있습니다</string>
     <string name="exact_permission_needed">정확한 알람 권한 허용</string>
     <string name="how_it_works">알람이 울리면 끄는 유일한 방법은 매니페스트 문장을 큰 소리로 말하는 것입니다. 의도를 가지고 하루를 시작하세요! 🌞</string>
-    <string name="default_manifest">나는 매일 모든 면에서 점점 더 나아지고 있다</string>
+    <string name="default_manifest">나는 매일 모든 면에서 점점 더 나아지고 있다; 나는 내 삶에 건강과 풍요와 행복을 끌어당긴다</string>
 
     <string name="say_your_manifest">알람을 끄려면 매니페스트를 말하세요</string>
     <string name="btn_speak">🎤 매니페스트 말하기</string>

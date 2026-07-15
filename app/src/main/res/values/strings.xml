@@ -12,7 +12,7 @@
     <string name="alarm_off">Alarm is off</string>
     <string name="exact_permission_needed">Grant exact alarm permission</string>
     <string name="how_it_works">When the alarm rings, the only way to stop it is to say your manifest sentence out loud. Start your day with intention! 🌞</string>
-    <string name="default_manifest">Every day, in every way, I am getting better and better</string>
+    <string name="default_manifest">Every day, in every way, I am getting better and better; I attract health, abundance and happiness into my life</string>
 
     <string name="say_your_manifest">Say your manifest to stop the alarm</string>
     <string name="btn_speak">🎤 Say the Manifest</string>

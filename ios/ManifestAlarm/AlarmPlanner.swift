@@ -40,7 +40,7 @@ enum AlarmPlanner {
         )
         let speakButton = AlarmButton(
             text: LocalizedStringResource("alert_speak"),
-            textColor: .yellow,
+            textColor: Color(red: 0.08, green: 0.08, blue: 0.20),
             systemImageName: "mic.fill"
         )
         let alert = AlarmPresentation.Alert(

@@ -12,7 +12,7 @@
     <string name="alarm_off">Le réveil est désactivé</string>
     <string name="exact_permission_needed">Accorder l\'autorisation d\'alarme exacte</string>
     <string name="how_it_works">Quand le réveil sonne, la seule façon de l\'arrêter est de dire ta phrase manifeste à voix haute. Commence ta journée avec intention ! 🌞</string>
-    <string name="default_manifest">Chaque jour, à tous points de vue, je vais de mieux en mieux</string>
+    <string name="default_manifest">Chaque jour, à tous points de vue, je vais de mieux en mieux ; j\'attire la santé, l\'abondance et le bonheur dans ma vie</string>
 
     <string name="say_your_manifest">Dis ton manifeste pour arrêter le réveil</string>
     <string name="btn_speak">🎤 Dire le manifeste</string>

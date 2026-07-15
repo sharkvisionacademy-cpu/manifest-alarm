@@ -12,7 +12,7 @@
     <string name="alarm_off">Alarm kapalı</string>
     <string name="exact_permission_needed">Tam zamanlı alarm izni ver</string>
     <string name="how_it_works">Alarm çaldığında kapatmanın tek yolu manifest cümleni yüksek sesle söylemek. Güne niyetinle başla! 🌞</string>
-    <string name="default_manifest">Ben her gün her yönden daha iyiye gidiyorum</string>
+    <string name="default_manifest">Ben her gün her yönden daha iyiye gidiyorum; hayatıma sağlık, bolluk ve mutluluk çekiyorum</string>
 
     <string name="say_your_manifest">Alarmı kapatmak için manifestini söyle</string>
     <string name="btn_speak">🎤 Manifesti Söyle</string>

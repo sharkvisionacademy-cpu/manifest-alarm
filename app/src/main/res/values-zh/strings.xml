@@ -12,7 +12,7 @@
     <string name="alarm_off">闹钟已关闭</string>
     <string name="exact_permission_needed">授予精确闹钟权限</string>
     <string name="how_it_works">闹钟响起时，唯一的关闭方式是大声说出你的宣言句子。带着意念开始新的一天！🌞</string>
-    <string name="default_manifest">我每天都在各方面变得越来越好</string>
+    <string name="default_manifest">我每天都在各方面变得越来越好；我把健康、富足和幸福吸引到我的生命中</string>
 
     <string name="say_your_manifest">说出你的宣言来关闭闹钟</string>
     <string name="btn_speak">🎤 说出宣言</string>

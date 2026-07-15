@@ -12,7 +12,7 @@
     <string name="alarm_off">La alarma está apagada</string>
     <string name="exact_permission_needed">Conceder permiso de alarma exacta</string>
     <string name="how_it_works">Cuando suene la alarma, la única forma de apagarla es decir tu frase manifiesto en voz alta. ¡Empieza el día con intención! 🌞</string>
-    <string name="default_manifest">Cada día, en todos los sentidos, estoy mejorando más y más</string>
+    <string name="default_manifest">Cada día, en todos los sentidos, estoy mejorando más y más; atraigo salud, abundancia y felicidad a mi vida</string>
 
     <string name="say_your_manifest">Di tu manifiesto para detener la alarma</string>
     <string name="btn_speak">🎤 Decir el manifiesto</string>

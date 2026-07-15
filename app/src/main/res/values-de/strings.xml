@@ -12,7 +12,7 @@
     <string name="alarm_off">Wecker ist aus</string>
     <string name="exact_permission_needed">Berechtigung für exakte Wecker erteilen</string>
     <string name="how_it_works">Wenn der Wecker klingelt, kannst du ihn nur ausschalten, indem du deinen Manifest-Satz laut aussprichst. Starte deinen Tag mit Intention! 🌞</string>
-    <string name="default_manifest">Jeden Tag werde ich in jeder Hinsicht besser und besser</string>
+    <string name="default_manifest">Jeden Tag werde ich in jeder Hinsicht besser und besser; ich ziehe Gesundheit, Fülle und Glück in mein Leben</string>
 
     <string name="say_your_manifest">Sprich dein Manifest, um den Wecker zu stoppen</string>
     <string name="btn_speak">🎤 Manifest sprechen</string>

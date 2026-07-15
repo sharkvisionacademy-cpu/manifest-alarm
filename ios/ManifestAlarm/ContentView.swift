@@ -140,12 +140,12 @@ struct SpeechDismissView: View {
                         systemImage: "mic.fill"
                     )
                     .font(.title2.bold())
+                    .foregroundStyle(Color(red: 0.08, green: 0.08, blue: 0.20))
                     .frame(maxWidth: .infinity)
                     .padding()
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(AlarmPlanner.tint)
-                .foregroundStyle(Color(red: 0.08, green: 0.08, blue: 0.2))
                 .disabled(speech.isListening)
 
                 Text(speech.transcript)
