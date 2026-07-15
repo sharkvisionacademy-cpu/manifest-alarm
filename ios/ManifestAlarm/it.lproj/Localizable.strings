@@ -17,3 +17,22 @@
 "alert_title" = "Sveglia Manifesto";
 "alert_stop" = "Stop";
 "alert_speak" = "Di' il manifesto";
+
+"todays_manifest" = "Manifesto di oggi";
+"daily_mode" = "Un manifesto diverso ogni giorno";
+"alarms_title" = "Sveglie";
+"no_alarms" = "Nessuna sveglia — tocca + in alto a destra";
+"add_alarm" = "Sveglia";
+"every_day" = "Ogni giorno";
+"cancel_btn" = "Annulla";
+
+"manifest_pool_0" = "Ogni giorno, sotto ogni aspetto, sto migliorando sempre di più; attiro salute, abbondanza e felicità nella mia vita";
+"manifest_pool_1" = "La mia energia è alta e il mio cuore pieno di gratitudine; l'universo lavora con me oggi";
+"manifest_pool_2" = "Sono un magnete per l'abbondanza; denaro e opportunità fluiscono verso di me con facilità";
+"manifest_pool_3" = "Dentro di me c'è una forza infinita; oggi supero ogni sfida";
+"manifest_pool_4" = "Dono amore e ricevo amore; le mie relazioni diventano più belle ogni giorno";
+"manifest_pool_5" = "Il mio corpo è sano, la mia mente lucida, la mia anima in pace; la mia frequenza sale";
+"manifest_pool_6" = "Ogni giorno sono un passo più vicino ai miei sogni; il successo è il mio stato naturale";
+"manifest_pool_7" = "Lascio andare il passato e vivo il presente; sono felice qui e ora";
+"manifest_pool_8" = "Ho valore e sono abbastanza; l'universo mi offre il meglio";
+"manifest_pool_9" = "Oggi sono aperto ai miracoli; ogni momento mi porta una nuova opportunità";

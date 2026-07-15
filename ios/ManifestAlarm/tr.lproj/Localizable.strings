@@ -17,3 +17,22 @@
 "alert_title" = "Manifest Alarmı";
 "alert_stop" = "Durdur";
 "alert_speak" = "Manifesti Söyle";
+
+"todays_manifest" = "Bugünün Manifesti";
+"daily_mode" = "Her gün farklı manifest";
+"alarms_title" = "Alarmlar";
+"no_alarms" = "Henüz alarm yok — sağ üstteki + ile ekle";
+"add_alarm" = "Alarm";
+"every_day" = "Her gün";
+"cancel_btn" = "Vazgeç";
+
+"manifest_pool_0" = "Ben her gün her yönden daha iyiye gidiyorum; hayatıma sağlık, bolluk ve mutluluk çekiyorum";
+"manifest_pool_1" = "Bugün enerjim yüksek, kalbim şükranla dolu; evren benimle birlikte çalışıyor";
+"manifest_pool_2" = "Ben bir bolluk mıknatısıyım; para ve fırsatlar bana kolayca akıyor";
+"manifest_pool_3" = "İçimde sonsuz bir güç var; bugün her zorluğun üstesinden geliyorum";
+"manifest_pool_4" = "Sevgi veriyorum, sevgi alıyorum; ilişkilerim her gün güzelleşiyor";
+"manifest_pool_5" = "Bedenim sağlıklı, zihnim berrak, ruhum huzurlu; frekansım yükseliyor";
+"manifest_pool_6" = "Hayallerime her gün bir adım daha yaklaşıyorum; başarı benim doğal halim";
+"manifest_pool_7" = "Geçmişi bırakıyorum, bugüne odaklanıyorum; şimdi ve burada mutluyum";
+"manifest_pool_8" = "Ben değerliyim, ben yeterliyim; evren bana en iyisini sunuyor";
+"manifest_pool_9" = "Bugün mucizelere açığım; her an yeni bir fırsat bana geliyor";

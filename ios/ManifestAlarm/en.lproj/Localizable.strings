@@ -17,3 +17,22 @@
 "alert_title" = "Manifest Alarm";
 "alert_stop" = "Stop";
 "alert_speak" = "Say the Manifest";
+
+"todays_manifest" = "Today\'s Manifest";
+"daily_mode" = "A different manifest every day";
+"alarms_title" = "Alarms";
+"no_alarms" = "No alarms yet — tap + at the top right";
+"add_alarm" = "Alarm";
+"every_day" = "Every day";
+"cancel_btn" = "Cancel";
+
+"manifest_pool_0" = "Every day, in every way, I am getting better and better; I attract health, abundance and happiness into my life";
+"manifest_pool_1" = "My energy is high and my heart is full of gratitude; the universe is working with me today";
+"manifest_pool_2" = "I am a magnet for abundance; money and opportunities flow to me easily";
+"manifest_pool_3" = "There is infinite strength within me; I overcome every challenge today";
+"manifest_pool_4" = "I give love and I receive love; my relationships grow more beautiful every day";
+"manifest_pool_5" = "My body is healthy, my mind is clear, my soul is at peace; my frequency is rising";
+"manifest_pool_6" = "Every day I move one step closer to my dreams; success is my natural state";
+"manifest_pool_7" = "I release the past and focus on today; I am happy here and now";
+"manifest_pool_8" = "I am worthy and I am enough; the universe offers me its very best";
+"manifest_pool_9" = "I am open to miracles today; every moment brings me a new opportunity";

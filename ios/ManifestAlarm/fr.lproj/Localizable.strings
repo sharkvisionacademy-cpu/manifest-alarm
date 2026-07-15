@@ -17,3 +17,22 @@
 "alert_title" = "Réveil Manifeste";
 "alert_stop" = "Arrêter";
 "alert_speak" = "Dire le manifeste";
+
+"todays_manifest" = "Manifeste du jour";
+"daily_mode" = "Un manifeste différent chaque jour";
+"alarms_title" = "Réveils";
+"no_alarms" = "Pas encore de réveil — touche + en haut à droite";
+"add_alarm" = "Réveil";
+"every_day" = "Tous les jours";
+"cancel_btn" = "Annuler";
+
+"manifest_pool_0" = "Chaque jour, à tous points de vue, je vais de mieux en mieux ; j\'attire la santé, l\'abondance et le bonheur dans ma vie";
+"manifest_pool_1" = "Mon énergie est haute et mon cœur plein de gratitude ; l\'univers travaille avec moi aujourd\'hui";
+"manifest_pool_2" = "Je suis un aimant à abondance ; l\'argent et les opportunités viennent à moi facilement";
+"manifest_pool_3" = "Une force infinie vit en moi ; aujourd\'hui je surmonte chaque défi";
+"manifest_pool_4" = "Je donne de l\'amour et je reçois de l\'amour ; mes relations embellissent chaque jour";
+"manifest_pool_5" = "Mon corps est sain, mon esprit clair, mon âme en paix ; ma fréquence s\'élève";
+"manifest_pool_6" = "Chaque jour je me rapproche de mes rêves ; le succès est mon état naturel";
+"manifest_pool_7" = "Je laisse aller le passé et je vis le présent ; je suis heureux ici et maintenant";
+"manifest_pool_8" = "J\'ai de la valeur et je suis suffisant ; l\'univers m\'offre le meilleur";
+"manifest_pool_9" = "Je suis ouvert aux miracles aujourd\'hui ; chaque instant m\'apporte une nouvelle chance";

@@ -1,87 +1,170 @@
 import SwiftUI
 import AlarmKit
 
+// MARK: - Renk paleti (enerji/frekans teması)
+
+enum Palette {
+    static let gold = Color(red: 1.0, green: 0.79, blue: 0.30)
+    static let night = Color(red: 0.04, green: 0.04, blue: 0.13)
+    static let violet = Color(red: 0.17, green: 0.09, blue: 0.34)
+    static let card = Color.white.opacity(0.08)
+
+    static var background: LinearGradient {
+        LinearGradient(
+            colors: [violet, night],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+}
+
+// MARK: - Kök görünüm
+
 struct ContentView: View {
     @AppStorage("ringingAlarmID") private var ringingAlarmID = ""
 
     var body: some View {
-        if ringingAlarmID.isEmpty {
-            SettingsView()
-        } else {
-            SpeechDismissView()
+        Group {
+            if ringingAlarmID.isEmpty {
+                HomeView()
+            } else {
+                SpeechDismissView()
+            }
         }
+        .preferredColorScheme(.dark)
     }
 }
 
-// MARK: - Ayarlar ekranı
+// MARK: - Ana ekran: bugünün manifesti + alarm listesi
 
-struct SettingsView: View {
-    @AppStorage("hour") private var hour = 8
-    @AppStorage("minute") private var minute = 0
-    @AppStorage("manifest") private var manifest = ""
-    @AppStorage("enabled") private var enabled = false
-    @State private var time = Date()
+struct HomeView: View {
+    @StateObject private var store = AlarmStore()
+    @AppStorage("dailyMode") private var dailyMode = true
+    @AppStorage("manifest") private var customManifest = ""
+    @State private var showAdd = false
+    @State private var editing: AlarmItem?
     @State private var status = ""
 
     var body: some View {
         NavigationStack {
-            Form {
-                Section {
-                    Text("how_it_works")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
-                Section("alarm_time") {
-                    DatePicker(
-                        "alarm_time",
-                        selection: $time,
-                        displayedComponents: .hourAndMinute
-                    )
-                    .datePickerStyle(.wheel)
-                    .labelsHidden()
-                }
-                Section("your_manifest") {
-                    TextField(
-                        String(localized: "default_manifest"),
-                        text: $manifest,
-                        axis: .vertical
-                    )
-                    .lineLimit(2...4)
-                }
-                Section {
-                    Toggle("alarm_on", isOn: $enabled)
-                    Button("save") { Task { await saveAll() } }
-                    Button("test_alarm") { Task { await testNow() } }
-                }
-                if !status.isEmpty {
-                    Section {
-                        Text(status).font(.footnote)
+            List {
+                manifestSection
+                manifestSettingsSection
+                alarmsSection
+                footerSection
+            }
+            .scrollContentBackground(.hidden)
+            .background(Palette.background.ignoresSafeArea())
+            .navigationTitle("Manifest Alarm")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showAdd = true
+                    } label: {
+                        Image(systemName: "plus")
+                            .fontWeight(.semibold)
                     }
                 }
             }
-            .navigationTitle("Manifest Alarm")
-            .onAppear {
-                var comps = DateComponents()
-                comps.hour = hour
-                comps.minute = minute
-                time = Calendar.current.date(from: comps) ?? Date()
+            .sheet(isPresented: $showAdd) {
+                AlarmEditSheet(store: store, item: nil)
             }
+            .sheet(item: $editing) { item in
+                AlarmEditSheet(store: store, item: item)
+            }
+            .onAppear { store.sync() }
         }
+        .tint(Palette.gold)
     }
 
-    private func saveAll() async {
-        let comps = Calendar.current.dateComponents([.hour, .minute], from: time)
-        hour = comps.hour ?? 8
-        minute = comps.minute ?? 0
-        _ = await SpeechService.requestPermissions()
-        do {
-            try await AlarmPlanner.rescheduleDaily(hour: hour, minute: minute, enabled: enabled)
-            status = enabled
-                ? String(localized: "saved")
-                : String(localized: "alarm_off")
-        } catch {
-            status = String(localized: "auth_denied")
+    private var manifestSection: some View {
+        Section {
+            VStack(alignment: .leading, spacing: 10) {
+                Label("todays_manifest", systemImage: "sparkles")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(Palette.gold)
+                Text(ManifestProvider.todaysManifest())
+                    .font(.title3.weight(.semibold))
+                    .foregroundStyle(.white)
+                    .lineSpacing(4)
+            }
+            .padding(.vertical, 8)
         }
+        .listRowBackground(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Palette.card)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .strokeBorder(Palette.gold.opacity(0.4), lineWidth: 1)
+                )
+                .shadow(color: Palette.gold.opacity(0.25), radius: 10)
+        )
+    }
+
+    private var manifestSettingsSection: some View {
+        Section {
+            Toggle(isOn: $dailyMode) {
+                Label("daily_mode", systemImage: "waveform")
+                    .foregroundStyle(.white)
+            }
+            if !dailyMode {
+                TextField(
+                    String(localized: "default_manifest"),
+                    text: $customManifest,
+                    axis: .vertical
+                )
+                .lineLimit(2...4)
+                .foregroundStyle(.white)
+            }
+        } footer: {
+            Text("how_it_works")
+                .font(.footnote)
+                .foregroundStyle(.white.opacity(0.55))
+        }
+        .listRowBackground(Palette.card)
+    }
+
+    private var alarmsSection: some View {
+        Section {
+            if store.alarms.isEmpty {
+                Text("no_alarms")
+                    .foregroundStyle(.white.opacity(0.55))
+                    .font(.callout)
+            }
+            ForEach(store.alarms) { item in
+                AlarmRow(item: item, store: store)
+                    .contentShape(Rectangle())
+                    .onTapGesture { editing = item }
+            }
+            .onDelete { store.remove(at: $0) }
+        } header: {
+            Label("alarms_title", systemImage: "alarm.fill")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(Palette.gold)
+        }
+        .listRowBackground(Palette.card)
+    }
+
+    private var footerSection: some View {
+        Section {
+            Button {
+                Task { await testNow() }
+            } label: {
+                Label("test_alarm", systemImage: "bell.and.waves.left.and.right")
+                    .foregroundStyle(Palette.gold)
+            }
+            if !status.isEmpty {
+                Text(status)
+                    .font(.footnote)
+                    .foregroundStyle(.white.opacity(0.7))
+            }
+            if store.authProblem {
+                Text("auth_denied")
+                    .font(.footnote)
+                    .foregroundStyle(.red)
+            }
+        }
+        .listRowBackground(Palette.card)
     }
 
     private func testNow() async {
@@ -95,34 +178,127 @@ struct SettingsView: View {
     }
 }
 
+// MARK: - Alarm satırı (Apple saat uygulaması tarzı)
+
+struct AlarmRow: View {
+    let item: AlarmItem
+    @ObservedObject var store: AlarmStore
+
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(item.timeText)
+                    .font(.system(size: 46, weight: .light, design: .rounded))
+                    .foregroundStyle(item.enabled ? .white : .white.opacity(0.35))
+                Text("every_day")
+                    .font(.caption)
+                    .foregroundStyle(.white.opacity(item.enabled ? 0.6 : 0.3))
+            }
+            Spacer()
+            Toggle("", isOn: Binding(
+                get: { item.enabled },
+                set: { store.setEnabled(item.id, $0) }
+            ))
+            .labelsHidden()
+        }
+        .padding(.vertical, 4)
+    }
+}
+
+// MARK: - Alarm ekleme/düzenleme sayfası
+
+struct AlarmEditSheet: View {
+    @ObservedObject var store: AlarmStore
+    let item: AlarmItem?
+    @Environment(\.dismiss) private var dismiss
+    @State private var time = Date()
+
+    var body: some View {
+        NavigationStack {
+            VStack {
+                DatePicker("", selection: $time, displayedComponents: .hourAndMinute)
+                    .datePickerStyle(.wheel)
+                    .labelsHidden()
+                    .padding(.top, 16)
+                Spacer()
+            }
+            .frame(maxWidth: .infinity)
+            .background(Palette.background.ignoresSafeArea())
+            .navigationTitle(Text("add_alarm"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("cancel_btn") { dismiss() }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("save") { saveAndClose() }
+                        .fontWeight(.semibold)
+                }
+            }
+            .onAppear {
+                var comps = DateComponents()
+                comps.hour = item?.hour ?? 8
+                comps.minute = item?.minute ?? 0
+                time = Calendar.current.date(from: comps) ?? Date()
+            }
+        }
+        .presentationDetents([.medium])
+        .preferredColorScheme(.dark)
+        .tint(Palette.gold)
+    }
+
+    private func saveAndClose() {
+        let comps = Calendar.current.dateComponents([.hour, .minute], from: time)
+        Task { _ = await SpeechService.requestPermissions() }
+        if let item {
+            store.update(item.id, hour: comps.hour ?? 8, minute: comps.minute ?? 0)
+        } else {
+            store.add(hour: comps.hour ?? 8, minute: comps.minute ?? 0)
+        }
+        dismiss()
+    }
+}
+
 // MARK: - Alarm kapatma (konuşma) ekranı
 
 struct SpeechDismissView: View {
     @AppStorage("ringingAlarmID") private var ringingAlarmID = ""
-    @AppStorage("manifest") private var manifest = ""
     @StateObject private var speech = SpeechService()
     @State private var similarity = 0.0
     @State private var success = false
-
-    private var target: String {
-        let t = manifest.trimmingCharacters(in: .whitespacesAndNewlines)
-        return t.isEmpty ? String(localized: "default_manifest") : t
-    }
+    @State private var target = ManifestProvider.todaysManifest()
 
     var body: some View {
         VStack(spacing: 24) {
+            Text(Date(), style: .time)
+                .font(.system(size: 64, weight: .light, design: .rounded))
+                .foregroundStyle(.white)
+                .padding(.top, 40)
+
             Text("say_your_manifest")
                 .font(.title3)
                 .foregroundStyle(.white.opacity(0.8))
-                .padding(.top, 60)
 
-            Text(target)
-                .font(.title.bold())
-                .multilineTextAlignment(.center)
-                .foregroundStyle(AlarmPlanner.tint)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(.white.opacity(0.1), in: RoundedRectangle(cornerRadius: 16))
+            VStack(spacing: 12) {
+                Image(systemName: "sparkles")
+                    .foregroundStyle(Palette.gold)
+                Text(target)
+                    .font(.title2.bold())
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(Palette.gold)
+                    .lineSpacing(4)
+            }
+            .padding(20)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(.white.opacity(0.08))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .strokeBorder(Palette.gold.opacity(0.4), lineWidth: 1)
+                    )
+                    .shadow(color: Palette.gold.opacity(0.3), radius: 14)
+            )
 
             if success {
                 Text("success")
@@ -137,7 +313,7 @@ struct SpeechDismissView: View {
                         speech.isListening
                             ? String(localized: "listening")
                             : String(localized: "start_listening"),
-                        systemImage: "mic.fill"
+                        systemImage: speech.isListening ? "waveform" : "mic.fill"
                     )
                     .font(.title2.bold())
                     .foregroundStyle(Color(red: 0.08, green: 0.08, blue: 0.20))
@@ -145,7 +321,7 @@ struct SpeechDismissView: View {
                     .padding()
                 }
                 .buttonStyle(.borderedProminent)
-                .tint(AlarmPlanner.tint)
+                .tint(Palette.gold)
                 .disabled(speech.isListening)
 
                 Text(speech.transcript)
@@ -164,16 +340,7 @@ struct SpeechDismissView: View {
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            LinearGradient(
-                colors: [
-                    Color(red: 0.14, green: 0.14, blue: 0.35),
-                    Color(red: 0.08, green: 0.08, blue: 0.20)
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        )
+        .background(Palette.background.ignoresSafeArea())
         .onChange(of: speech.transcript) { _, newValue in
             guard !success, !newValue.isEmpty else { return }
             similarity = SpeechMatcher.similarity(expected: target, spoken: newValue)

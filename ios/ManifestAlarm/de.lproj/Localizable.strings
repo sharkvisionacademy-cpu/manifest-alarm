@@ -17,3 +17,22 @@
 "alert_title" = "Manifest-Wecker";
 "alert_stop" = "Stopp";
 "alert_speak" = "Manifest sprechen";
+
+"todays_manifest" = "Manifest des Tages";
+"daily_mode" = "Jeden Tag ein anderes Manifest";
+"alarms_title" = "Wecker";
+"no_alarms" = "Noch keine Wecker — tippe oben rechts auf +";
+"add_alarm" = "Wecker";
+"every_day" = "Jeden Tag";
+"cancel_btn" = "Abbrechen";
+
+"manifest_pool_0" = "Jeden Tag werde ich in jeder Hinsicht besser und besser; ich ziehe Gesundheit, Fülle und Glück in mein Leben";
+"manifest_pool_1" = "Meine Energie ist hoch und mein Herz voller Dankbarkeit; das Universum arbeitet heute mit mir";
+"manifest_pool_2" = "Ich bin ein Magnet für Fülle; Geld und Chancen fließen mühelos zu mir";
+"manifest_pool_3" = "In mir liegt unendliche Kraft; ich meistere heute jede Herausforderung";
+"manifest_pool_4" = "Ich gebe Liebe und empfange Liebe; meine Beziehungen werden jeden Tag schöner";
+"manifest_pool_5" = "Mein Körper ist gesund, mein Geist klar, meine Seele ruhig; meine Frequenz steigt";
+"manifest_pool_6" = "Jeden Tag komme ich meinen Träumen einen Schritt näher; Erfolg ist mein natürlicher Zustand";
+"manifest_pool_7" = "Ich lasse die Vergangenheit los und lebe im Heute; ich bin glücklich im Hier und Jetzt";
+"manifest_pool_8" = "Ich bin wertvoll und ich bin genug; das Universum schenkt mir sein Bestes";
+"manifest_pool_9" = "Ich bin heute offen für Wunder; jeder Moment bringt mir eine neue Chance";

@@ -17,3 +17,22 @@
 "alert_title" = "Alarma Manifiesto";
 "alert_stop" = "Detener";
 "alert_speak" = "Decir el manifiesto";
+
+"todays_manifest" = "Manifiesto de hoy";
+"daily_mode" = "Un manifiesto diferente cada día";
+"alarms_title" = "Alarmas";
+"no_alarms" = "Aún no hay alarmas — toca + arriba a la derecha";
+"add_alarm" = "Alarma";
+"every_day" = "Cada día";
+"cancel_btn" = "Cancelar";
+
+"manifest_pool_0" = "Cada día, en todos los sentidos, estoy mejorando más y más; atraigo salud, abundancia y felicidad a mi vida";
+"manifest_pool_1" = "Mi energía es alta y mi corazón está lleno de gratitud; el universo trabaja conmigo hoy";
+"manifest_pool_2" = "Soy un imán para la abundancia; el dinero y las oportunidades fluyen hacia mí con facilidad";
+"manifest_pool_3" = "Hay una fuerza infinita dentro de mí; hoy supero cualquier desafío";
+"manifest_pool_4" = "Doy amor y recibo amor; mis relaciones son más hermosas cada día";
+"manifest_pool_5" = "Mi cuerpo está sano, mi mente clara, mi alma en paz; mi frecuencia se eleva";
+"manifest_pool_6" = "Cada día estoy un paso más cerca de mis sueños; el éxito es mi estado natural";
+"manifest_pool_7" = "Suelto el pasado y me enfoco en el presente; soy feliz aquí y ahora";
+"manifest_pool_8" = "Soy valioso y soy suficiente; el universo me ofrece lo mejor";
+"manifest_pool_9" = "Hoy estoy abierto a los milagros; cada momento me trae una nueva oportunidad";

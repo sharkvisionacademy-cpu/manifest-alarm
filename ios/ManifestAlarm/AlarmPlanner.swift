@@ -55,30 +55,24 @@ enum AlarmPlanner {
         )
     }
 
-    /// Her gün belirlenen saatte çalan asıl alarmı kurar.
-    static func rescheduleDaily(hour: Int, minute: Int, enabled: Bool) async throws {
-        let manager = AlarmManager.shared
-        let defaults = UserDefaults.standard
-        if let oldID = defaults.string(forKey: "alarmID").flatMap(UUID.init) {
-            try? await manager.cancel(id: oldID)
-        }
-        defaults.removeObject(forKey: "alarmID")
-        guard enabled else { return }
+    /// Her gün, belirtilen saatte tekrarlayan alarm kurar.
+    static func schedule(item: AlarmItem) async throws {
         try await ensureAuthorized()
-
-        let id = UUID()
-        let time = Alarm.Schedule.Relative.Time(hour: hour, minute: minute)
+        let time = Alarm.Schedule.Relative.Time(hour: item.hour, minute: item.minute)
         let schedule = Alarm.Schedule.relative(
             Alarm.Schedule.Relative(time: time, repeats: .weekly(everyDay))
         )
         let configuration = AlarmManager.AlarmConfiguration(
             schedule: schedule,
             attributes: attributes(),
-            stopIntent: StopPenaltyIntent(alarmID: id.uuidString),
-            secondaryIntent: OpenSpeechIntent(alarmID: id.uuidString)
+            stopIntent: StopPenaltyIntent(alarmID: item.id.uuidString),
+            secondaryIntent: OpenSpeechIntent(alarmID: item.id.uuidString)
         )
-        try await manager.schedule(id: id, configuration: configuration)
-        defaults.set(id.uuidString, forKey: "alarmID")
+        try await AlarmManager.shared.schedule(id: item.id, configuration: configuration)
+    }
+
+    static func cancel(id: UUID) async {
+        try? await AlarmManager.shared.cancel(id: id)
     }
 
     /// Tek seferlik alarm: test için ve manifest söylenmeden durdurma cezası için.

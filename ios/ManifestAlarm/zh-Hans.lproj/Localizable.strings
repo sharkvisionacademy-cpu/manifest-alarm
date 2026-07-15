@@ -17,3 +17,22 @@
 "alert_title" = "宣言闹钟";
 "alert_stop" = "停止";
 "alert_speak" = "说出宣言";
+
+"todays_manifest" = "今日宣言";
+"daily_mode" = "每天一句不同的宣言";
+"alarms_title" = "闹钟";
+"no_alarms" = "还没有闹钟 — 点击右上角的 +";
+"add_alarm" = "闹钟";
+"every_day" = "每天";
+"cancel_btn" = "取消";
+
+"manifest_pool_0" = "我每天都在各方面变得越来越好；我把健康、富足和幸福吸引到我的生命中";
+"manifest_pool_1" = "我的能量很高，心中充满感恩；宇宙今天与我同行";
+"manifest_pool_2" = "我是富足的磁铁；金钱和机会轻松地流向我";
+"manifest_pool_3" = "我内心有无限的力量；今天我战胜每一个挑战";
+"manifest_pool_4" = "我付出爱也收获爱；我的关系每天都更加美好";
+"manifest_pool_5" = "我的身体健康，头脑清晰，心灵平静；我的频率在提升";
+"manifest_pool_6" = "每天我都离梦想更近一步；成功是我的自然状态";
+"manifest_pool_7" = "我放下过去，专注当下；此时此刻我很幸福";
+"manifest_pool_8" = "我有价值，我已足够；宇宙给我最好的安排";
+"manifest_pool_9" = "今天我向奇迹敞开；每一刻都为我带来新的机会";
