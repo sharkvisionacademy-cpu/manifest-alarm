@@ -58,3 +58,30 @@
 "sleep_goal" = "Meta de sueño: %@";
 "bedtime_for_goal" = "Hora límite para tu meta: %@";
 "no_alarm_for_sleep" = "Configura y activa una alarma para ver tu tiempo de sueño";
+
+"sound_musicbox" = "Caja de música";
+"sound_bowl" = "Cuenco tibetano";
+"sound_om" = "Om 136 Hz — Tono profundo";
+"welcome_title" = "Bienvenido a Manifest Alarm";
+"welcome_sub" = "Despierta con intención 🌞";
+"choose_theme" = "Elige tu fondo";
+"choose_category" = "Elige tu enfoque de manifiesto";
+"get_started" = "Comenzar";
+"manifest_category" = "Enfoque del manifiesto";
+"cat_all" = "Todos";
+"cat_work" = "Trabajo y éxito";
+"cat_love" = "Amor y relaciones";
+"cat_life" = "Vida y paz";
+
+"manifest_work_0" = "Cada día domino más mi oficio; el éxito y las oportunidades me encuentran";
+"manifest_work_1" = "Mi esfuerzo es recompensado; mis ingresos crecen día a día";
+"manifest_work_2" = "Los desafíos son escalones; avanzo hacia mis metas con determinación";
+"manifest_work_3" = "Mis ideas son valiosas; las comparto con valentía y son apreciadas";
+"manifest_love_0" = "Estoy abierto al amor; mi corazón atrae a las personas correctas a mi vida";
+"manifest_love_1" = "La comprensión y la ternura crecen en mis relaciones; doy amor y recibo amor";
+"manifest_love_2" = "Cuanto más me amo, más se multiplica el amor a mi alrededor";
+"manifest_love_3" = "Merezco ser amado; mi vida está llena de amor";
+"manifest_life_0" = "Hoy estoy abierto a cada belleza que la vida me ofrece";
+"manifest_life_1" = "Hay una paz profunda en mí; me renuevo con cada respiración";
+"manifest_life_2" = "Cuido bien mi cuerpo y mi alma; la salud es mi estado natural";
+"manifest_life_3" = "Vivo el momento; soy feliz aquí y ahora";

@@ -8,7 +8,10 @@ let soundOptions: [(key: String, label: String)] = [
     ("freq432", "sound_432"),
     ("freq528", "sound_528"),
     ("freq639", "sound_639"),
-    ("freq852", "sound_852")
+    ("freq852", "sound_852"),
+    ("musicbox", "sound_musicbox"),
+    ("bowl", "sound_bowl"),
+    ("om136", "sound_om")
 ]
 
 // MARK: - Renk paleti (enerji/frekans teması)
@@ -29,13 +32,16 @@ enum Palette {
 
 struct ContentView: View {
     @AppStorage("ringingAlarmID") private var ringingAlarmID = ""
+    @AppStorage("onboarded") private var onboarded = false
 
     var body: some View {
         Group {
-            if ringingAlarmID.isEmpty {
-                HomeView()
-            } else {
+            if !ringingAlarmID.isEmpty {
                 SpeechDismissView()
+            } else if !onboarded {
+                OnboardingView()
+            } else {
+                HomeView()
             }
         }
         .preferredColorScheme(.dark)
@@ -51,6 +57,7 @@ struct HomeView: View {
     @AppStorage("alarmSound") private var alarmSound = "default"
     @AppStorage("bgTheme") private var bgTheme = "cosmic"
     @AppStorage("sleepGoal") private var sleepGoal = 8.0
+    @AppStorage("manifestCategory") private var manifestCategory = "all"
     @State private var showAdd = false
     @State private var editing: AlarmItem?
     @State private var status = ""
@@ -121,6 +128,17 @@ struct HomeView: View {
             Toggle(isOn: $dailyMode) {
                 Label("daily_mode", systemImage: "waveform")
                     .foregroundStyle(.white)
+            }
+            if dailyMode {
+                Picker(selection: $manifestCategory) {
+                    ForEach(categoryOptions, id: \.key) { option in
+                        Text(LocalizedStringKey(option.label)).tag(option.key)
+                    }
+                } label: {
+                    Label("manifest_category", systemImage: "square.grid.2x2.fill")
+                        .foregroundStyle(.white)
+                }
+                .pickerStyle(.menu)
             }
             if !dailyMode {
                 TextField(
@@ -537,6 +555,8 @@ struct SpeechDismissView: View {
         speech.stop()
         UserDefaults.standard.set(true, forKey: "manifestSpoken")
         AlarmPlanner.stopRinging(idString: ringingAlarmID)
+        // Manifest söylendi: koruma alarmlarını yarına taşı
+        Task { await AlarmPlanner.resyncShadows() }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             UserDefaults.standard.set(false, forKey: "manifestSpoken")
             ringingAlarmID = ""

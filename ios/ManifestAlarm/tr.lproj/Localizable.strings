@@ -58,3 +58,30 @@
 "sleep_goal" = "Uyku hedefi: %@";
 "bedtime_for_goal" = "Hedefin için en geç yatış: %@";
 "no_alarm_for_sleep" = "Uyku hesabı için bir alarm kur ve aç";
+
+"sound_musicbox" = "Müzik Kutusu";
+"sound_bowl" = "Tibet Çanağı";
+"sound_om" = "Om 136 Hz — Derin Ton";
+"welcome_title" = "Manifest Alarm'a Hoş Geldin";
+"welcome_sub" = "Güne niyetinle uyan 🌞";
+"choose_theme" = "Arkaplanını seç";
+"choose_category" = "Manifest alanını seç";
+"get_started" = "Başla";
+"manifest_category" = "Manifest alanı";
+"cat_all" = "Hepsi";
+"cat_work" = "İş & Başarı";
+"cat_love" = "Aşk & İlişkiler";
+"cat_life" = "Hayat & Huzur";
+
+"manifest_work_0" = "Yaptığım işte her gün ustalaşıyorum; başarı ve fırsatlar beni buluyor";
+"manifest_work_1" = "Emeğim değerini buluyor; kazancım her geçen gün artıyor";
+"manifest_work_2" = "Zorluklar benim için basamak; hedeflerime kararlılıkla ilerliyorum";
+"manifest_work_3" = "Fikirlerim değerli; onları cesaretle ortaya koyuyorum ve takdir görüyorum";
+"manifest_love_0" = "Sevgiye açığım; kalbim doğru insanları hayatıma çekiyor";
+"manifest_love_1" = "İlişkilerimde anlayış ve şefkat büyüyor; sevgi veriyorum, sevgi alıyorum";
+"manifest_love_2" = "Kendimi sevdikçe çevremdeki sevgi çoğalıyor";
+"manifest_love_3" = "Ben sevilmeye değerim; hayatım sevgiyle dolu";
+"manifest_life_0" = "Bugün hayatın bana sunduğu her güzelliğe açığım";
+"manifest_life_1" = "İçimde derin bir huzur var; her nefeste yenileniyorum";
+"manifest_life_2" = "Bedenime ve ruhuma iyi bakıyorum; sağlık benim doğal halim";
+"manifest_life_3" = "Anın içindeyim; şimdi ve burada mutluyum";

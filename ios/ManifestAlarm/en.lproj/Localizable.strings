@@ -58,3 +58,30 @@
 "sleep_goal" = "Sleep goal: %@";
 "bedtime_for_goal" = "Latest bedtime for your goal: %@";
 "no_alarm_for_sleep" = "Set and enable an alarm to see your sleep time";
+
+"sound_musicbox" = "Music Box";
+"sound_bowl" = "Tibetan Bowl";
+"sound_om" = "Om 136 Hz — Deep Tone";
+"welcome_title" = "Welcome to Manifest Alarm";
+"welcome_sub" = "Wake up with intention 🌞";
+"choose_theme" = "Choose your background";
+"choose_category" = "Choose your manifest focus";
+"get_started" = "Get Started";
+"manifest_category" = "Manifest focus";
+"cat_all" = "All";
+"cat_work" = "Work & Success";
+"cat_love" = "Love & Relationships";
+"cat_life" = "Life & Peace";
+
+"manifest_work_0" = "I master my craft a little more every day; success and opportunities find me";
+"manifest_work_1" = "My effort is rewarded; my income grows day by day";
+"manifest_work_2" = "Challenges are stepping stones; I move toward my goals with determination";
+"manifest_work_3" = "My ideas are valuable; I share them with courage and they are appreciated";
+"manifest_love_0" = "I am open to love; my heart attracts the right people into my life";
+"manifest_love_1" = "Understanding and compassion grow in my relationships; I give love and receive love";
+"manifest_love_2" = "As I love myself, the love around me multiplies";
+"manifest_love_3" = "I am worthy of love; my life is full of love";
+"manifest_life_0" = "Today I am open to every beauty life offers me";
+"manifest_life_1" = "There is deep peace within me; I am renewed with every breath";
+"manifest_life_2" = "I take good care of my body and soul; health is my natural state";
+"manifest_life_3" = "I am present in the moment; I am happy here and now";

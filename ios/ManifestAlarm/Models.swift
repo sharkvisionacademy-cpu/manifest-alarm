@@ -17,7 +17,6 @@ struct AlarmItem: Identifiable, Codable, Equatable {
 /// Otomatik modda yerelleştirilmiş havuzdan gün sırasına göre manifest seçer;
 /// kapalıysa kullanıcının kendi cümlesini döndürür.
 enum ManifestProvider {
-    static let poolSize = 10
 
     static func todaysManifest() -> String {
         let defaults = UserDefaults.standard
@@ -25,9 +24,20 @@ enum ManifestProvider {
             ? true
             : defaults.bool(forKey: "dailyMode")
         if dailyMode {
+            let category = defaults.string(forKey: "manifestCategory") ?? "all"
+            let general = (0..<10).map { "manifest_pool_\($0)" }
+            let work = (0..<4).map { "manifest_work_\($0)" }
+            let love = (0..<4).map { "manifest_love_\($0)" }
+            let life = (0..<4).map { "manifest_life_\($0)" }
+            let keys: [String]
+            switch category {
+            case "work": keys = work
+            case "love": keys = love
+            case "life": keys = life
+            default: keys = general + work + love + life
+            }
             let day = Calendar.current.ordinality(of: .day, in: .year, for: Date()) ?? 1
-            let key = "manifest_pool_\(day % poolSize)"
-            return String(localized: String.LocalizationValue(key))
+            return String(localized: String.LocalizationValue(keys[day % keys.count]))
         }
         let custom = defaults.string(forKey: "manifest")?
             .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
@@ -213,5 +223,6 @@ final class AlarmStore: ObservableObject {
         }
         scheduledIDs = newIDs
         authProblem = denied
+        await AlarmPlanner.resyncShadows()
     }
 }

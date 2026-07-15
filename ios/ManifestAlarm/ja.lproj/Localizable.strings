@@ -58,3 +58,30 @@
 "sleep_goal" = "睡眠目標: %@";
 "bedtime_for_goal" = "目標のための最終就寝時刻: %@";
 "no_alarm_for_sleep" = "睡眠時間を見るにはアラームを設定してオンにしてください";
+
+"sound_musicbox" = "オルゴール";
+"sound_bowl" = "チベタンボウル";
+"sound_om" = "オーム 136 Hz — 深い音";
+"welcome_title" = "Manifest Alarm へようこそ";
+"welcome_sub" = "意図を持って目覚めよう 🌞";
+"choose_theme" = "背景を選んでください";
+"choose_category" = "マニフェストの分野を選んでください";
+"get_started" = "はじめる";
+"manifest_category" = "マニフェストの分野";
+"cat_all" = "すべて";
+"cat_work" = "仕事と成功";
+"cat_love" = "愛と人間関係";
+"cat_life" = "人生と安らぎ";
+
+"manifest_work_0" = "毎日、私は自分の仕事に磨きをかけている。成功とチャンスが私を見つけてくれる";
+"manifest_work_1" = "私の努力は報われる。収入は日に日に増えていく";
+"manifest_work_2" = "困難は階段。私は決意を持って目標へ進む";
+"manifest_work_3" = "私のアイデアには価値がある。勇気を持って発信し、認められている";
+"manifest_love_0" = "私は愛に心を開いている。私の心はふさわしい人々を引き寄せる";
+"manifest_love_1" = "私の人間関係には理解と思いやりが育っている。愛を与え、愛を受け取る";
+"manifest_love_2" = "自分を愛するほど、周りの愛も増えていく";
+"manifest_love_3" = "私は愛されるに値する。私の人生は愛で満ちている";
+"manifest_life_0" = "今日、人生が贈るすべての美しさに心を開く";
+"manifest_life_1" = "私の中には深い安らぎがある。呼吸のたびに新しくなる";
+"manifest_life_2" = "体と心を大切にしている。健康は私の自然な姿";
+"manifest_life_3" = "私は今この瞬間にいる。今ここで幸せ";

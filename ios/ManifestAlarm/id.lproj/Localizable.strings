@@ -58,3 +58,30 @@
 "sleep_goal" = "Target tidur: %@";
 "bedtime_for_goal" = "Waktu tidur paling lambat untuk targetmu: %@";
 "no_alarm_for_sleep" = "Atur dan aktifkan alarm untuk melihat waktu tidurmu";
+
+"sound_musicbox" = "Kotak Musik";
+"sound_bowl" = "Mangkuk Tibet";
+"sound_om" = "Om 136 Hz — Nada Dalam";
+"welcome_title" = "Selamat datang di Manifest Alarm";
+"welcome_sub" = "Bangun dengan niat 🌞";
+"choose_theme" = "Pilih latar belakangmu";
+"choose_category" = "Pilih fokus manifestasimu";
+"get_started" = "Mulai";
+"manifest_category" = "Fokus manifestasi";
+"cat_all" = "Semua";
+"cat_work" = "Kerja & Kesuksesan";
+"cat_love" = "Cinta & Hubungan";
+"cat_life" = "Hidup & Kedamaian";
+
+"manifest_work_0" = "Setiap hari aku semakin menguasai pekerjaanku; kesuksesan dan peluang menemukanku";
+"manifest_work_1" = "Usahaku dihargai; penghasilanku tumbuh dari hari ke hari";
+"manifest_work_2" = "Tantangan adalah anak tangga; aku melangkah menuju tujuanku dengan tekad";
+"manifest_work_3" = "Ide-ideku berharga; aku membagikannya dengan berani dan dihargai";
+"manifest_love_0" = "Aku terbuka pada cinta; hatiku menarik orang-orang yang tepat ke dalam hidupku";
+"manifest_love_1" = "Pengertian dan kasih sayang tumbuh dalam hubunganku; aku memberi dan menerima cinta";
+"manifest_love_2" = "Semakin aku mencintai diriku, semakin berlipat cinta di sekitarku";
+"manifest_love_3" = "Aku layak dicintai; hidupku penuh cinta";
+"manifest_life_0" = "Hari ini aku terbuka pada setiap keindahan yang hidup tawarkan";
+"manifest_life_1" = "Ada kedamaian yang dalam di diriku; aku diperbarui di setiap napas";
+"manifest_life_2" = "Aku merawat tubuh dan jiwaku; sehat adalah keadaan alamiku";
+"manifest_life_3" = "Aku hadir di saat ini; aku bahagia di sini dan sekarang";

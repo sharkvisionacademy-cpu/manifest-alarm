@@ -39,10 +39,9 @@ struct StopPenaltyIntent: LiveActivityIntent {
     }
 
     func perform() async throws -> some IntentResult {
+        // Ceza artık koruma alarmıyla (resyncShadows) tek tip:
+        // manifest söylenmeden durdurulan her alarm 3 dk sonra bir kez daha çalar.
         let defaults = UserDefaults.standard
-        if !defaults.bool(forKey: "manifestSpoken") {
-            try? await AlarmPlanner.scheduleOneShot(after: 120)
-        }
         defaults.set(false, forKey: "manifestSpoken")
         defaults.removeObject(forKey: "ringingAlarmID")
         return .result()

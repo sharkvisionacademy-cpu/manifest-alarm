@@ -58,3 +58,30 @@
 "sleep_goal" = "수면 목표: %@";
 "bedtime_for_goal" = "목표를 위한 마지막 취침 시간: %@";
 "no_alarm_for_sleep" = "수면 시간을 보려면 알람을 설정하고 켜세요";
+
+"sound_musicbox" = "뮤직 박스";
+"sound_bowl" = "티베탄 볼";
+"sound_om" = "옴 136 Hz — 깊은 음";
+"welcome_title" = "Manifest Alarm에 오신 것을 환영합니다";
+"welcome_sub" = "의도를 가지고 일어나세요 🌞";
+"choose_theme" = "배경을 선택하세요";
+"choose_category" = "매니페스트 분야를 선택하세요";
+"get_started" = "시작하기";
+"manifest_category" = "매니페스트 분야";
+"cat_all" = "전체";
+"cat_work" = "일과 성공";
+"cat_love" = "사랑과 관계";
+"cat_life" = "삶과 평화";
+
+"manifest_work_0" = "매일 나는 내 일에 더 능숙해진다; 성공과 기회가 나를 찾아온다";
+"manifest_work_1" = "나의 노력은 보상받는다; 나의 수입은 날마다 늘어난다";
+"manifest_work_2" = "도전은 계단이다; 나는 굳은 결심으로 목표를 향해 나아간다";
+"manifest_work_3" = "나의 아이디어는 가치 있다; 용기 있게 나누고 인정받는다";
+"manifest_love_0" = "나는 사랑에 열려 있다; 내 마음은 좋은 사람들을 내 삶으로 끌어당긴다";
+"manifest_love_1" = "나의 관계에는 이해와 다정함이 자란다; 사랑을 주고 사랑을 받는다";
+"manifest_love_2" = "나 자신을 사랑할수록 내 주변의 사랑도 커진다";
+"manifest_love_3" = "나는 사랑받을 자격이 있다; 내 삶은 사랑으로 가득하다";
+"manifest_life_0" = "오늘 나는 삶이 주는 모든 아름다움에 열려 있다";
+"manifest_life_1" = "내 안에는 깊은 평화가 있다; 매 호흡마다 새로워진다";
+"manifest_life_2" = "나는 몸과 마음을 잘 돌본다; 건강은 나의 자연스러운 상태다";
+"manifest_life_3" = "나는 지금 이 순간에 있다; 여기, 지금 행복하다";

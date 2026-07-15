@@ -58,3 +58,30 @@
 "sleep_goal" = "睡眠目标：%@";
 "bedtime_for_goal" = "达成目标的最晚就寝时间：%@";
 "no_alarm_for_sleep" = "设置并开启闹钟即可查看睡眠时间";
+
+"sound_musicbox" = "音乐盒";
+"sound_bowl" = "颂钵";
+"sound_om" = "Om 136 Hz — 深沉音";
+"welcome_title" = "欢迎使用 Manifest Alarm";
+"welcome_sub" = "带着意念醒来 🌞";
+"choose_theme" = "选择你的背景";
+"choose_category" = "选择你的宣言领域";
+"get_started" = "开始";
+"manifest_category" = "宣言领域";
+"cat_all" = "全部";
+"cat_work" = "工作与成功";
+"cat_love" = "爱与关系";
+"cat_life" = "生活与平静";
+
+"manifest_work_0" = "我每天都更加精通我的事业；成功和机会会找到我";
+"manifest_work_1" = "我的努力得到回报；我的收入日益增长";
+"manifest_work_2" = "挑战是台阶；我坚定地迈向目标";
+"manifest_work_3" = "我的想法很有价值；我勇敢地表达并受到赞赏";
+"manifest_love_0" = "我向爱敞开；我的心把对的人吸引到我的生命中";
+"manifest_love_1" = "我的关系中理解与温柔在成长；我付出爱也收获爱";
+"manifest_love_2" = "我越爱自己，身边的爱就越多";
+"manifest_love_3" = "我值得被爱；我的生活充满爱";
+"manifest_life_0" = "今天我向生活给予的每一份美好敞开";
+"manifest_life_1" = "我内心有深深的平静；每一次呼吸都让我焕然一新";
+"manifest_life_2" = "我好好照顾身体和心灵；健康是我的自然状态";
+"manifest_life_3" = "我活在当下；此时此刻我很幸福";

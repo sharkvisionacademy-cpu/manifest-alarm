@@ -101,4 +101,36 @@ enum AlarmPlanner {
         guard let id = UUID(uuidString: idString) else { return }
         try? AlarmManager.shared.stop(id: id)
     }
+
+    /// Koruma alarmları: her etkin alarmın bir sonraki çalışından 3 dk sonrasına
+    /// tek seferlik yedek kurulur. Manifest söylenmeden alarm nasıl susturulursa
+    /// susturulsun (ses tuşu, Durdur) koruma bir kez daha çalar. Manifest
+    /// söylenince yeniden eşitlenir ve yarına taşınır.
+    static func resyncShadows() async {
+        let defaults = UserDefaults.standard
+        for idString in defaults.stringArray(forKey: "shadowIDs") ?? [] {
+            if let id = UUID(uuidString: idString) {
+                await cancel(id: id)
+            }
+        }
+        var newIDs: [String] = []
+        if let data = defaults.data(forKey: "alarmsJSON"),
+           let items = try? JSONDecoder().decode([AlarmItem].self, from: data) {
+            for item in items where item.enabled {
+                guard let next = SleepMath.nextAlarm([item]) else { continue }
+                let id = UUID()
+                let configuration = AlarmManager.AlarmConfiguration(
+                    schedule: .fixed(next.date.addingTimeInterval(180)),
+                    attributes: attributes(),
+                    stopIntent: StopPenaltyIntent(alarmID: id.uuidString),
+                    secondaryIntent: OpenSpeechIntent(alarmID: id.uuidString),
+                    sound: currentSound()
+                )
+                if (try? await AlarmManager.shared.schedule(id: id, configuration: configuration)) != nil {
+                    newIDs.append(id.uuidString)
+                }
+            }
+        }
+        defaults.set(newIDs, forKey: "shadowIDs")
+    }
 }

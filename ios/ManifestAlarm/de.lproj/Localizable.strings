@@ -58,3 +58,30 @@
 "sleep_goal" = "Schlafziel: %@";
 "bedtime_for_goal" = "Späteste Schlafenszeit für dein Ziel: %@";
 "no_alarm_for_sleep" = "Stelle einen Wecker ein, um deine Schlafzeit zu sehen";
+
+"sound_musicbox" = "Spieluhr";
+"sound_bowl" = "Klangschale";
+"sound_om" = "Om 136 Hz — Tiefer Ton";
+"welcome_title" = "Willkommen bei Manifest Alarm";
+"welcome_sub" = "Wach mit Intention auf 🌞";
+"choose_theme" = "Wähle deinen Hintergrund";
+"choose_category" = "Wähle deinen Manifest-Fokus";
+"get_started" = "Los geht's";
+"manifest_category" = "Manifest-Fokus";
+"cat_all" = "Alle";
+"cat_work" = "Arbeit & Erfolg";
+"cat_love" = "Liebe & Beziehungen";
+"cat_life" = "Leben & Frieden";
+
+"manifest_work_0" = "Ich meistere mein Handwerk jeden Tag ein Stück mehr; Erfolg und Chancen finden mich";
+"manifest_work_1" = "Meine Arbeit wird belohnt; mein Einkommen wächst Tag für Tag";
+"manifest_work_2" = "Herausforderungen sind Stufen; ich gehe entschlossen auf meine Ziele zu";
+"manifest_work_3" = "Meine Ideen sind wertvoll; ich teile sie mutig und sie werden geschätzt";
+"manifest_love_0" = "Ich bin offen für Liebe; mein Herz zieht die richtigen Menschen in mein Leben";
+"manifest_love_1" = "Verständnis und Mitgefühl wachsen in meinen Beziehungen; ich gebe und empfange Liebe";
+"manifest_love_2" = "Je mehr ich mich selbst liebe, desto mehr Liebe umgibt mich";
+"manifest_love_3" = "Ich bin der Liebe würdig; mein Leben ist voller Liebe";
+"manifest_life_0" = "Heute bin ich offen für jede Schönheit, die das Leben mir schenkt";
+"manifest_life_1" = "In mir ist tiefer Frieden; mit jedem Atemzug erneuere ich mich";
+"manifest_life_2" = "Ich sorge gut für Körper und Seele; Gesundheit ist mein natürlicher Zustand";
+"manifest_life_3" = "Ich bin im Moment; ich bin glücklich im Hier und Jetzt";

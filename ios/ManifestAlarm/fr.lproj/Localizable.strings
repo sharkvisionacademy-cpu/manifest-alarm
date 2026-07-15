@@ -58,3 +58,30 @@
 "sleep_goal" = "Objectif de sommeil : %@";
 "bedtime_for_goal" = "Heure limite pour ton objectif : %@";
 "no_alarm_for_sleep" = "Règle et active un réveil pour voir ton temps de sommeil";
+
+"sound_musicbox" = "Boîte à musique";
+"sound_bowl" = "Bol tibétain";
+"sound_om" = "Om 136 Hz — Son profond";
+"welcome_title" = "Bienvenue dans Manifest Alarm";
+"welcome_sub" = "Réveille-toi avec intention 🌞";
+"choose_theme" = "Choisis ton arrière-plan";
+"choose_category" = "Choisis ton domaine de manifeste";
+"get_started" = "Commencer";
+"manifest_category" = "Domaine du manifeste";
+"cat_all" = "Tous";
+"cat_work" = "Travail & Succès";
+"cat_love" = "Amour & Relations";
+"cat_life" = "Vie & Paix";
+
+"manifest_work_0" = "Chaque jour je maîtrise un peu plus mon art ; le succès et les opportunités me trouvent";
+"manifest_work_1" = "Mon travail est récompensé ; mes revenus grandissent de jour en jour";
+"manifest_work_2" = "Les défis sont des marches ; j\'avance vers mes objectifs avec détermination";
+"manifest_work_3" = "Mes idées ont de la valeur ; je les partage avec courage et elles sont appréciées";
+"manifest_love_0" = "Je suis ouvert à l\'amour ; mon cœur attire les bonnes personnes dans ma vie";
+"manifest_love_1" = "La compréhension et la tendresse grandissent dans mes relations ; je donne et je reçois de l\'amour";
+"manifest_love_2" = "Plus je m\'aime, plus l\'amour autour de moi se multiplie";
+"manifest_love_3" = "Je mérite d\'être aimé ; ma vie est remplie d\'amour";
+"manifest_life_0" = "Aujourd\'hui je suis ouvert à chaque beauté que la vie m\'offre";
+"manifest_life_1" = "Une paix profonde vit en moi ; je me renouvelle à chaque respiration";
+"manifest_life_2" = "Je prends soin de mon corps et de mon âme ; la santé est mon état naturel";
+"manifest_life_3" = "Je vis l\'instant présent ; je suis heureux ici et maintenant";
