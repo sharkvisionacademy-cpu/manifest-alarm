@@ -45,3 +45,16 @@
 "sound_852" = "852 هرتز — تردد الحدس";
 "preview" = "استمع";
 "stop_preview" = "إيقاف";
+
+"background_title" = "الخلفية";
+"theme_cosmic" = "ليلة كونية";
+"theme_sunrise" = "شروق الشمس";
+"theme_ocean" = "أعماق المحيط";
+"theme_forest" = "نَفَس الغابة";
+"theme_lavender" = "ضباب اللافندر";
+"sleep_title" = "النوم";
+"next_alarm_label" = "المنبّه التالي";
+"sleep_if_now" = "إذا نمت الآن: %@";
+"sleep_goal" = "هدف النوم: %@";
+"bedtime_for_goal" = "آخر وقت للنوم لتحقيق هدفك: %@";
+"no_alarm_for_sleep" = "اضبط منبّهًا وفعّله لرؤية مدة نومك";

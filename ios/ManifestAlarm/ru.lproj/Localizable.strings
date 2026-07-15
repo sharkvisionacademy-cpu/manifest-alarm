@@ -45,3 +45,16 @@
 "sound_852" = "852 Гц — частота интуиции";
 "preview" = "Послушать";
 "stop_preview" = "Остановить";
+
+"background_title" = "Фон";
+"theme_cosmic" = "Космическая ночь";
+"theme_sunrise" = "Рассвет";
+"theme_ocean" = "Глубина океана";
+"theme_forest" = "Дыхание леса";
+"theme_lavender" = "Лавандовый туман";
+"sleep_title" = "Сон";
+"next_alarm_label" = "Следующий будильник";
+"sleep_if_now" = "Если уснёшь сейчас: %@";
+"sleep_goal" = "Цель сна: %@";
+"bedtime_for_goal" = "Крайнее время отхода ко сну: %@";
+"no_alarm_for_sleep" = "Установи и включи будильник, чтобы увидеть время сна";

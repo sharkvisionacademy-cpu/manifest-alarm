@@ -45,3 +45,16 @@
 "sound_852" = "852 Hz — Fréquence de l\'intuition";
 "preview" = "Écouter";
 "stop_preview" = "Arrêter";
+
+"background_title" = "Arrière-plan";
+"theme_cosmic" = "Nuit cosmique";
+"theme_sunrise" = "Lever du soleil";
+"theme_ocean" = "Profondeur de l\'océan";
+"theme_forest" = "Souffle de la forêt";
+"theme_lavender" = "Brume de lavande";
+"sleep_title" = "Sommeil";
+"next_alarm_label" = "Prochain réveil";
+"sleep_if_now" = "Si tu dors maintenant : %@";
+"sleep_goal" = "Objectif de sommeil : %@";
+"bedtime_for_goal" = "Heure limite pour ton objectif : %@";
+"no_alarm_for_sleep" = "Règle et active un réveil pour voir ton temps de sommeil";

@@ -45,3 +45,16 @@
 "sound_852" = "852 Hz — Sezgi Frekansı";
 "preview" = "Dinle";
 "stop_preview" = "Durdur";
+
+"background_title" = "Arkaplan";
+"theme_cosmic" = "Kozmik Gece";
+"theme_sunrise" = "Gün Doğumu";
+"theme_ocean" = "Okyanus Derinliği";
+"theme_forest" = "Orman Nefesi";
+"theme_lavender" = "Lavanta Sisi";
+"sleep_title" = "Uyku";
+"next_alarm_label" = "Sonraki alarm";
+"sleep_if_now" = "Şimdi uyursan: %@";
+"sleep_goal" = "Uyku hedefi: %@";
+"bedtime_for_goal" = "Hedefin için en geç yatış: %@";
+"no_alarm_for_sleep" = "Uyku hesabı için bir alarm kur ve aç";

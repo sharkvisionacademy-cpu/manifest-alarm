@@ -19,12 +19,9 @@ enum Palette {
     static let violet = Color(red: 0.17, green: 0.09, blue: 0.34)
     static let card = Color.white.opacity(0.08)
 
+    // Seçili arkaplan teması tüm ekranlarda kullanılır
     static var background: LinearGradient {
-        LinearGradient(
-            colors: [violet, night],
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
+        Themes.gradient(for: UserDefaults.standard.string(forKey: "bgTheme") ?? "cosmic")
     }
 }
 
@@ -52,6 +49,8 @@ struct HomeView: View {
     @AppStorage("dailyMode") private var dailyMode = true
     @AppStorage("manifest") private var customManifest = ""
     @AppStorage("alarmSound") private var alarmSound = "default"
+    @AppStorage("bgTheme") private var bgTheme = "cosmic"
+    @AppStorage("sleepGoal") private var sleepGoal = 8.0
     @State private var showAdd = false
     @State private var editing: AlarmItem?
     @State private var status = ""
@@ -62,9 +61,11 @@ struct HomeView: View {
         NavigationStack {
             List {
                 manifestSection
+                sleepSection
+                alarmsSection
                 manifestSettingsSection
                 soundSection
-                alarmsSection
+                themeSection
                 footerSection
             }
             .scrollContentBackground(.hidden)
@@ -134,6 +135,98 @@ struct HomeView: View {
             Text("how_it_works")
                 .font(.footnote)
                 .foregroundStyle(.white.opacity(0.55))
+        }
+        .listRowBackground(Palette.card)
+    }
+
+    private var sleepSection: some View {
+        Section {
+            if let next = SleepMath.nextAlarm(store.alarms) {
+                TimelineView(.periodic(from: .now, by: 60)) { context in
+                    let interval = next.date.timeIntervalSince(context.date)
+                    let goalSeconds = sleepGoal * 3600
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack {
+                            Label("sleep_title", systemImage: "moon.zzz.fill")
+                                .font(.footnote.weight(.semibold))
+                                .foregroundStyle(Palette.gold)
+                            Spacer()
+                            Text("\(String(localized: "next_alarm_label")): \(next.item.timeText)")
+                                .font(.footnote)
+                                .foregroundStyle(.white.opacity(0.7))
+                        }
+                        Text(String(
+                            format: String(localized: "sleep_if_now"),
+                            SleepMath.format(interval)
+                        ))
+                        .font(.headline)
+                        .foregroundStyle(interval >= goalSeconds ? Color.green : Palette.gold)
+                        ProgressView(value: min(interval / goalSeconds, 1.0))
+                            .tint(interval >= goalSeconds ? .green : Palette.gold)
+                        Text(String(
+                            format: String(localized: "bedtime_for_goal"),
+                            SleepMath.timeString(next.date.addingTimeInterval(-goalSeconds))
+                        ))
+                        .font(.footnote)
+                        .foregroundStyle(.white.opacity(0.6))
+                    }
+                    .padding(.vertical, 6)
+                }
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(String(
+                        format: String(localized: "sleep_goal"),
+                        SleepMath.format(sleepGoal * 3600)
+                    ))
+                    .font(.footnote)
+                    .foregroundStyle(.white.opacity(0.8))
+                    Slider(value: $sleepGoal, in: 5...10, step: 0.5)
+                        .tint(Palette.gold)
+                }
+            } else {
+                Text("no_alarm_for_sleep")
+                    .font(.callout)
+                    .foregroundStyle(.white.opacity(0.55))
+            }
+        }
+        .listRowBackground(Palette.card)
+    }
+
+    private var themeSection: some View {
+        Section {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 14) {
+                    ForEach(Themes.all) { theme in
+                        Button {
+                            bgTheme = theme.key
+                        } label: {
+                            Circle()
+                                .fill(LinearGradient(
+                                    colors: theme.colors,
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ))
+                                .frame(width: 46, height: 46)
+                                .overlay(
+                                    Circle().strokeBorder(
+                                        bgTheme == theme.key
+                                            ? Palette.gold
+                                            : .white.opacity(0.25),
+                                        lineWidth: bgTheme == theme.key ? 3 : 1
+                                    )
+                                )
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(.vertical, 4)
+            }
+            Text(LocalizedStringKey("theme_\(bgTheme)"))
+                .font(.footnote)
+                .foregroundStyle(.white.opacity(0.7))
+        } header: {
+            Label("background_title", systemImage: "paintpalette.fill")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(Palette.gold)
         }
         .listRowBackground(Palette.card)
     }
@@ -288,6 +381,17 @@ struct AlarmEditSheet: View {
                     .datePickerStyle(.wheel)
                     .labelsHidden()
                     .padding(.top, 16)
+                // Seçilen saate göre canlı uyku süresi
+                Label(
+                    String(
+                        format: String(localized: "sleep_if_now"),
+                        SleepMath.format(nextOccurrence(of: time).timeIntervalSinceNow)
+                    ),
+                    systemImage: "moon.zzz.fill"
+                )
+                .font(.callout.weight(.medium))
+                .foregroundStyle(Palette.gold)
+                .padding(.top, 4)
                 Spacer()
             }
             .frame(maxWidth: .infinity)
@@ -313,6 +417,13 @@ struct AlarmEditSheet: View {
         .presentationDetents([.medium])
         .preferredColorScheme(.dark)
         .tint(Palette.gold)
+    }
+
+    private func nextOccurrence(of date: Date) -> Date {
+        let comps = Calendar.current.dateComponents([.hour, .minute], from: date)
+        return Calendar.current.nextDate(
+            after: Date(), matching: comps, matchingPolicy: .nextTime
+        ) ?? date
     }
 
     private func saveAndClose() {

@@ -45,3 +45,16 @@
 "sound_852" = "852 Hz — अंतर्ज्ञान की आवृत्ति";
 "preview" = "सुनें";
 "stop_preview" = "रोकें";
+
+"background_title" = "पृष्ठभूमि";
+"theme_cosmic" = "ब्रह्मांडीय रात";
+"theme_sunrise" = "सूर्योदय";
+"theme_ocean" = "सागर की गहराई";
+"theme_forest" = "वन की साँस";
+"theme_lavender" = "लैवेंडर धुंध";
+"sleep_title" = "नींद";
+"next_alarm_label" = "अगला अलार्म";
+"sleep_if_now" = "अभी सोएँ तो: %@";
+"sleep_goal" = "नींद का लक्ष्य: %@";
+"bedtime_for_goal" = "लक्ष्य के लिए सोने का अंतिम समय: %@";
+"no_alarm_for_sleep" = "नींद का समय देखने के लिए अलार्म सेट करें और चालू करें";

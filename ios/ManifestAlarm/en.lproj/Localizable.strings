@@ -45,3 +45,16 @@
 "sound_852" = "852 Hz — Intuition Frequency";
 "preview" = "Listen";
 "stop_preview" = "Stop";
+
+"background_title" = "Background";
+"theme_cosmic" = "Cosmic Night";
+"theme_sunrise" = "Sunrise";
+"theme_ocean" = "Ocean Depth";
+"theme_forest" = "Forest Breath";
+"theme_lavender" = "Lavender Mist";
+"sleep_title" = "Sleep";
+"next_alarm_label" = "Next alarm";
+"sleep_if_now" = "If you sleep now: %@";
+"sleep_goal" = "Sleep goal: %@";
+"bedtime_for_goal" = "Latest bedtime for your goal: %@";
+"no_alarm_for_sleep" = "Set and enable an alarm to see your sleep time";

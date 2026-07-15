@@ -45,3 +45,16 @@
 "sound_852" = "852 Hz — 直觉频率";
 "preview" = "试听";
 "stop_preview" = "停止";
+
+"background_title" = "背景";
+"theme_cosmic" = "宇宙之夜";
+"theme_sunrise" = "日出";
+"theme_ocean" = "海洋深处";
+"theme_forest" = "森林呼吸";
+"theme_lavender" = "薰衣草之雾";
+"sleep_title" = "睡眠";
+"next_alarm_label" = "下一个闹钟";
+"sleep_if_now" = "现在入睡可睡：%@";
+"sleep_goal" = "睡眠目标：%@";
+"bedtime_for_goal" = "达成目标的最晚就寝时间：%@";
+"no_alarm_for_sleep" = "设置并开启闹钟即可查看睡眠时间";

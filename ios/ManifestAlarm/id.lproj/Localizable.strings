@@ -45,3 +45,16 @@
 "sound_852" = "852 Hz — Frekuensi Intuisi";
 "preview" = "Dengarkan";
 "stop_preview" = "Hentikan";
+
+"background_title" = "Latar Belakang";
+"theme_cosmic" = "Malam Kosmik";
+"theme_sunrise" = "Matahari Terbit";
+"theme_ocean" = "Kedalaman Samudra";
+"theme_forest" = "Napas Hutan";
+"theme_lavender" = "Kabut Lavender";
+"sleep_title" = "Tidur";
+"next_alarm_label" = "Alarm berikutnya";
+"sleep_if_now" = "Jika tidur sekarang: %@";
+"sleep_goal" = "Target tidur: %@";
+"bedtime_for_goal" = "Waktu tidur paling lambat untuk targetmu: %@";
+"no_alarm_for_sleep" = "Atur dan aktifkan alarm untuk melihat waktu tidurmu";

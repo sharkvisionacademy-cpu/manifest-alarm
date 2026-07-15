@@ -35,6 +35,88 @@ enum ManifestProvider {
     }
 }
 
+// MARK: - Arkaplan temaları
+
+struct BgTheme: Identifiable {
+    let key: String
+    let colors: [Color]
+    var id: String { key }
+}
+
+enum Themes {
+    static let all: [BgTheme] = [
+        BgTheme(key: "cosmic", colors: [
+            Color(red: 0.17, green: 0.09, blue: 0.34),
+            Color(red: 0.04, green: 0.04, blue: 0.13)
+        ]),
+        BgTheme(key: "sunrise", colors: [
+            Color(red: 0.55, green: 0.24, blue: 0.18),
+            Color(red: 0.28, green: 0.10, blue: 0.24),
+            Color(red: 0.06, green: 0.04, blue: 0.12)
+        ]),
+        BgTheme(key: "ocean", colors: [
+            Color(red: 0.04, green: 0.26, blue: 0.36),
+            Color(red: 0.02, green: 0.07, blue: 0.20)
+        ]),
+        BgTheme(key: "forest", colors: [
+            Color(red: 0.05, green: 0.28, blue: 0.18),
+            Color(red: 0.02, green: 0.10, blue: 0.09)
+        ]),
+        BgTheme(key: "lavender", colors: [
+            Color(red: 0.42, green: 0.31, blue: 0.58),
+            Color(red: 0.13, green: 0.09, blue: 0.28)
+        ])
+    ]
+
+    static func gradient(for key: String) -> LinearGradient {
+        let theme = all.first { $0.key == key } ?? all[0]
+        return LinearGradient(
+            colors: theme.colors,
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+}
+
+// MARK: - Uyku hesabı
+
+enum SleepMath {
+    /// Etkin alarmlar içinden bir sonraki çalacak olanı bulur.
+    static func nextAlarm(
+        _ alarms: [AlarmItem],
+        from now: Date = Date()
+    ) -> (date: Date, item: AlarmItem)? {
+        let cal = Calendar.current
+        var best: (Date, AlarmItem)?
+        for item in alarms where item.enabled {
+            var comps = DateComponents()
+            comps.hour = item.hour
+            comps.minute = item.minute
+            guard let next = cal.nextDate(
+                after: now, matching: comps, matchingPolicy: .nextTime
+            ) else { continue }
+            if best == nil || next < best!.0 {
+                best = (next, item)
+            }
+        }
+        return best.map { (date: $0.0, item: $0.1) }
+    }
+
+    /// Süreyi cihaz dilinde "7 sa 12 dk" gibi biçimler.
+    static func format(_ interval: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute]
+        formatter.unitsStyle = .abbreviated
+        return formatter.string(from: max(0, interval)) ?? ""
+    }
+
+    static func timeString(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
+    }
+}
+
 // MARK: - Alarm deposu
 
 @MainActor

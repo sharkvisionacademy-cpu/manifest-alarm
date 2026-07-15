@@ -45,3 +45,16 @@
 "sound_852" = "852 Hz — 직관의 주파수";
 "preview" = "듣기";
 "stop_preview" = "정지";
+
+"background_title" = "배경";
+"theme_cosmic" = "우주의 밤";
+"theme_sunrise" = "일출";
+"theme_ocean" = "바다의 깊이";
+"theme_forest" = "숲의 숨결";
+"theme_lavender" = "라벤더 안개";
+"sleep_title" = "수면";
+"next_alarm_label" = "다음 알람";
+"sleep_if_now" = "지금 자면: %@";
+"sleep_goal" = "수면 목표: %@";
+"bedtime_for_goal" = "목표를 위한 마지막 취침 시간: %@";
+"no_alarm_for_sleep" = "수면 시간을 보려면 알람을 설정하고 켜세요";

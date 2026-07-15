@@ -45,3 +45,16 @@
 "sound_852" = "852 Hz — 直感の周波数";
 "preview" = "試聴";
 "stop_preview" = "停止";
+
+"background_title" = "背景";
+"theme_cosmic" = "宇宙の夜";
+"theme_sunrise" = "日の出";
+"theme_ocean" = "海の深み";
+"theme_forest" = "森の呼吸";
+"theme_lavender" = "ラベンダーの霧";
+"sleep_title" = "睡眠";
+"next_alarm_label" = "次のアラーム";
+"sleep_if_now" = "今眠ると: %@";
+"sleep_goal" = "睡眠目標: %@";
+"bedtime_for_goal" = "目標のための最終就寝時刻: %@";
+"no_alarm_for_sleep" = "睡眠時間を見るにはアラームを設定してオンにしてください";
