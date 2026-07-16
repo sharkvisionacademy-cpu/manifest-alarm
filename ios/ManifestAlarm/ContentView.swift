@@ -238,7 +238,7 @@ struct HomeView: View {
                 }
                 .padding(.vertical, 4)
             }
-            Text(String(localized: String.LocalizationValue("theme_\(bgTheme)")))
+            Text(Themes.name(for: bgTheme))
                 .font(.footnote)
                 .foregroundStyle(.white.opacity(0.7))
         } header: {

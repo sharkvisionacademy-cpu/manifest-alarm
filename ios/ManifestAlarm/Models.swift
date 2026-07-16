@@ -78,6 +78,13 @@ enum Themes {
         ])
     ]
 
+    /// Tema adını çevirir. Anahtar önce düz String olarak kurulmalı; doğrudan
+    /// "theme_\(key)" yazmak Swift'te biçim metnine dönüşüp çeviriyi bulamaz.
+    static func name(for key: String) -> String {
+        let lookupKey = "theme_" + key
+        return String(localized: String.LocalizationValue(lookupKey))
+    }
+
     static func gradient(for key: String) -> LinearGradient {
         let theme = all.first { $0.key == key } ?? all[0]
         return LinearGradient(
