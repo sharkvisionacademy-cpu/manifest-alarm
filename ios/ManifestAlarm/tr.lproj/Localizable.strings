@@ -1,4 +1,4 @@
-"how_it_works" = "Alarm çaldığında kapatmanın tek gerçek yolu manifest cümleni yüksek sesle söylemek. Söylemeden Durdur'a basarsan alarm 3 dakika sonra bir kez daha çalar. Güne niyetinle başla! 🌞";
+"how_it_works" = "Alarm çaldığında kapatmanın tek gerçek yolu manifest cümleni yüksek sesle söylemek. Söylemeden Durdur'a basarsan alarm, manifestini söyleyene kadar 3 dakikada bir çalar. Erteleme yoktur. Güne niyetinle başla! 🌞";
 "alarm_time" = "Alarm Saati";
 "your_manifest" = "Manifest Cümlen";
 "default_manifest" = "Ben her gün her yönden daha iyiye gidiyorum; hayatıma sağlık, bolluk ve mutluluk çekiyorum";
@@ -62,6 +62,10 @@
 "sound_musicbox" = "Müzik Kutusu";
 "sound_bowl" = "Tibet Çanağı";
 "sound_om" = "Om 136 Hz — Derin Ton";
+"sound_piano" = "Piyano";
+"sound_harp" = "Arp";
+"sound_chimes" = "Rüzgar Çanları";
+"sound_marimba" = "Marimba";
 "welcome_title" = "Manifest Alarm'a Hoş Geldin";
 "welcome_sub" = "Güne niyetinle uyan 🌞";
 "choose_theme" = "Arkaplanını seç";

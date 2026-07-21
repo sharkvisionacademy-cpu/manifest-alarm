@@ -1,4 +1,4 @@
-"how_it_works" = "알람이 울리면 진짜로 끄는 유일한 방법은 매니페스트 문장을 큰 소리로 말하는 것입니다. 말하지 않고 중지를 누르면 3분 후 알람이 한 번 더 울립니다. 의도를 가지고 하루를 시작하세요! 🌞";
+"how_it_works" = "알람이 울리면 진짜로 끄는 유일한 방법은 매니페스트 문장을 큰 소리로 말하는 것입니다. 말하지 않고 중지를 누르면 말할 때까지 3분마다 울립니다. 다시 알림은 없습니다. 의도를 가지고 하루를 시작하세요! 🌞";
 "alarm_time" = "알람 시간";
 "your_manifest" = "나의 매니페스트 문장";
 "default_manifest" = "나는 매일 모든 면에서 점점 더 나아지고 있다; 나는 내 삶에 건강과 풍요와 행복을 끌어당긴다";
@@ -62,6 +62,14 @@
 "sound_musicbox" = "뮤직 박스";
 "sound_bowl" = "티베탄 볼";
 "sound_om" = "옴 136 Hz — 깊은 음";
+"sound_piano" = "피아노";
+"sound_harp" = "하프";
+"sound_chimes" = "윈드차임";
+"sound_marimba" = "마림바";
+"sound_piano" = "피아노";
+"sound_harp" = "하프";
+"sound_chimes" = "윈드차임";
+"sound_marimba" = "마림바";
 "welcome_title" = "Manifest Alarm에 오신 것을 환영합니다";
 "welcome_sub" = "의도를 가지고 일어나세요 🌞";
 "choose_theme" = "배경을 선택하세요";

@@ -1,4 +1,4 @@
-"how_it_works" = "Cuando suene la alarma, la única forma real de apagarla es decir tu frase manifiesto en voz alta. Si pulsas Detener sin decirla, la alarma suena una vez más 3 minutos después. ¡Empieza el día con intención! 🌞";
+"how_it_works" = "Cuando suene la alarma, la única forma real de apagarla es decir tu frase manifiesto en voz alta. Si pulsas Detener sin decirla, la alarma suena cada 3 minutos hasta que la digas. No hay repetición. ¡Empieza el día con intención! 🌞";
 "alarm_time" = "Hora de la alarma";
 "your_manifest" = "Tu frase manifiesto";
 "default_manifest" = "Cada día, en todos los sentidos, estoy mejorando más y más; atraigo salud, abundancia y felicidad a mi vida";
@@ -62,6 +62,14 @@
 "sound_musicbox" = "Caja de música";
 "sound_bowl" = "Cuenco tibetano";
 "sound_om" = "Om 136 Hz — Tono profundo";
+"sound_piano" = "Piano";
+"sound_harp" = "Arpa";
+"sound_chimes" = "Campanas de viento";
+"sound_marimba" = "Marimba";
+"sound_piano" = "Piano";
+"sound_harp" = "Arpa";
+"sound_chimes" = "Campanas de viento";
+"sound_marimba" = "Marimba";
 "welcome_title" = "Bienvenido a Manifest Alarm";
 "welcome_sub" = "Despierta con intención 🌞";
 "choose_theme" = "Elige tu fondo";

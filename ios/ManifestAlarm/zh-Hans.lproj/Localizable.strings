@@ -1,4 +1,4 @@
-"how_it_works" = "闹钟响起时，真正关闭它的唯一方式是大声说出你的宣言句子。如果不说就按停止，闹钟会在3分钟后再响一次。带着意念开始新的一天！🌞";
+"how_it_works" = "闹钟响起时，真正关闭它的唯一方式是大声说出你的宣言句子。如果不说就按停止，闹钟会每3分钟响一次，直到你说出为止。没有稍后提醒。带着意念开始新的一天！🌞";
 "alarm_time" = "闹钟时间";
 "your_manifest" = "你的宣言句子";
 "default_manifest" = "我每天都在各方面变得越来越好；我把健康、富足和幸福吸引到我的生命中";
@@ -62,6 +62,10 @@
 "sound_musicbox" = "音乐盒";
 "sound_bowl" = "颂钵";
 "sound_om" = "Om 136 Hz — 深沉音";
+"sound_piano" = "钢琴";
+"sound_harp" = "竖琴";
+"sound_chimes" = "风铃";
+"sound_marimba" = "马林巴";
 "welcome_title" = "欢迎使用 Manifest Alarm";
 "welcome_sub" = "带着意念醒来 🌞";
 "choose_theme" = "选择你的背景";

@@ -11,7 +11,11 @@ let soundOptions: [(key: String, label: String)] = [
     ("freq852", "sound_852"),
     ("musicbox", "sound_musicbox"),
     ("bowl", "sound_bowl"),
-    ("om136", "sound_om")
+    ("om136", "sound_om"),
+    ("piano", "sound_piano"),
+    ("harp", "sound_harp"),
+    ("chimes", "sound_chimes"),
+    ("marimba", "sound_marimba")
 ]
 
 // MARK: - Renk paleti (enerji/frekans teması)

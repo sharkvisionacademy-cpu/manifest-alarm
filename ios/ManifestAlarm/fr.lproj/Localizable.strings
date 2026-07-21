@@ -1,4 +1,4 @@
-"how_it_works" = "Quand le réveil sonne, la seule vraie façon de l'arrêter est de dire ta phrase manifeste à voix haute. Si tu appuies sur Arrêter sans la dire, le réveil sonne une fois de plus 3 minutes plus tard. Commence ta journée avec intention ! 🌞";
+"how_it_works" = "Quand le réveil sonne, la seule vraie façon de l'arrêter est de dire ta phrase manifeste à voix haute. Si tu appuies sur Arrêter sans la dire, le réveil sonne toutes les 3 minutes jusqu'à ce que tu la dises. Pas de rappel. Commence ta journée avec intention ! 🌞";
 "alarm_time" = "Heure du réveil";
 "your_manifest" = "Ta phrase manifeste";
 "default_manifest" = "Chaque jour, à tous points de vue, je vais de mieux en mieux ; j\'attire la santé, l\'abondance et le bonheur dans ma vie";
@@ -62,6 +62,10 @@
 "sound_musicbox" = "Boîte à musique";
 "sound_bowl" = "Bol tibétain";
 "sound_om" = "Om 136 Hz — Son profond";
+"sound_piano" = "Piano";
+"sound_harp" = "Harpe";
+"sound_chimes" = "Carillon éolien";
+"sound_marimba" = "Marimba";
 "welcome_title" = "Bienvenue dans Manifest Alarm";
 "welcome_sub" = "Réveille-toi avec intention 🌞";
 "choose_theme" = "Choisis ton arrière-plan";

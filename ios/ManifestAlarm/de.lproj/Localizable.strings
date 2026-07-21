@@ -1,4 +1,4 @@
-"how_it_works" = "Wenn der Wecker klingelt, kannst du ihn nur ausschalten, indem du deinen Manifest-Satz laut aussprichst. Drückst du Stopp ohne ihn zu sagen, klingelt der Wecker 3 Minuten später noch einmal. Starte deinen Tag mit Intention! 🌞";
+"how_it_works" = "Wenn der Wecker klingelt, kannst du ihn nur ausschalten, indem du deinen Manifest-Satz laut aussprichst. Drückst du Stopp ohne ihn zu sagen, klingelt der Wecker alle 3 Minuten, bis du ihn sagst. Es gibt kein Schlummern. Starte deinen Tag mit Intention! 🌞";
 "alarm_time" = "Weckzeit";
 "your_manifest" = "Dein Manifest-Satz";
 "default_manifest" = "Jeden Tag werde ich in jeder Hinsicht besser und besser; ich ziehe Gesundheit, Fülle und Glück in mein Leben";
@@ -62,6 +62,10 @@
 "sound_musicbox" = "Spieluhr";
 "sound_bowl" = "Klangschale";
 "sound_om" = "Om 136 Hz — Tiefer Ton";
+"sound_piano" = "Klavier";
+"sound_harp" = "Harfe";
+"sound_chimes" = "Windspiel";
+"sound_marimba" = "Marimba";
 "welcome_title" = "Willkommen bei Manifest Alarm";
 "welcome_sub" = "Wach mit Intention auf 🌞";
 "choose_theme" = "Wähle deinen Hintergrund";

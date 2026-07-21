@@ -83,7 +83,7 @@ enum AlarmPlanner {
         try? await AlarmManager.shared.cancel(id: id)
     }
 
-    /// Tek seferlik alarm: test için ve manifest söylenmeden durdurma cezası için.
+    /// Tek seferlik alarm: yalnızca test butonu için (koruma zinciri yok).
     static func scheduleOneShot(after seconds: TimeInterval) async throws {
         try await ensureAuthorized()
         let id = UUID()
@@ -95,6 +95,24 @@ enum AlarmPlanner {
             sound: currentSound()
         )
         try await AlarmManager.shared.schedule(id: id, configuration: configuration)
+    }
+
+    /// Koruma alarmı: manifest söylenmeden durdurulursa kendini yeniden kurar.
+    /// Böylece manifest söylenene kadar 3 dakikada bir çalar — erteleme yoktur.
+    static func scheduleGuard(after seconds: TimeInterval) async throws {
+        try await ensureAuthorized()
+        let id = UUID()
+        let configuration = AlarmManager.AlarmConfiguration(
+            schedule: .fixed(Date().addingTimeInterval(seconds)),
+            attributes: attributes(),
+            stopIntent: StopPenaltyIntent(alarmID: id.uuidString, isGuard: true),
+            secondaryIntent: OpenSpeechIntent(alarmID: id.uuidString),
+            sound: currentSound()
+        )
+        try await AlarmManager.shared.schedule(id: id, configuration: configuration)
+        var ids = UserDefaults.standard.stringArray(forKey: "shadowIDs") ?? []
+        ids.append(id.uuidString)
+        UserDefaults.standard.set(ids, forKey: "shadowIDs")
     }
 
     static func stopRinging(idString: String) {
@@ -122,7 +140,7 @@ enum AlarmPlanner {
                 let configuration = AlarmManager.AlarmConfiguration(
                     schedule: .fixed(next.date.addingTimeInterval(180)),
                     attributes: attributes(),
-                    stopIntent: StopPenaltyIntent(alarmID: id.uuidString),
+                    stopIntent: StopPenaltyIntent(alarmID: id.uuidString, isGuard: true),
                     secondaryIntent: OpenSpeechIntent(alarmID: id.uuidString),
                     sound: currentSound()
                 )

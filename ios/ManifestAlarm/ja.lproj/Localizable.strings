@@ -1,4 +1,4 @@
-"how_it_works" = "アラームが鳴ったら、本当に止める唯一の方法はマニフェスト文を声に出して言うことです。言わずに停止を押すと、3分後にもう一度だけ鳴ります。意図を持って一日を始めましょう！🌞";
+"how_it_works" = "アラームが鳴ったら、本当に止める唯一の方法はマニフェスト文を声に出して言うことです。言わずに停止を押すと、言うまで3分ごとに鳴ります。スヌーズはありません。意図を持って一日を始めましょう！🌞";
 "alarm_time" = "アラーム時刻";
 "your_manifest" = "あなたのマニフェスト文";
 "default_manifest" = "私は毎日あらゆる面でどんどん良くなっている。私の人生には健康と豊かさと幸せが引き寄せられている";
@@ -62,6 +62,14 @@
 "sound_musicbox" = "オルゴール";
 "sound_bowl" = "チベタンボウル";
 "sound_om" = "オーム 136 Hz — 深い音";
+"sound_piano" = "ピアノ";
+"sound_harp" = "ハープ";
+"sound_chimes" = "ウィンドチャイム";
+"sound_marimba" = "マリンバ";
+"sound_piano" = "ピアノ";
+"sound_harp" = "ハープ";
+"sound_chimes" = "ウィンドチャイム";
+"sound_marimba" = "マリンバ";
 "welcome_title" = "Manifest Alarm へようこそ";
 "welcome_sub" = "意図を持って目覚めよう 🌞";
 "choose_theme" = "背景を選んでください";

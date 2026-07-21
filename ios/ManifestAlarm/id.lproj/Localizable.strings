@@ -1,4 +1,4 @@
-"how_it_works" = "Saat alarm berbunyi, satu-satunya cara mematikannya adalah mengucapkan kalimat manifestasimu dengan lantang. Jika kamu menekan Berhenti tanpa mengucapkannya, alarm berbunyi sekali lagi 3 menit kemudian. Mulai harimu dengan niat! 🌞";
+"how_it_works" = "Saat alarm berbunyi, satu-satunya cara mematikannya adalah mengucapkan kalimat manifestasimu dengan lantang. Jika kamu menekan Berhenti tanpa mengucapkannya, alarm berbunyi setiap 3 menit sampai kamu mengucapkannya. Tidak ada tunda. Mulai harimu dengan niat! 🌞";
 "alarm_time" = "Waktu Alarm";
 "your_manifest" = "Kalimat Manifestasimu";
 "default_manifest" = "Setiap hari, dalam segala hal, aku menjadi semakin baik; aku menarik kesehatan, kelimpahan, dan kebahagiaan ke dalam hidupku";
@@ -62,6 +62,14 @@
 "sound_musicbox" = "Kotak Musik";
 "sound_bowl" = "Mangkuk Tibet";
 "sound_om" = "Om 136 Hz — Nada Dalam";
+"sound_piano" = "Piano";
+"sound_harp" = "Harpa";
+"sound_chimes" = "Lonceng Angin";
+"sound_marimba" = "Marimba";
+"sound_piano" = "Piano";
+"sound_harp" = "Harpa";
+"sound_chimes" = "Lonceng Angin";
+"sound_marimba" = "Marimba";
 "welcome_title" = "Selamat datang di Manifest Alarm";
 "welcome_sub" = "Bangun dengan niat 🌞";
 "choose_theme" = "Pilih latar belakangmu";

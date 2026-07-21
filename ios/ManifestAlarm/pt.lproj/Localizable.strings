@@ -1,4 +1,4 @@
-"how_it_works" = "Quando o alarme tocar, a única forma real de desligá-lo é dizer sua frase manifesto em voz alta. Se você tocar em Parar sem dizê-la, o alarme toca mais uma vez 3 minutos depois. Comece o dia com intenção! 🌞";
+"how_it_works" = "Quando o alarme tocar, a única forma real de desligá-lo é dizer sua frase manifesto em voz alta. Se você tocar em Parar sem dizê-la, o alarme toca a cada 3 minutos até você dizê-la. Não há soneca. Comece o dia com intenção! 🌞";
 "alarm_time" = "Hora do alarme";
 "your_manifest" = "Sua frase manifesto";
 "default_manifest" = "A cada dia, em todos os sentidos, estou melhorando cada vez mais; atraio saúde, abundância e felicidade para a minha vida";
@@ -62,6 +62,14 @@
 "sound_musicbox" = "Caixa de música";
 "sound_bowl" = "Tigela tibetana";
 "sound_om" = "Om 136 Hz — Tom profundo";
+"sound_piano" = "Piano";
+"sound_harp" = "Harpa";
+"sound_chimes" = "Sinos de vento";
+"sound_marimba" = "Marimba";
+"sound_piano" = "Piano";
+"sound_harp" = "Harpa";
+"sound_chimes" = "Sinos de vento";
+"sound_marimba" = "Marimba";
 "welcome_title" = "Bem-vindo ao Manifest Alarm";
 "welcome_sub" = "Acorde com intenção 🌞";
 "choose_theme" = "Escolha seu plano de fundo";

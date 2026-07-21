@@ -1,4 +1,4 @@
-"how_it_works" = "Quando suona la sveglia, l'unico vero modo per spegnerla è dire ad alta voce la tua frase manifesto. Se premi Stop senza dirla, la sveglia suona ancora una volta 3 minuti dopo. Inizia la giornata con intenzione! 🌞";
+"how_it_works" = "Quando suona la sveglia, l'unico vero modo per spegnerla è dire ad alta voce la tua frase manifesto. Se premi Stop senza dirla, la sveglia suona ogni 3 minuti finché non la dici. Nessun posticipo. Inizia la giornata con intenzione! 🌞";
 "alarm_time" = "Ora della sveglia";
 "your_manifest" = "La tua frase manifesto";
 "default_manifest" = "Ogni giorno, sotto ogni aspetto, sto migliorando sempre di più; attiro salute, abbondanza e felicità nella mia vita";
@@ -62,6 +62,14 @@
 "sound_musicbox" = "Carillon";
 "sound_bowl" = "Campana tibetana";
 "sound_om" = "Om 136 Hz — Tono profondo";
+"sound_piano" = "Pianoforte";
+"sound_harp" = "Arpa";
+"sound_chimes" = "Campanelli";
+"sound_marimba" = "Marimba";
+"sound_piano" = "Pianoforte";
+"sound_harp" = "Arpa";
+"sound_chimes" = "Campanelli";
+"sound_marimba" = "Marimba";
 "welcome_title" = "Benvenuto in Manifest Alarm";
 "welcome_sub" = "Svegliati con intenzione 🌞";
 "choose_theme" = "Scegli il tuo sfondo";

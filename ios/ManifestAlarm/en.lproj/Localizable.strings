@@ -1,4 +1,4 @@
-"how_it_works" = "When the alarm rings, the only real way to stop it is to say your manifest sentence out loud. If you press Stop without saying it, the alarm rings once more 3 minutes later. Start your day with intention! 🌞";
+"how_it_works" = "When the alarm rings, the only real way to stop it is to say your manifest sentence out loud. If you press Stop without saying it, the alarm rings every 3 minutes until you say it. There is no snooze. Start your day with intention! 🌞";
 "alarm_time" = "Alarm Time";
 "your_manifest" = "Your Manifest Sentence";
 "default_manifest" = "Every day, in every way, I am getting better and better; I attract health, abundance and happiness into my life";
@@ -62,6 +62,10 @@
 "sound_musicbox" = "Music Box";
 "sound_bowl" = "Tibetan Bowl";
 "sound_om" = "Om 136 Hz — Deep Tone";
+"sound_piano" = "Piano";
+"sound_harp" = "Harp";
+"sound_chimes" = "Wind Chimes";
+"sound_marimba" = "Marimba";
 "welcome_title" = "Welcome to Manifest Alarm";
 "welcome_sub" = "Wake up with intention 🌞";
 "choose_theme" = "Choose your background";
