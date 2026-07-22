@@ -28,7 +28,13 @@ final class SpeechService: NSObject, ObservableObject {
         stop()
         do {
             let session = AVAudioSession.sharedInstance()
-            try session.setCategory(.record, mode: .measurement, options: .duckOthers)
+            // playAndRecord: dinlerken alarm sesini kısık çalmaya devam edebilelim.
+            // voiceChat modu yankı engellemeyle çalınan sesin tanımayı bozmasını azaltır.
+            try session.setCategory(
+                .playAndRecord,
+                mode: .voiceChat,
+                options: [.defaultToSpeaker, .duckOthers]
+            )
             try session.setActive(true, options: .notifyOthersOnDeactivation)
 
             let request = SFSpeechAudioBufferRecognitionRequest()

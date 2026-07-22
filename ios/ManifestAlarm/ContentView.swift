@@ -467,10 +467,12 @@ struct AlarmEditSheet: View {
 
 struct SpeechDismissView: View {
     @AppStorage("ringingAlarmID") private var ringingAlarmID = ""
+    @AppStorage("alarmSound") private var alarmSound = "default"
     @StateObject private var speech = SpeechService()
     @State private var similarity = 0.0
     @State private var success = false
     @State private var target = ManifestProvider.todaysManifest()
+    @State private var loopPlayer: AVAudioPlayer?
 
     var body: some View {
         VStack(spacing: 24) {
@@ -554,11 +556,33 @@ struct SpeechDismissView: View {
         }
         .onAppear {
             speech.start()
+            startUrgencySound()
         }
+        .onDisappear {
+            stopUrgencySound()
+            speech.stop()
+        }
+    }
+
+    /// Konuşma ekranı açıkken alarm sesini kısık, döngüde çalar; manifest söylenince susar.
+    /// Böylece sistem alarmı sussa bile ses "azalıp devam etmiş" gibi olur.
+    private func startUrgencySound() {
+        let file = alarmSound == "default" ? "chimes" : alarmSound
+        guard let url = Bundle.main.url(forResource: file, withExtension: "wav") else { return }
+        loopPlayer = try? AVAudioPlayer(contentsOf: url)
+        loopPlayer?.numberOfLoops = -1
+        loopPlayer?.volume = 0.18
+        loopPlayer?.play()
+    }
+
+    private func stopUrgencySound() {
+        loopPlayer?.stop()
+        loopPlayer = nil
     }
 
     private func finish() {
         success = true
+        stopUrgencySound()
         speech.stop()
         UserDefaults.standard.set(true, forKey: "manifestSpoken")
         AlarmPlanner.stopRinging(idString: ringingAlarmID)
