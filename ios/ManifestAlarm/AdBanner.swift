@@ -4,16 +4,23 @@ import AppTrackingTransparency
 
 /// Reklam yapılandırması.
 enum AdConfig {
-    /// App Store'a çıkarken false yapılır. TestFlight/geliştirmede true kalır ki
-    /// gerçek reklamlar kendi tıklamalarımızla "geçersiz trafik" saymasın.
-    static let useTestAds = true
-
     /// AdMob panelinden alınan gerçek banner reklam birimi.
     static let realBannerID = "ca-app-pub-6959840143670078/9929508636"
     /// Google'ın resmi test banner birimi.
     static let testBannerID = "ca-app-pub-3940256099942544/2934735716"
 
-    static var bannerID: String { useTestAds ? testBannerID : realBannerID }
+    /// TestFlight (sandbox) veya geliştirmede test reklamı gösterilir; böylece
+    /// kendi tıklamalarımız "geçersiz trafik" sayılmaz. Yalnızca App Store'dan
+    /// indirilen sürümde gerçek reklam yayınlanır. Tek derleme her ikisini kapsar.
+    static var isTestEnvironment: Bool {
+        #if DEBUG
+        return true
+        #else
+        return Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt"
+        #endif
+    }
+
+    static var bannerID: String { isTestEnvironment ? testBannerID : realBannerID }
 }
 
 /// Uygulama açılışında reklam SDK'sını başlatır ve izleme iznini ister.
