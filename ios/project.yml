@@ -13,6 +13,7 @@ targets:
       path: ManifestAlarm/Info.plist
       properties:
         CFBundleDisplayName: Manifest Alarm
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
         UILaunchScreen: {}
         ITSAppUsesNonExemptEncryption: false
         NSAlarmKitUsageDescription: "Scheduling your manifest alarm requires alarm access."
