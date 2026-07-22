@@ -571,7 +571,8 @@ struct SpeechDismissView: View {
         guard let url = Bundle.main.url(forResource: file, withExtension: "wav") else { return }
         loopPlayer = try? AVAudioPlayer(contentsOf: url)
         loopPlayer?.numberOfLoops = -1
-        loopPlayer?.volume = 0.18
+        loopPlayer?.volume = 0.35
+        loopPlayer?.prepareToPlay()
         loopPlayer?.play()
     }
 

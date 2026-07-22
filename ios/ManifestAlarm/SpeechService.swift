@@ -28,11 +28,11 @@ final class SpeechService: NSObject, ObservableObject {
         stop()
         do {
             let session = AVAudioSession.sharedInstance()
-            // playAndRecord: dinlerken alarm sesini kısık çalmaya devam edebilelim.
-            // voiceChat modu yankı engellemeyle çalınan sesin tanımayı bozmasını azaltır.
+            // playAndRecord + hoparlör: dinlerken alarm sesini net duyulur çalabilelim.
+            // Sesler tonal olduğu için mikrofona sızsa bile konuşma olarak algılanmaz.
             try session.setCategory(
                 .playAndRecord,
-                mode: .voiceChat,
+                mode: .default,
                 options: [.defaultToSpeaker, .duckOthers]
             )
             try session.setActive(true, options: .notifyOthersOnDeactivation)
