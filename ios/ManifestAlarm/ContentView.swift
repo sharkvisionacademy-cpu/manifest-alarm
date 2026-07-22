@@ -99,6 +99,9 @@ struct HomeView: View {
                 AlarmEditSheet(store: store, item: item)
             }
             .onAppear { store.sync() }
+            .safeAreaInset(edge: .bottom) {
+                BannerContainer()
+            }
         }
         .tint(Palette.gold)
     }

@@ -22,6 +22,11 @@ workflows:
           # Build numarasını Codemagic sayacından al (her derlemede otomatik artar)
           plutil -replace CFBundleVersion -string "$BUILD_NUMBER" ios/ManifestAlarm/Info.plist
           echo "CFBundleVersion = $BUILD_NUMBER"
+      - name: Swift paketlerini çöz (AdMob SDK)
+        script: |
+          xcodebuild -resolvePackageDependencies \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME"
       - name: İmzalama dosyalarını al/oluştur (sertifika + profil)
         script: |
           keychain initialize
