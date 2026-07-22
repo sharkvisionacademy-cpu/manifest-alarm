@@ -72,7 +72,8 @@ enum AlarmPlanner {
         let configuration = AlarmManager.AlarmConfiguration(
             schedule: schedule,
             attributes: attributes(),
-            stopIntent: StopPenaltyIntent(alarmID: item.id.uuidString),
+            // isGuard: manifest söylenmeden durdurulursa 3 sn sonra yeniden çalar.
+            stopIntent: StopPenaltyIntent(alarmID: item.id.uuidString, isGuard: true),
             secondaryIntent: OpenSpeechIntent(alarmID: item.id.uuidString),
             sound: currentSound()
         )
@@ -83,14 +84,15 @@ enum AlarmPlanner {
         try? await AlarmManager.shared.cancel(id: id)
     }
 
-    /// Tek seferlik alarm: yalnızca test butonu için (koruma zinciri yok).
+    /// Test butonu için tek seferlik alarm. Gerçek alarm gibi korumalı:
+    /// manifest söylemeden durdurursan 3 sn sonra yeniden çalar (isGuard).
     static func scheduleOneShot(after seconds: TimeInterval) async throws {
         try await ensureAuthorized()
         let id = UUID()
         let configuration = AlarmManager.AlarmConfiguration(
             schedule: .fixed(Date().addingTimeInterval(seconds)),
             attributes: attributes(),
-            stopIntent: StopPenaltyIntent(alarmID: id.uuidString),
+            stopIntent: StopPenaltyIntent(alarmID: id.uuidString, isGuard: true),
             secondaryIntent: OpenSpeechIntent(alarmID: id.uuidString),
             sound: currentSound()
         )
@@ -120,10 +122,11 @@ enum AlarmPlanner {
         try? AlarmManager.shared.stop(id: id)
     }
 
-    /// Koruma alarmları: her etkin alarmın bir sonraki çalışından 3 dk sonrasına
-    /// tek seferlik yedek kurulur. Manifest söylenmeden alarm nasıl susturulursa
-    /// susturulsun (ses tuşu, Durdur) koruma bir kez daha çalar. Manifest
-    /// söylenince yeniden eşitlenir ve yarına taşınır.
+    /// Yedek koruma: her etkin alarmın bir sonraki çalışından 3 dk sonrasına
+    /// tek seferlik alarm kurulur. Birincil koruma, Durdur'a basınca 3 sn'de bir
+    /// tekrarlayan zincirdir (StopPenaltyIntent); bu yedek ise uygulama tamamen
+    /// kapatıldığında ya da alarm hiç açılmadan sustuğunda (ses tuşu vb.) devreye
+    /// girer. Manifest söylenince iptal edilip yarına taşınır.
     static func resyncShadows() async {
         let defaults = UserDefaults.standard
         for idString in defaults.stringArray(forKey: "shadowIDs") ?? [] {

@@ -23,9 +23,9 @@ struct OpenSpeechIntent: LiveActivityIntent {
     }
 }
 
-/// Sistem alarm ekranındaki zorunlu "Durdur" düğmesi. Bir koruma alarmı
-/// manifest söylenmeden durdurulursa kendini yeniden kurar — böylece manifest
-/// söylenene kadar 3 dakikada bir çalar. Erteleme (snooze) yoktur.
+/// Sistem alarm ekranındaki zorunlu "Durdur" düğmesi. Alarm manifest
+/// söylenmeden durdurulursa kendini yeniden kurar — böylece manifest
+/// söylenene kadar 3 saniyede bir çalar. Erteleme (snooze) yoktur.
 struct StopPenaltyIntent: LiveActivityIntent {
     static var title: LocalizedStringResource = "Stop Alarm"
     static var openAppWhenRun: Bool = false
@@ -48,9 +48,10 @@ struct StopPenaltyIntent: LiveActivityIntent {
         let spoken = defaults.bool(forKey: "manifestSpoken")
         defaults.set(false, forKey: "manifestSpoken")
         defaults.removeObject(forKey: "ringingAlarmID")
-        // Manifest söylenmeden bir koruma alarmı durdurulduysa zinciri sürdür.
+        // Manifest söylenmeden bir alarm durdurulduysa zinciri sürdür:
+        // 3 saniye sonra yeniden çalar. Manifest söylenene kadar tekrarlar.
         if isGuard && !spoken {
-            try? await AlarmPlanner.scheduleGuard(after: 180)
+            try? await AlarmPlanner.scheduleGuard(after: 3)
         }
         return .result()
     }
