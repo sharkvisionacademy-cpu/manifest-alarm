@@ -473,6 +473,7 @@ struct SpeechDismissView: View {
     @State private var success = false
     @State private var target = ManifestProvider.todaysManifest()
     @State private var loopPlayer: AVAudioPlayer?
+    @State private var escalateWork: DispatchWorkItem?
 
     var body: some View {
         VStack(spacing: 24) {
@@ -565,18 +566,27 @@ struct SpeechDismissView: View {
     }
 
     /// Konuşma ekranı açıkken alarm sesini kısık, döngüde çalar; manifest söylenince susar.
-    /// Böylece sistem alarmı sussa bile ses "azalıp devam etmiş" gibi olur.
+    /// 10 saniye içinde söylenmezse ses yeniden tam seviyeye çıkar (baskı geri gelir).
     private func startUrgencySound() {
         let file = alarmSound == "default" ? "chimes" : alarmSound
         guard let url = Bundle.main.url(forResource: file, withExtension: "wav") else { return }
         loopPlayer = try? AVAudioPlayer(contentsOf: url)
         loopPlayer?.numberOfLoops = -1
-        loopPlayer?.volume = 0.35
+        loopPlayer?.volume = 0.55
         loopPlayer?.prepareToPlay()
         loopPlayer?.play()
+
+        // 10 sn içinde manifest söylenmezse tam sese çık
+        let work = DispatchWorkItem { [self] in
+            loopPlayer?.volume = 1.0
+        }
+        escalateWork = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: work)
     }
 
     private func stopUrgencySound() {
+        escalateWork?.cancel()
+        escalateWork = nil
         loopPlayer?.stop()
         loopPlayer = nil
     }
