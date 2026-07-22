@@ -13,9 +13,18 @@ Uygulama kimliği: `com.sharkvision.manifestalarm` · App ID: 6790958826
 | Kategori (ikincil) | Yaşam Tarzı |
 | Yaş sınırı | 4+ |
 | Fiyat | Ücretsiz |
-| Gizlilik | Veri Toplanmıyor (Data Not Collected) |
+| Gizlilik | Veri Toplanıyor (Data Collected) — Device ID + Advertising Data → Üçüncü Taraf Reklam, izleme (AdMob) |
 | Destek URL | https://manifest-alarm.aether-proxy.workers.dev |
 | Gizlilik URL | https://manifest-alarm.aether-proxy.workers.dev |
+
+## Durum (22 Tem 2026) — Sürüm 1.2 (reklamlı) incelemeye gönderildi ✅
+
+- Sürüm 1.2 oluşturuldu, build 21 (v1.2, AdMob otomatik: TestFlight'ta test / App Store'da gerçek) bağlandı
+- Açıklama + tanıtım metni (TR) güncellendi: "reklam yok/sunucu yok/hiçbir verin çıkmaz" ifadeleri kaldırıldı, AdMob açıklandı
+- App Privacy → "Veri Toplanıyor": Device ID + Advertising Data → Üçüncü Taraf Reklam + izleme (yayınlandı, canlı)
+- Gizlilik sayfasına (Cloudflare) AdMob bölümü eklendi (TR + EN)
+- Yayın şekli: elle yayınla (onaydan sonra kontrol kullanıcıda) — 1.2 "Waiting for Review"
+- Mağaza listesi yalnızca Türkçe (İngilizce yerelleştirme yayınlanmadı)
 
 ## Durum (16 Tem 2026)
 
@@ -91,13 +100,16 @@ Türkçe, İngilizce, Almanca, İspanyolca, Fransızca, İtalyanca, Portekizce, 
 Hintçe, Endonezce, Japonca, Korece ve Çince. Manifestini kendi dilinde söylersin.
 
 GİZLİLİK
-Hesap yok, takip yok, reklam yok, sunucu yok. Sesin kaydedilmez ve saklanmaz; cihazın
-destekliyorsa konuşma tanıma tamamen telefonunun içinde yapılır. Hiçbir verin telefonundan
-çıkmaz.
+Hesap yok, giriş yok. Sesin kaydedilmez ve saklanmaz; cihazın destekliyorsa konuşma tanıma
+tamamen telefonunun içinde yapılır — manifestin telefonundan çıkmaz. Ücretsiz sürümde ekranın
+altında Google AdMob reklamları gösterilir; alarm ve konuşma ekranlarında reklam yoktur.
 
-Güne niyetinle uyan. 🌞
+Güne niyetinle uyan.
 
 Gerekli: iOS 26 veya üzeri.
+
+> Not: App Store metin alanları emoji (🌞) kabul etmiyor ("invalid character" hatası); açıklama
+> ve tanıtım metninde emoji kullanılmadı.
 
 ### Anahtar kelimeler (100 karakter)
 manifest,olumlama,alarm,affirmation,frekans,528hz,uyandırma,niyet,motivasyon,sabah,uyku,meditasyon
@@ -109,6 +121,12 @@ Manifest Alarm'ın ilk sürümü 🌞
 • 8 alarm sesi: frekans tonları ve melodik sesler
 • Uyku süresi kartı ve uyku hedefi
 • 5 arkaplan teması, 14 dil
+
+### Sürüm notları (1.2) — reklamlı sürüm, 22 Tem 2026 incelemeye gönderildi (build 21)
+• Artık ücretsiz: uygulama açıldı, dilediğin kadar kullan.
+• Deneyimi sürdürebilmek için ekranın altında ince bir reklam şeridi eklendi; alarm ve konuşma ekranlarında reklam yok.
+• Sesin hâlâ kaydedilmez ve saklanmaz.
+• Küçük iyileştirmeler ve hata düzeltmeleri.
 
 ---
 
@@ -167,13 +185,18 @@ Turkish, English, German, Spanish, French, Italian, Portuguese, Russian, Arabic,
 Indonesian, Japanese, Korean and Chinese. Speak your manifest in your own language.
 
 PRIVACY
-No accounts, no tracking, no ads, no servers. Your voice is never recorded or stored, and
-where your device supports it, speech recognition happens entirely on your phone. Nothing
-leaves your device.
+No account, no sign-in. Your voice is never recorded or stored, and where your device
+supports it, speech recognition happens entirely on your phone — your manifest never leaves
+your device. The free version shows Google AdMob ads at the bottom of the screen; there are
+no ads on the alarm or speech screens.
 
-Wake up with intention. 🌞
+Wake up with intention.
 
 Requires iOS 26 or later.
+
+> Note: The App Store rejects emoji (🌞) in the description/promo fields ("invalid character");
+> emoji were removed from those fields. (English localization is not published on the store —
+> the listing is Turkish-only — but this draft is kept accurate.)
 
 ### Keywords (100 characters)
 manifest,affirmation,alarm,clock,frequency,528hz,solfeggio,intention,morning,sleep,meditation,voice
