@@ -17,6 +17,13 @@ Uygulama kimliği: `com.sharkvision.manifestalarm` · App ID: 6790958826
 | Destek URL | https://manifest-alarm.aether-proxy.workers.dev |
 | Gizlilik URL | https://manifest-alarm.aether-proxy.workers.dev |
 
+## Durum (23 Tem 2026) — Sürüm 1.3 (pazarlama görselleri) incelemede ✅
+
+- 1.2 (reklam + 3 sn koruma) App Store'da CANLI (kullanıcı yayınladı)
+- Sürüm 1.3: 5 yeni **pazarlama ekran görüntüsü** (store/pazarlama.ps1 ile üretildi: kozmik gradyan + altın başlık + telefon çerçevesi), build 23 (v1.3, kod değişikliği yok) ile incelemeye gönderildi, elle yayın
+- Ekran görüntüsü sırası: sesli kilit / gerçek alarm / güne niyetle uyan / uyku hesabı / başarı
+- NOT: ASC ekran görüntüsü yüklemesini otomasyon yapamıyor (tarayıcı dosya seçme penceresi); kullanıcı Masaüstündeki manifest-ekran-1..5.png dosyalarını "Choose File" ile yükledi, eski düz görseller silindi
+
 ## Durum (22 Tem 2026) — Sürüm 1.2 (reklamlı) incelemeye gönderildi ✅
 
 - Sürüm 1.2, build 22 (v1.2, AdMob otomatik: TestFlight'ta test / App Store'da gerçek + kaydır-durdur 3 sn koruma) ile incelemede — build 21 çekilip 22 ile değiştirildi
