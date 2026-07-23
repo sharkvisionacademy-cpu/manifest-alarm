@@ -8,6 +8,15 @@ let categoryOptions: [(key: String, label: String, icon: String)] = [
     ("life", "cat_life", "leaf.fill")
 ]
 
+// Premium olumlama paketleri (yalnızca abonelerde seçilebilir).
+let premiumCategoryOptions: [(key: String, label: String, icon: String)] = [
+    ("bolluk", "cat_bolluk", "sparkles.rectangle.stack.fill"),
+    ("saglik", "cat_saglik", "heart.text.square.fill"),
+    ("kariyer", "cat_kariyer", "chart.line.uptrend.xyaxis"),
+    ("iliski", "cat_iliski", "person.2.fill"),
+    ("ozguven", "cat_ozguven", "flame.fill")
+]
+
 /// İlk açılışta tema ve manifest alanı seçimi.
 struct OnboardingView: View {
     @AppStorage("onboarded") private var onboarded = false

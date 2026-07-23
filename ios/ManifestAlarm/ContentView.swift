@@ -67,6 +67,8 @@ struct HomeView: View {
     @State private var status = ""
     @State private var previewPlayer: AVAudioPlayer?
     @State private var previewing = false
+    @ObservedObject private var subs = SubscriptionManager.shared
+    @State private var showPaywall = false
 
     var body: some View {
         NavigationStack {
@@ -75,6 +77,7 @@ struct HomeView: View {
                 sleepSection
                 alarmsSection
                 manifestSettingsSection
+                if !subs.isPremium { premiumSection }
                 soundSection
                 themeSection
                 footerSection
@@ -100,10 +103,52 @@ struct HomeView: View {
             }
             .onAppear { store.sync() }
             .safeAreaInset(edge: .bottom) {
-                BannerContainer()
+                if !subs.isPremium {
+                    BannerContainer()
+                }
+            }
+            .sheet(isPresented: $showPaywall) {
+                PaywallView()
             }
         }
         .tint(Palette.gold)
+    }
+
+    // MARK: - Premium tanıtım kartı (abone değilse görünür)
+
+    private var premiumSection: some View {
+        Section {
+            Button {
+                showPaywall = true
+            } label: {
+                HStack(spacing: 14) {
+                    Image(systemName: "sparkles")
+                        .font(.title2)
+                        .foregroundStyle(Palette.gold)
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text("premium_upsell_title")
+                            .font(.headline)
+                            .foregroundStyle(.white)
+                        Text("premium_upsell_sub")
+                            .font(.footnote)
+                            .foregroundStyle(.white.opacity(0.7))
+                    }
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .font(.footnote)
+                        .foregroundStyle(.white.opacity(0.4))
+                }
+                .padding(.vertical, 4)
+            }
+        }
+        .listRowBackground(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Palette.violet.opacity(0.55))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .strokeBorder(Palette.gold.opacity(0.5), lineWidth: 1)
+                )
+        )
     }
 
     private var manifestSection: some View {
@@ -130,6 +175,10 @@ struct HomeView: View {
         )
     }
 
+    private var categoryPickerOptions: [(key: String, label: String, icon: String)] {
+        subs.isPremium ? categoryOptions + premiumCategoryOptions : categoryOptions
+    }
+
     private var manifestSettingsSection: some View {
         Section {
             Toggle(isOn: $dailyMode) {
@@ -138,7 +187,7 @@ struct HomeView: View {
             }
             if dailyMode {
                 Picker(selection: $manifestCategory) {
-                    ForEach(categoryOptions, id: \.key) { option in
+                    ForEach(categoryPickerOptions, id: \.key) { option in
                         Text(LocalizedStringKey(option.label)).tag(option.key)
                     }
                 } label: {

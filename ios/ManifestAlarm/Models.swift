@@ -18,13 +18,21 @@ struct AlarmItem: Identifiable, Codable, Equatable {
 /// kapalıysa kullanıcının kendi cümlesini döndürür.
 enum ManifestProvider {
 
+    /// Premium olumlama paketleri (yalnızca abonelerde açık). Her paket 6 cümle.
+    static let premiumCategories = ["bolluk", "saglik", "kariyer", "iliski", "ozguven"]
+
     static func todaysManifest() -> String {
         let defaults = UserDefaults.standard
         let dailyMode = defaults.object(forKey: "dailyMode") == nil
             ? true
             : defaults.bool(forKey: "dailyMode")
         if dailyMode {
-            let category = defaults.string(forKey: "manifestCategory") ?? "all"
+            var category = defaults.string(forKey: "manifestCategory") ?? "all"
+            let premiumActive = defaults.bool(forKey: "premiumActive")
+            // Abonelik yoksa premium paket seçili kalmışsa "Hepsi"ye düş.
+            if premiumCategories.contains(category) && !premiumActive {
+                category = "all"
+            }
             let general = (0..<10).map { "manifest_pool_\($0)" }
             let work = (0..<4).map { "manifest_work_\($0)" }
             let love = (0..<4).map { "manifest_love_\($0)" }
@@ -34,6 +42,8 @@ enum ManifestProvider {
             case "work": keys = work
             case "love": keys = love
             case "life": keys = life
+            case let c where premiumCategories.contains(c):
+                keys = (0..<6).map { "premium_\(c)_\($0)" }
             default: keys = general + work + love + life
             }
             let day = Calendar.current.ordinality(of: .day, in: .year, for: Date()) ?? 1
