@@ -19,7 +19,7 @@ Uygulama kimliği: `com.sharkvision.manifestalarm` · App ID: 6790958826
 
 ## Durum (22 Tem 2026) — Sürüm 1.2 (reklamlı) incelemeye gönderildi ✅
 
-- Sürüm 1.2 oluşturuldu, build 21 (v1.2, AdMob otomatik: TestFlight'ta test / App Store'da gerçek) bağlandı
+- Sürüm 1.2, build 22 (v1.2, AdMob otomatik: TestFlight'ta test / App Store'da gerçek + kaydır-durdur 3 sn koruma) ile incelemede — build 21 çekilip 22 ile değiştirildi
 - Açıklama + tanıtım metni (TR) güncellendi: "reklam yok/sunucu yok/hiçbir verin çıkmaz" ifadeleri kaldırıldı, AdMob açıklandı
 - App Privacy → "Veri Toplanıyor": Device ID + Advertising Data → Üçüncü Taraf Reklam + izleme (yayınlandı, canlı)
 - Gizlilik sayfasına (Cloudflare) AdMob bölümü eklendi (TR + EN)
@@ -122,7 +122,7 @@ Manifest Alarm'ın ilk sürümü 🌞
 • Uyku süresi kartı ve uyku hedefi
 • 5 arkaplan teması, 14 dil
 
-### Sürüm notları (1.2) — reklamlı sürüm, 22 Tem 2026 incelemeye gönderildi (build 21)
+### Sürüm notları (1.2) — reklamlı sürüm, 22 Tem 2026 incelemeye gönderildi (build 22: reklam + 3 sn kaydır-durdur koruması)
 • Artık ücretsiz: uygulama açıldı, dilediğin kadar kullan.
 • Deneyimi sürdürebilmek için ekranın altında ince bir reklam şeridi eklendi; alarm ve konuşma ekranlarında reklam yok.
 • Sesin hâlâ kaydedilmez ve saklanmaz.
