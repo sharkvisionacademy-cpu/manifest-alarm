@@ -114,6 +114,8 @@
 "per_day" = "gün";
 "premium_upsell_title" = "Manifest Premium'a geç";
 "premium_upsell_sub" = "Reklamsız + 5 özel olumlama paketi";
+"paywall_unavailable" = "Abonelikler şu anda yüklenemedi. İnternetini kontrol edip tekrar dene.";
+"retry" = "Tekrar dene";
 
 "cat_bolluk" = "Bolluk & Bereket";
 "cat_saglik" = "Sağlık & Şifa";

@@ -114,6 +114,8 @@
 "per_day" = "day";
 "premium_upsell_title" = "Go Manifest Premium";
 "premium_upsell_sub" = "Ad-free + 5 exclusive affirmation packs";
+"paywall_unavailable" = "Subscriptions couldn't load right now. Check your connection and try again.";
+"retry" = "Try again";
 
 "cat_bolluk" = "Abundance & Wealth";
 "cat_saglik" = "Health & Healing";

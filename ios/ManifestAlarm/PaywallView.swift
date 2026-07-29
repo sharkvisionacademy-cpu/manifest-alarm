@@ -29,6 +29,10 @@ struct PaywallView: View {
         .preferredColorScheme(.dark)
         .overlay(alignment: .topTrailing) { closeButton }
         .tint(Palette.gold)
+        .task {
+            // Paywall açıldığında ürünler henüz gelmediyse tekrar dene.
+            if subs.products.isEmpty { await subs.loadProducts() }
+        }
     }
 
     private var closeButton: some View {
@@ -81,14 +85,36 @@ struct PaywallView: View {
 
     private var plans: some View {
         VStack(spacing: 12) {
-            if subs.products.isEmpty {
-                ProgressView().tint(Palette.gold).padding()
-            } else {
+            if !subs.products.isEmpty {
                 ForEach(subs.products, id: \.id) { product in
                     planCard(product)
                 }
+            } else if !subs.didLoadProducts {
+                ProgressView().tint(Palette.gold).padding()
+            } else {
+                unavailableCard
             }
         }
+    }
+
+    /// Ürünler App Store'dan yüklenemediğinde (sonsuz spinner yerine) gösterilir.
+    private var unavailableCard: some View {
+        VStack(spacing: 12) {
+            Image(systemName: "wifi.exclamationmark")
+                .font(.title)
+                .foregroundStyle(.white.opacity(0.6))
+            Text("paywall_unavailable")
+                .font(.callout)
+                .foregroundStyle(.white.opacity(0.75))
+                .multilineTextAlignment(.center)
+            Button("retry") { Task { await subs.loadProducts() } }
+                .font(.headline)
+                .foregroundStyle(Palette.night)
+                .padding(.horizontal, 24)
+                .padding(.vertical, 10)
+                .background(Capsule().fill(Palette.gold))
+        }
+        .padding(.vertical, 8)
     }
 
     private func planCard(_ product: Product) -> some View {

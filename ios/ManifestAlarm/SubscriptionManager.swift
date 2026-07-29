@@ -18,6 +18,11 @@ final class SubscriptionManager: ObservableObject {
     @Published var isWorking = false
     @Published var errorMessage: String?
 
+    /// En az bir yükleme denemesi tamamlandı mı (spinner'ı sonsuza dek göstermemek için).
+    @Published private(set) var didLoadProducts = false
+    /// Son denemede ürün listesi boş/başarısız mı geldi.
+    @Published private(set) var loadFailed = false
+
     private var updatesTask: Task<Void, Never>?
 
     private init() {
@@ -36,15 +41,22 @@ final class SubscriptionManager: ObservableObject {
     }
 
     func loadProducts() async {
+        loadFailed = false
         do {
             let fetched = try await Product.products(for: Self.allIDs)
             // Haftalık → aylık → yıllık sırasına diz.
             products = fetched.sorted {
                 (Self.allIDs.firstIndex(of: $0.id) ?? 0) < (Self.allIDs.firstIndex(of: $1.id) ?? 0)
             }
+            // Ürünler App Store'dan boş dönebilir (ör. Paid Apps sözleşmesi
+            // henüz aktif değilse). Bunu hata gibi işaretle ki paywall
+            // sonsuza dek dönmek yerine tekrar-dene göstersin.
+            loadFailed = fetched.isEmpty
         } catch {
             products = []
+            loadFailed = true
         }
+        didLoadProducts = true
     }
 
     /// Aktif (iptal/iade edilmemiş) bir abonelik var mı diye bakar.

@@ -101,7 +101,18 @@ struct HomeView: View {
             .sheet(item: $editing) { item in
                 AlarmEditSheet(store: store, item: item)
             }
-            .onAppear { store.sync() }
+            .onAppear {
+                store.sync()
+                // Alarm başarıyla kapatıldıysa, uygulamaya dönüşte tam ekran reklam göster.
+                if UserDefaults.standard.bool(forKey: "showAdAfterAlarm") {
+                    UserDefaults.standard.set(false, forKey: "showAdAfterAlarm")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                        InterstitialManager.shared.maybeShow()
+                    }
+                } else {
+                    InterstitialManager.shared.preload()
+                }
+            }
             .safeAreaInset(edge: .bottom) {
                 if !subs.isPremium {
                     BannerContainer()
@@ -509,6 +520,10 @@ struct AlarmEditSheet: View {
             store.add(hour: comps.hour ?? 8, minute: comps.minute ?? 0)
         }
         dismiss()
+        // Alarm kaydedildikten sonra (sayfa kapanınca) tam ekran reklam göster.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            InterstitialManager.shared.maybeShow()
+        }
     }
 }
 
@@ -607,6 +622,8 @@ struct SpeechDismissView: View {
         .onAppear {
             speech.start()
             startUrgencySound()
+            // Kullanıcı manifest söylerken sonraki reklamı hazırla (dönüşte hemen çıksın).
+            InterstitialManager.shared.preload()
         }
         .onDisappear {
             stopUrgencySound()
@@ -645,6 +662,8 @@ struct SpeechDismissView: View {
         stopUrgencySound()
         speech.stop()
         UserDefaults.standard.set(true, forKey: "manifestSpoken")
+        // Uygulamaya dönünce (HomeView) tam ekran reklam göstermek için işaretle.
+        UserDefaults.standard.set(true, forKey: "showAdAfterAlarm")
         AlarmPlanner.stopRinging(idString: ringingAlarmID)
         // Manifest söylendi: koruma alarmlarını yarına taşı
         Task { await AlarmPlanner.resyncShadows() }
