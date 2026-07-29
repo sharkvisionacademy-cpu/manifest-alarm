@@ -5,7 +5,11 @@ let categoryOptions: [(key: String, label: String, icon: String)] = [
     ("all", "cat_all", "sparkles"),
     ("work", "cat_work", "briefcase.fill"),
     ("love", "cat_love", "heart.fill"),
-    ("life", "cat_life", "leaf.fill")
+    ("life", "cat_life", "leaf.fill"),
+    // İnanç & şükür (ücretsiz)
+    ("islam", "cat_islam", "moon.stars.fill"),
+    ("hristiyanlik", "cat_hristiyanlik", "cross.fill"),
+    ("musevilik", "cat_musevilik", "star.circle.fill")
 ]
 
 // Premium olumlama paketleri (yalnızca abonelerde seçilebilir).

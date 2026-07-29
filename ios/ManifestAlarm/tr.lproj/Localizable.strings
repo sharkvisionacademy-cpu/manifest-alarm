@@ -141,6 +141,9 @@
 "cat_iliski" = "İlişki & Sevgi";
 "cat_ozguven" = "Öz-güven & Güç";
 "cat_custom" = "Kendi Olumlamalarım";
+"cat_islam" = "İnanç — İslam";
+"cat_hristiyanlik" = "İnanç — Hristiyanlık";
+"cat_musevilik" = "İnanç — Musevilik";
 "custom_title" = "Olumlamalarım";
 "custom_manage" = "Olumlamalarını düzenle";
 "custom_add_placeholder" = "Yeni olumlama yaz…";
@@ -178,3 +181,27 @@
 "premium_ozguven_3" = "Sesimi güvenle duyuruyorum; sınırlarımı net koyuyorum";
 "premium_ozguven_4" = "Her gün daha güçlü, daha kararlı ve daha özgür hissediyorum";
 "premium_ozguven_5" = "Ben kendi hayatımın yaratıcısıyım; geleceğimi ben şekillendiriyorum";
+
+// MARK: - İnanç & şükür (İslam)
+"manifest_islam_0" = "Rabbimin rahmeti üzerimde; şükrediyorum ve kalbim huzurla doluyor";
+"manifest_islam_1" = "Allah'a tevekkül ediyorum; O en güzel vekildir, içim rahat";
+"manifest_islam_2" = "Her nefes bir şükür; bana verilen nimetler için minnettarım";
+"manifest_islam_3" = "Sabır ve dua ile her zorluğun ardından bir kolaylık geliyor";
+"manifest_islam_4" = "Kalbimi zikirle huzura kavuşturuyorum; Rabbim bana yeter";
+"manifest_islam_5" = "Bugün hayrı diliyorum; güzel ahlakla, temiz bir niyetle yürüyorum";
+
+// MARK: - İnanç & şükür (Hristiyanlık)
+"manifest_hristiyanlik_0" = "Tanrı'nın sevgisi beni sarıyor; şükran ve umutla doluyum";
+"manifest_hristiyanlik_1" = "Rabbim bana yol gösteriyor; güvendeyim ve hiçbir eksiğim yok";
+"manifest_hristiyanlik_2" = "İnancım beni taşıyor; korkuya değil, sevgiye yer açıyorum";
+"manifest_hristiyanlik_3" = "Her günü bir lütuf olarak karşılıyorum; kalbim minnetle dolu";
+"manifest_hristiyanlik_4" = "Merhametle veriyor, merhametle alıyorum; içimdeki ışık parlıyor";
+"manifest_hristiyanlik_5" = "Umudumu Rab'be bağlıyorum; O'nun huzuru yüreğimi koruyor";
+
+// MARK: - İnanç & şükür (Musevilik)
+"manifest_musevilik_0" = "Şükranla uyanıyorum; hayatın armağanları için minnettarım";
+"manifest_musevilik_1" = "Yaradan'a güveniyorum; her adımımda huzur ve bereket var";
+"manifest_musevilik_2" = "Kalbimi şükürle dolduruyorum; iyilik ve merhametle yürüyorum";
+"manifest_musevilik_3" = "İçimde barış (shalom) var; dünyaya sevgi ve umut taşıyorum";
+"manifest_musevilik_4" = "Her gün yeni bir başlangıç; bereketle ve iyi niyetle doluyorum";
+"manifest_musevilik_5" = "Işığımı paylaşıyorum; adaletle ve şefkatle var oluyorum";

@@ -141,6 +141,9 @@
 "cat_iliski" = "Love & Relationships";
 "cat_ozguven" = "Confidence & Power";
 "cat_custom" = "My Own Affirmations";
+"cat_islam" = "Faith — Islam";
+"cat_hristiyanlik" = "Faith — Christianity";
+"cat_musevilik" = "Faith — Judaism";
 "custom_title" = "My Affirmations";
 "custom_manage" = "Edit your affirmations";
 "custom_add_placeholder" = "Write a new affirmation…";
@@ -178,3 +181,27 @@
 "premium_ozguven_3" = "I speak my truth with confidence and set clear boundaries";
 "premium_ozguven_4" = "Each day I feel stronger, more determined and more free";
 "premium_ozguven_5" = "I am the creator of my own life; I shape my own future";
+
+// MARK: - Faith & gratitude (Islam)
+"manifest_islam_0" = "My Lord's mercy is upon me; I am grateful and my heart fills with peace";
+"manifest_islam_1" = "I place my trust in God; He is the best of guardians and my heart is at ease";
+"manifest_islam_2" = "Every breath is a thanks; I am grateful for the blessings I've been given";
+"manifest_islam_3" = "With patience and prayer, ease follows every hardship";
+"manifest_islam_4" = "I calm my heart with remembrance; my Lord is enough for me";
+"manifest_islam_5" = "Today I intend good; I walk with kindness and a pure heart";
+
+// MARK: - Faith & gratitude (Christianity)
+"manifest_hristiyanlik_0" = "God's love surrounds me; I am filled with gratitude and hope";
+"manifest_hristiyanlik_1" = "My Lord guides me; I am safe and I lack nothing";
+"manifest_hristiyanlik_2" = "My faith carries me; I make room for love, not fear";
+"manifest_hristiyanlik_3" = "I greet each day as a grace; my heart is full of thanks";
+"manifest_hristiyanlik_4" = "I give with mercy and receive with mercy; my inner light shines";
+"manifest_hristiyanlik_5" = "I anchor my hope in the Lord; His peace guards my heart";
+
+// MARK: - Faith & gratitude (Judaism)
+"manifest_musevilik_0" = "I wake with gratitude; I am thankful for the gifts of life";
+"manifest_musevilik_1" = "I trust in the Creator; peace and blessing walk with me";
+"manifest_musevilik_2" = "I fill my heart with thanks; I move with kindness and mercy";
+"manifest_musevilik_3" = "Peace (shalom) is within me; I carry love and hope to the world";
+"manifest_musevilik_4" = "Each day is a new beginning; I fill with blessing and good intention";
+"manifest_musevilik_5" = "I share my light; I live with justice and compassion";

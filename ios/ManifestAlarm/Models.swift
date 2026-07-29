@@ -54,6 +54,8 @@ enum ManifestProvider {
             case "work": keys = work
             case "love": keys = love
             case "life": keys = life
+            case "islam", "hristiyanlik", "musevilik":
+                keys = (0..<6).map { "manifest_\(category)_\($0)" }
             case let c where premiumCategories.contains(c):
                 keys = (0..<6).map { "premium_\(c)_\($0)" }
             default: keys = general + work + love + life
