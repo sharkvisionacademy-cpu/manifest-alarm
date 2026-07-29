@@ -15,8 +15,16 @@ let soundOptions: [(key: String, label: String)] = [
     ("piano", "sound_piano"),
     ("harp", "sound_harp"),
     ("chimes", "sound_chimes"),
-    ("marimba", "sound_marimba")
+    ("marimba", "sound_marimba"),
+    // Premium sesler
+    ("freq963", "sound_963"),
+    ("freq396", "sound_396"),
+    ("crystal", "sound_crystal"),
+    ("celesta", "sound_celesta")
 ]
+
+// Yalnızca abonelerde seçilebilen premium sesler.
+let premiumSoundKeys: Set<String> = ["freq963", "freq396", "crystal", "celesta"]
 
 // MARK: - Renk paleti (enerji/frekans teması)
 
@@ -26,9 +34,13 @@ enum Palette {
     static let violet = Color(red: 0.17, green: 0.09, blue: 0.34)
     static let card = Color.white.opacity(0.08)
 
-    // Seçili arkaplan teması tüm ekranlarda kullanılır
+    // Seçili arkaplan teması tüm ekranlarda kullanılır.
+    // Premium tema seçiliyken abonelik biterse "cosmic"e düşer.
     static var background: LinearGradient {
-        Themes.gradient(for: UserDefaults.standard.string(forKey: "bgTheme") ?? "cosmic")
+        let key = UserDefaults.standard.string(forKey: "bgTheme") ?? "cosmic"
+        let active = UserDefaults.standard.bool(forKey: "premiumActive")
+        let effective = (Themes.isPremium(key) && !active) ? "cosmic" : key
+        return Themes.gradient(for: effective)
     }
 }
 
@@ -62,6 +74,13 @@ struct HomeView: View {
     @AppStorage("bgTheme") private var bgTheme = "cosmic"
     @AppStorage("sleepGoal") private var sleepGoal = 8.0
     @AppStorage("manifestCategory") private var manifestCategory = "all"
+    // Gün içi manifest hatırlatıcıları (ücretsiz)
+    @AppStorage("remNoonOn") private var remNoonOn = false
+    @AppStorage("remNoonMin") private var remNoonMin = 13 * 60
+    @AppStorage("remDayOn") private var remDayOn = false
+    @AppStorage("remDayMin") private var remDayMin = 16 * 60
+    @AppStorage("remSleepOn") private var remSleepOn = false
+    @AppStorage("remSleepMin") private var remSleepMin = 22 * 60 + 30
     @State private var showAdd = false
     @State private var editing: AlarmItem?
     @State private var status = ""
@@ -69,14 +88,17 @@ struct HomeView: View {
     @State private var previewing = false
     @ObservedObject private var subs = SubscriptionManager.shared
     @State private var showPaywall = false
+    @State private var showCustomAffirmations = false
 
     var body: some View {
         NavigationStack {
             List {
                 manifestSection
+                if subs.isPremium { streakSection }
                 sleepSection
                 alarmsSection
                 manifestSettingsSection
+                reminderSection
                 if !subs.isPremium { premiumSection }
                 soundSection
                 themeSection
@@ -103,6 +125,8 @@ struct HomeView: View {
             }
             .onAppear {
                 store.sync()
+                // Hatırlatıcıları güncel manifestlerle yeniden zamanla.
+                ReminderManager.reschedule()
                 // Alarm başarıyla kapatıldıysa, uygulamaya dönüşte tam ekran reklam göster.
                 if UserDefaults.standard.bool(forKey: "showAdAfterAlarm") {
                     UserDefaults.standard.set(false, forKey: "showAdAfterAlarm")
@@ -120,6 +144,9 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showPaywall) {
                 PaywallView()
+            }
+            .sheet(isPresented: $showCustomAffirmations) {
+                CustomAffirmationsSheet()
             }
         }
         .tint(Palette.gold)
@@ -162,6 +189,33 @@ struct HomeView: View {
         )
     }
 
+    // MARK: - Seri (streak) kartı — premium
+
+    private var streakSection: some View {
+        Section {
+            HStack(spacing: 14) {
+                Image(systemName: "flame.fill")
+                    .font(.title)
+                    .foregroundStyle(Palette.gold)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(String(format: String(localized: "streak_days"), StreakTracker.displayCurrent))
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                    Text(String(format: String(localized: "streak_best"), StreakTracker.best))
+                        .font(.footnote)
+                        .foregroundStyle(.white.opacity(0.65))
+                }
+                Spacer()
+            }
+            .padding(.vertical, 4)
+        } header: {
+            Label("streak_title", systemImage: "flame.fill")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(Palette.gold)
+        }
+        .listRowBackground(Palette.card)
+    }
+
     private var manifestSection: some View {
         Section {
             VStack(alignment: .leading, spacing: 10) {
@@ -190,6 +244,15 @@ struct HomeView: View {
         subs.isPremium ? categoryOptions + premiumCategoryOptions : categoryOptions
     }
 
+    private func themeLocked(_ theme: BgTheme) -> Bool {
+        theme.isPremium && !subs.isPremium
+    }
+
+    private func soundLabel(_ option: (key: String, label: String)) -> String {
+        let name = String(localized: String.LocalizationValue(option.label))
+        return (premiumSoundKeys.contains(option.key) && !subs.isPremium) ? "\(name) 🔒" : name
+    }
+
     private var manifestSettingsSection: some View {
         Section {
             Toggle(isOn: $dailyMode) {
@@ -206,6 +269,14 @@ struct HomeView: View {
                         .foregroundStyle(.white)
                 }
                 .pickerStyle(.menu)
+                if manifestCategory == "custom" && subs.isPremium {
+                    Button {
+                        showCustomAffirmations = true
+                    } label: {
+                        Label("custom_manage", systemImage: "square.and.pencil")
+                            .foregroundStyle(Palette.gold)
+                    }
+                }
             }
             if !dailyMode {
                 TextField(
@@ -222,6 +293,61 @@ struct HomeView: View {
                 .foregroundStyle(.white.opacity(0.55))
         }
         .listRowBackground(Palette.card)
+    }
+
+    // MARK: - Gün içi manifest hatırlatıcıları (ücretsiz)
+
+    private var reminderSection: some View {
+        Section {
+            reminderRow("reminder_noon", "sun.max.fill", isOn: $remNoonOn, minutes: $remNoonMin)
+            reminderRow("reminder_day", "sun.haze.fill", isOn: $remDayOn, minutes: $remDayMin)
+            reminderRow("reminder_sleep", "moon.stars.fill", isOn: $remSleepOn, minutes: $remSleepMin)
+        } header: {
+            Label("reminder_section_title", systemImage: "bell.badge.fill")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(Palette.gold)
+        } footer: {
+            Text("reminder_footer")
+                .font(.footnote)
+                .foregroundStyle(.white.opacity(0.55))
+        }
+        .listRowBackground(Palette.card)
+    }
+
+    @ViewBuilder
+    private func reminderRow(
+        _ titleKey: LocalizedStringKey,
+        _ icon: String,
+        isOn: Binding<Bool>,
+        minutes: Binding<Int>
+    ) -> some View {
+        Toggle(isOn: isOn) {
+            Label(titleKey, systemImage: icon).foregroundStyle(.white)
+        }
+        .onChange(of: isOn.wrappedValue) { _, on in
+            if on { ReminderManager.requestAuthorizationIfNeeded() }
+            ReminderManager.reschedule()
+        }
+        if isOn.wrappedValue {
+            DatePicker("", selection: timeBinding(minutes), displayedComponents: .hourAndMinute)
+                .labelsHidden()
+                .onChange(of: minutes.wrappedValue) { _, _ in ReminderManager.reschedule() }
+        }
+    }
+
+    private func timeBinding(_ minutes: Binding<Int>) -> Binding<Date> {
+        Binding(
+            get: {
+                var c = DateComponents()
+                c.hour = minutes.wrappedValue / 60
+                c.minute = minutes.wrappedValue % 60
+                return Calendar.current.date(from: c) ?? Date()
+            },
+            set: { newDate in
+                let c = Calendar.current.dateComponents([.hour, .minute], from: newDate)
+                minutes.wrappedValue = (c.hour ?? 0) * 60 + (c.minute ?? 0)
+            }
+        )
     }
 
     private var sleepSection: some View {
@@ -282,7 +408,11 @@ struct HomeView: View {
                 HStack(spacing: 14) {
                     ForEach(Themes.all) { theme in
                         Button {
-                            bgTheme = theme.key
+                            if themeLocked(theme) {
+                                showPaywall = true
+                            } else {
+                                bgTheme = theme.key
+                            }
                         } label: {
                             Circle()
                                 .fill(LinearGradient(
@@ -299,6 +429,15 @@ struct HomeView: View {
                                         lineWidth: bgTheme == theme.key ? 3 : 1
                                     )
                                 )
+                                .overlay {
+                                    if themeLocked(theme) {
+                                        Image(systemName: "lock.fill")
+                                            .font(.caption2)
+                                            .foregroundStyle(.white)
+                                            .padding(5)
+                                            .background(Circle().fill(.black.opacity(0.5)))
+                                    }
+                                }
                         }
                         .buttonStyle(.plain)
                     }
@@ -320,14 +459,20 @@ struct HomeView: View {
         Section {
             Picker(selection: $alarmSound) {
                 ForEach(soundOptions, id: \.key) { option in
-                    Text(LocalizedStringKey(option.label)).tag(option.key)
+                    Text(soundLabel(option)).tag(option.key)
                 }
             } label: {
                 Label("alarm_sound", systemImage: "speaker.wave.2.fill")
                     .foregroundStyle(.white)
             }
             .pickerStyle(.menu)
-            .onChange(of: alarmSound) { _, _ in
+            .onChange(of: alarmSound) { oldValue, newValue in
+                // Premium ses abone olmayanlarca seçilemez: geri al + paywall aç.
+                if premiumSoundKeys.contains(newValue) && !subs.isPremium {
+                    alarmSound = oldValue
+                    showPaywall = true
+                    return
+                }
                 stopPreview()
                 store.sync()
             }
@@ -662,6 +807,8 @@ struct SpeechDismissView: View {
         stopUrgencySound()
         speech.stop()
         UserDefaults.standard.set(true, forKey: "manifestSpoken")
+        // Günlük seriyi güncelle (manifest başarıyla söylendi).
+        StreakTracker.recordCompletion()
         // Uygulamaya dönünce (HomeView) tam ekran reklam göstermek için işaretle.
         UserDefaults.standard.set(true, forKey: "showAdAfterAlarm")
         AlarmPlanner.stopRinging(idString: ringingAlarmID)

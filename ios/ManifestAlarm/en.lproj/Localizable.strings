@@ -52,6 +52,11 @@
 "theme_ocean" = "Ocean Depth";
 "theme_forest" = "Forest Breath";
 "theme_lavender" = "Lavender Mist";
+"theme_aurora" = "Aurora";
+"theme_rosegold" = "Rose Gold";
+"theme_midnight" = "Midnight";
+"theme_ember" = "Ember";
+"theme_emerald" = "Emerald";
 "sleep_title" = "Sleep";
 "next_alarm_label" = "Next alarm";
 "sleep_if_now" = "If you sleep now: %@";
@@ -66,6 +71,10 @@
 "sound_harp" = "Harp";
 "sound_chimes" = "Wind Chimes";
 "sound_marimba" = "Marimba";
+"sound_963" = "963 Hz — Crown Chakra";
+"sound_396" = "396 Hz — Grounding";
+"sound_crystal" = "Crystal Bells";
+"sound_celesta" = "Celesta";
 "welcome_title" = "Welcome to Manifest Alarm";
 "welcome_sub" = "Wake up with intention 🌞";
 "choose_theme" = "Choose your background";
@@ -94,8 +103,8 @@
 "paywall_title" = "Manifest Premium";
 "paywall_sub" = "Start the day premium — no ads and exclusive affirmation packs.";
 "benefit_noads" = "Ad-free, uninterrupted experience";
-"benefit_packs" = "5 exclusive premium affirmation packs";
-"benefit_future" = "New themes and content first";
+"benefit_packs" = "5 exclusive packs + your own affirmations";
+"benefit_future" = "Exclusive themes and streak tracking";
 "benefit_support" = "Support the app's development";
 "best_value" = "BEST VALUE";
 "trial_cta" = "Start 3-day free trial";
@@ -116,12 +125,28 @@
 "premium_upsell_sub" = "Ad-free + 5 exclusive affirmation packs";
 "paywall_unavailable" = "Subscriptions couldn't load right now. Check your connection and try again.";
 "retry" = "Try again";
+"streak_title" = "Streak";
+"streak_days" = "%d days in a row 🔥";
+"streak_best" = "Best streak: %d days";
+"reminder_section_title" = "Daytime Manifest";
+"reminder_title" = "Manifest Moment ✨";
+"reminder_noon" = "Noon manifest";
+"reminder_day" = "Afternoon manifest";
+"reminder_sleep" = "Bedtime manifest";
+"reminder_footer" = "Your daily affirmation arrives as a notification at the times you pick.";
 
 "cat_bolluk" = "Abundance & Wealth";
 "cat_saglik" = "Health & Healing";
 "cat_kariyer" = "Career & Success";
 "cat_iliski" = "Love & Relationships";
 "cat_ozguven" = "Confidence & Power";
+"cat_custom" = "My Own Affirmations";
+"custom_title" = "My Affirmations";
+"custom_manage" = "Edit your affirmations";
+"custom_add_placeholder" = "Write a new affirmation…";
+"custom_footer" = "Your sentences become the daily manifest, one each day in turn.";
+"custom_empty" = "No affirmations yet. Add one above.";
+"custom_list_header" = "Your affirmations";
 
 "premium_bolluk_0" = "Abundance flows to me from all directions; I am open to all the wealth I deserve";
 "premium_bolluk_1" = "Money comes to me easily and freely; I earn more every day";

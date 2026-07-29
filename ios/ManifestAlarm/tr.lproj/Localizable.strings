@@ -52,6 +52,11 @@
 "theme_ocean" = "Okyanus Derinliği";
 "theme_forest" = "Orman Nefesi";
 "theme_lavender" = "Lavanta Sisi";
+"theme_aurora" = "Kuzey Işıkları";
+"theme_rosegold" = "Gül Altını";
+"theme_midnight" = "Gece Yarısı";
+"theme_ember" = "Kor Ateşi";
+"theme_emerald" = "Zümrüt";
 "sleep_title" = "Uyku";
 "next_alarm_label" = "Sonraki alarm";
 "sleep_if_now" = "Şimdi uyursan: %@";
@@ -66,6 +71,10 @@
 "sound_harp" = "Arp";
 "sound_chimes" = "Rüzgar Çanları";
 "sound_marimba" = "Marimba";
+"sound_963" = "963 Hz — Taç Çakra";
+"sound_396" = "396 Hz — Temellenme";
+"sound_crystal" = "Kristal Çan";
+"sound_celesta" = "Celesta";
 "welcome_title" = "Manifest Alarm'a Hoş Geldin";
 "welcome_sub" = "Güne niyetinle uyan 🌞";
 "choose_theme" = "Arkaplanını seç";
@@ -94,8 +103,8 @@
 "paywall_title" = "Manifest Premium";
 "paywall_sub" = "Reklamsız deneyim ve özel olumlama paketleriyle güne premium başla.";
 "benefit_noads" = "Reklamsız, kesintisiz deneyim";
-"benefit_packs" = "5 özel premium olumlama paketi";
-"benefit_future" = "Yeni tema ve içerikler ilk sende";
+"benefit_packs" = "5 özel olumlama paketi + kendi olumlamaların";
+"benefit_future" = "Özel temalar ve seri (streak) takibi";
 "benefit_support" = "Uygulamanın gelişimine destek ol";
 "best_value" = "EN AVANTAJLI";
 "trial_cta" = "3 gün ücretsiz dene";
@@ -116,12 +125,28 @@
 "premium_upsell_sub" = "Reklamsız + 5 özel olumlama paketi";
 "paywall_unavailable" = "Abonelikler şu anda yüklenemedi. İnternetini kontrol edip tekrar dene.";
 "retry" = "Tekrar dene";
+"streak_title" = "Seri";
+"streak_days" = "%d gün üst üste 🔥";
+"streak_best" = "En uzun serin: %d gün";
+"reminder_section_title" = "Gün İçi Manifest";
+"reminder_title" = "Manifest Anı ✨";
+"reminder_noon" = "Öğlen manifesti";
+"reminder_day" = "Gün içi manifest";
+"reminder_sleep" = "Uyku manifesti";
+"reminder_footer" = "Seçtiğin saatlerde günün olumlaması bildirim olarak gelir.";
 
 "cat_bolluk" = "Bolluk & Bereket";
 "cat_saglik" = "Sağlık & Şifa";
 "cat_kariyer" = "Kariyer & Zenginlik";
 "cat_iliski" = "İlişki & Sevgi";
 "cat_ozguven" = "Öz-güven & Güç";
+"cat_custom" = "Kendi Olumlamalarım";
+"custom_title" = "Olumlamalarım";
+"custom_manage" = "Olumlamalarını düzenle";
+"custom_add_placeholder" = "Yeni olumlama yaz…";
+"custom_footer" = "Eklediğin cümleler her gün sırayla günün manifesti olur.";
+"custom_empty" = "Henüz olumlama eklemedin. Yukarıdan ekle.";
+"custom_list_header" = "Olumlamaların";
 
 "premium_bolluk_0" = "Bolluk bana her yönden akıyor; hak ettiğim tüm zenginliğe açığım";
 "premium_bolluk_1" = "Para bana kolayca ve bol bol geliyor; her gün daha çok kazanıyorum";

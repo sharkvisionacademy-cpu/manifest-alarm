@@ -14,7 +14,8 @@ let premiumCategoryOptions: [(key: String, label: String, icon: String)] = [
     ("saglik", "cat_saglik", "heart.text.square.fill"),
     ("kariyer", "cat_kariyer", "chart.line.uptrend.xyaxis"),
     ("iliski", "cat_iliski", "person.2.fill"),
-    ("ozguven", "cat_ozguven", "flame.fill")
+    ("ozguven", "cat_ozguven", "flame.fill"),
+    ("custom", "cat_custom", "square.and.pencil")
 ]
 
 /// İlk açılışta tema ve manifest alanı seçimi.

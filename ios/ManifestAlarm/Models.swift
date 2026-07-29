@@ -21,7 +21,10 @@ enum ManifestProvider {
     /// Premium olumlama paketleri (yalnızca abonelerde açık). Her paket 6 cümle.
     static let premiumCategories = ["bolluk", "saglik", "kariyer", "iliski", "ozguven"]
 
-    static func todaysManifest() -> String {
+    static func todaysManifest() -> String { manifest(for: Date()) }
+
+    /// Belirli bir gün için manifesti döndürür (bugün + gelecek günler; bildirimler kullanır).
+    static func manifest(for date: Date) -> String {
         let defaults = UserDefaults.standard
         let dailyMode = defaults.object(forKey: "dailyMode") == nil
             ? true
@@ -29,8 +32,17 @@ enum ManifestProvider {
         if dailyMode {
             var category = defaults.string(forKey: "manifestCategory") ?? "all"
             let premiumActive = defaults.bool(forKey: "premiumActive")
+            let day = Calendar.current.ordinality(of: .day, in: .year, for: date) ?? 1
             // Abonelik yoksa premium paket seçili kalmışsa "Hepsi"ye düş.
             if premiumCategories.contains(category) && !premiumActive {
+                category = "all"
+            }
+            // Kendi olumlamaların (premium): listeden gün sırasına göre seç.
+            if category == "custom" {
+                let list = CustomAffirmations.load()
+                if premiumActive && !list.isEmpty {
+                    return list[day % list.count]
+                }
                 category = "all"
             }
             let general = (0..<10).map { "manifest_pool_\($0)" }
@@ -46,7 +58,6 @@ enum ManifestProvider {
                 keys = (0..<6).map { "premium_\(c)_\($0)" }
             default: keys = general + work + love + life
             }
-            let day = Calendar.current.ordinality(of: .day, in: .year, for: Date()) ?? 1
             return String(localized: String.LocalizationValue(keys[day % keys.count]))
         }
         let custom = defaults.string(forKey: "manifest")?
@@ -60,6 +71,7 @@ enum ManifestProvider {
 struct BgTheme: Identifiable {
     let key: String
     let colors: [Color]
+    var isPremium: Bool = false
     var id: String { key }
 }
 
@@ -85,8 +97,37 @@ enum Themes {
         BgTheme(key: "lavender", colors: [
             Color(red: 0.42, green: 0.31, blue: 0.58),
             Color(red: 0.13, green: 0.09, blue: 0.28)
-        ])
+        ]),
+        // MARK: Premium temalar (yalnızca abonelerde)
+        BgTheme(key: "aurora", colors: [
+            Color(red: 0.02, green: 0.42, blue: 0.38),
+            Color(red: 0.15, green: 0.11, blue: 0.42),
+            Color(red: 0.03, green: 0.05, blue: 0.16)
+        ], isPremium: true),
+        BgTheme(key: "rosegold", colors: [
+            Color(red: 0.62, green: 0.35, blue: 0.35),
+            Color(red: 0.40, green: 0.20, blue: 0.30),
+            Color(red: 0.10, green: 0.06, blue: 0.13)
+        ], isPremium: true),
+        BgTheme(key: "midnight", colors: [
+            Color(red: 0.05, green: 0.10, blue: 0.28),
+            Color(red: 0.02, green: 0.03, blue: 0.10)
+        ], isPremium: true),
+        BgTheme(key: "ember", colors: [
+            Color(red: 0.55, green: 0.30, blue: 0.10),
+            Color(red: 0.32, green: 0.10, blue: 0.12),
+            Color(red: 0.08, green: 0.04, blue: 0.06)
+        ], isPremium: true),
+        BgTheme(key: "emerald", colors: [
+            Color(red: 0.10, green: 0.40, blue: 0.35),
+            Color(red: 0.03, green: 0.16, blue: 0.20),
+            Color(red: 0.02, green: 0.05, blue: 0.09)
+        ], isPremium: true)
     ]
+
+    static func isPremium(_ key: String) -> Bool {
+        all.first { $0.key == key }?.isPremium ?? false
+    }
 
     /// Tema adını çevirir. Çalışma zamanı anahtarı için NSLocalizedString en
     /// güvenilir yol; String.LocalizationValue interpolasyonu anahtarı bozabiliyor.
