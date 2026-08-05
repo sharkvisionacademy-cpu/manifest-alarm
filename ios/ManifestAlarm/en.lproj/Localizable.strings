@@ -134,6 +134,8 @@
 "reminder_day" = "Afternoon manifest";
 "reminder_sleep" = "Bedtime manifest";
 "reminder_footer" = "Your daily affirmation arrives as a notification at the times you pick.";
+"language" = "Language";
+"lang_system" = "System language";
 
 "cat_bolluk" = "Abundance & Wealth";
 "cat_saglik" = "Health & Healing";

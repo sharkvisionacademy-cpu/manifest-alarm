@@ -134,6 +134,8 @@
 "reminder_day" = "Gün içi manifest";
 "reminder_sleep" = "Uyku manifesti";
 "reminder_footer" = "Seçtiğin saatlerde günün olumlaması bildirim olarak gelir.";
+"language" = "Dil";
+"lang_system" = "Sistem dili";
 
 "cat_bolluk" = "Bolluk & Bereket";
 "cat_saglik" = "Sağlık & Şifa";

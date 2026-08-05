@@ -49,6 +49,7 @@ enum Palette {
 struct ContentView: View {
     @AppStorage("ringingAlarmID") private var ringingAlarmID = ""
     @AppStorage("onboarded") private var onboarded = false
+    @ObservedObject private var lang = LanguageManager.shared
 
     var body: some View {
         Group {
@@ -60,6 +61,9 @@ struct ContentView: View {
                 HomeView()
             }
         }
+        // Dil değişince tüm ağacı yeniden çiz (String(localized:) tazelensin)
+        .id(lang.code)
+        .environment(\.locale, lang.locale)
         .preferredColorScheme(.dark)
     }
 }
@@ -87,6 +91,7 @@ struct HomeView: View {
     @State private var previewPlayer: AVAudioPlayer?
     @State private var previewing = false
     @ObservedObject private var subs = SubscriptionManager.shared
+    @ObservedObject private var lang = LanguageManager.shared
     @State private var showPaywall = false
     @State private var showCustomAffirmations = false
 
@@ -102,6 +107,7 @@ struct HomeView: View {
                 if !subs.isPremium { premiumSection }
                 soundSection
                 themeSection
+                languageSection
                 footerSection
             }
             .scrollContentBackground(.hidden)
@@ -532,6 +538,27 @@ struct HomeView: View {
             Label("alarms_title", systemImage: "alarm.fill")
                 .font(.footnote.weight(.semibold))
                 .foregroundStyle(Palette.gold)
+        }
+        .listRowBackground(Palette.card)
+    }
+
+    // MARK: - Dil seçimi
+
+    private var languageSection: some View {
+        Section {
+            Picker(selection: Binding(
+                get: { lang.code },
+                set: { lang.code = $0 }
+            )) {
+                ForEach(LanguageManager.supported, id: \.code) { item in
+                    Text(item.code.isEmpty ? String(localized: "lang_system") : item.name)
+                        .tag(item.code)
+                }
+            } label: {
+                Label("language", systemImage: "globe")
+                    .foregroundStyle(.white)
+            }
+            .pickerStyle(.menu)
         }
         .listRowBackground(Palette.card)
     }
