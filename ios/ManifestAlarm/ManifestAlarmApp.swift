@@ -11,6 +11,10 @@ struct ManifestAlarmApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .task {
+                    // Alarm ön planda çalınca konuşma ekranını zorla aç.
+                    AlarmObserver.start()
+                }
         }
     }
 }

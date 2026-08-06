@@ -92,6 +92,7 @@ struct HomeView: View {
     @State private var previewing = false
     @ObservedObject private var subs = SubscriptionManager.shared
     @ObservedObject private var lang = LanguageManager.shared
+    @ObservedObject private var prompt = PromptCoordinator.shared
     @State private var showPaywall = false
     @State private var showCustomAffirmations = false
 
@@ -153,6 +154,13 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showCustomAffirmations) {
                 CustomAffirmationsSheet()
+            }
+            .onChange(of: prompt.showPremiumPrompt) { _, show in
+                // Reklamdan sonra gelen aralıklı öneriyi paywall olarak aç.
+                if show {
+                    prompt.showPremiumPrompt = false
+                    showPaywall = true
+                }
             }
         }
         .tint(Palette.gold)
@@ -836,6 +844,8 @@ struct SpeechDismissView: View {
         UserDefaults.standard.set(true, forKey: "manifestSpoken")
         // Günlük seriyi güncelle (manifest başarıyla söylendi).
         StreakTracker.recordCompletion()
+        // Manifesti söyledik: gösterilen manifest bir sonrakine geçsin.
+        ManifestProvider.advance()
         // Uygulamaya dönünce (HomeView) tam ekran reklam göstermek için işaretle.
         UserDefaults.standard.set(true, forKey: "showAdAfterAlarm")
         AlarmPlanner.stopRinging(idString: ringingAlarmID)

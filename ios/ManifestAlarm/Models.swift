@@ -23,6 +23,13 @@ enum ManifestProvider {
 
     static func todaysManifest() -> String { manifest(for: Date()) }
 
+    /// Manifest söylenince artar; böylece bir manifesti söyledikten sonra
+    /// gösterilen manifest otomatik olarak bir sonrakine geçer.
+    static func advance() {
+        let d = UserDefaults.standard
+        d.set(d.integer(forKey: "manifestRotation") + 1, forKey: "manifestRotation")
+    }
+
     /// Belirli bir gün için manifesti döndürür (bugün + gelecek günler; bildirimler kullanır).
     static func manifest(for date: Date) -> String {
         let defaults = UserDefaults.standard
@@ -33,19 +40,21 @@ enum ManifestProvider {
             var category = defaults.string(forKey: "manifestCategory") ?? "all"
             let premiumActive = defaults.bool(forKey: "premiumActive")
             let day = Calendar.current.ordinality(of: .day, in: .year, for: date) ?? 1
+            // Gün indeksi + söyleyince artan ofset: her tamamlamada manifest değişir.
+            let index = day + defaults.integer(forKey: "manifestRotation")
             // Abonelik yoksa premium paket seçili kalmışsa "Hepsi"ye düş.
             if premiumCategories.contains(category) && !premiumActive {
                 category = "all"
             }
-            // Kendi olumlamaların (premium): listeden gün sırasına göre seç.
+            // Kendi olumlamaların (premium): listeden sırayla seç.
             if category == "custom" {
                 let list = CustomAffirmations.load()
                 if premiumActive && !list.isEmpty {
-                    return list[day % list.count]
+                    return list[index % list.count]
                 }
                 category = "all"
             }
-            let general = (0..<10).map { "manifest_pool_\($0)" }
+            let general = (0..<20).map { "manifest_pool_\($0)" }
             let work = (0..<4).map { "manifest_work_\($0)" }
             let love = (0..<4).map { "manifest_love_\($0)" }
             let life = (0..<4).map { "manifest_life_\($0)" }
@@ -60,7 +69,7 @@ enum ManifestProvider {
                 keys = (0..<6).map { "premium_\(c)_\($0)" }
             default: keys = general + work + love + life
             }
-            return String(localized: String.LocalizationValue(keys[day % keys.count]))
+            return String(localized: String.LocalizationValue(keys[index % keys.count]))
         }
         let custom = defaults.string(forKey: "manifest")?
             .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""

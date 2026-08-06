@@ -56,6 +56,8 @@ final class InterstitialManager: NSObject, FullScreenContentDelegate {
     func adDidDismissFullScreenContent(_ ad: FullScreenPresentingAd) {
         self.ad = nil
         preload()
+        // Reklamdan sonra aralıklı olarak premium önerisi göster.
+        Task { @MainActor in PromptCoordinator.shared.maybePrompt() }
     }
 
     func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
@@ -72,5 +74,27 @@ final class InterstitialManager: NSObject, FullScreenContentDelegate {
         var top = scene?.keyWindow?.rootViewController
         while let presented = top?.presentedViewController { top = presented }
         return top
+    }
+}
+
+/// Aralıklı premium önerisini (paywall) yönetir. Reklamdan sonra tetiklenir;
+/// premium değilse ve son öneriden yeterince zaman geçtiyse gösterilir.
+/// Kolayca kapatılabilir (paywall'da X + aşağı kaydırma).
+@MainActor
+final class PromptCoordinator: ObservableObject {
+    static let shared = PromptCoordinator()
+
+    @Published var showPremiumPrompt = false
+    private var lastPrompt = Date.distantPast
+    /// Aralıklı: en fazla 6 saatte bir öneri.
+    private let minInterval: TimeInterval = 6 * 3600
+
+    private init() {}
+
+    func maybePrompt() {
+        guard !UserDefaults.standard.bool(forKey: "premiumActive") else { return }
+        guard Date().timeIntervalSince(lastPrompt) >= minInterval else { return }
+        lastPrompt = Date()
+        showPremiumPrompt = true
     }
 }
