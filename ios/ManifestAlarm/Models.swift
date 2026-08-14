@@ -40,8 +40,12 @@ enum ManifestProvider {
             var category = defaults.string(forKey: "manifestCategory") ?? "all"
             let premiumActive = defaults.bool(forKey: "premiumActive")
             let day = Calendar.current.ordinality(of: .day, in: .year, for: date) ?? 1
-            // Gün indeksi + söyleyince artan ofset: her tamamlamada manifest değişir.
-            let index = day + defaults.integer(forKey: "manifestRotation")
+            let hour = Calendar.current.component(.hour, from: date)
+            // Gün + SAAT indeksi + söyleyince artan ofset:
+            // - saat bileşeni sayesinde manifest gün içinde saatlik değişir (sık değişim),
+            // - sabah/öğle/akşam bildirimleri farklı saatte tetiklendiği için farklı manifest alır,
+            // - her tamamlamada (advance) bir sonrakine geçer.
+            let index = day * 24 + hour + defaults.integer(forKey: "manifestRotation")
             // Abonelik yoksa premium paket seçili kalmışsa "Hepsi"ye düş.
             if premiumCategories.contains(category) && !premiumActive {
                 category = "all"
@@ -54,7 +58,7 @@ enum ManifestProvider {
                 }
                 category = "all"
             }
-            let general = (0..<20).map { "manifest_pool_\($0)" }
+            let general = (0..<120).map { "manifest_pool_\($0)" }
             let work = (0..<4).map { "manifest_work_\($0)" }
             let love = (0..<4).map { "manifest_love_\($0)" }
             let life = (0..<4).map { "manifest_life_\($0)" }
@@ -69,11 +73,13 @@ enum ManifestProvider {
                 keys = (0..<6).map { "premium_\(c)_\($0)" }
             default: keys = general + work + love + life
             }
-            return String(localized: String.LocalizationValue(keys[index % keys.count]))
+            // NSLocalizedString: Bundle.main swizzle'ı (LanguageManager) üstünden geçer,
+            // böylece uygulama içi dil seçimine göre manifest DİLİ de değişir.
+            return NSLocalizedString(keys[index % keys.count], comment: "")
         }
         let custom = defaults.string(forKey: "manifest")?
             .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        return custom.isEmpty ? String(localized: "default_manifest") : custom
+        return custom.isEmpty ? NSLocalizedString("default_manifest", comment: "") : custom
     }
 }
 

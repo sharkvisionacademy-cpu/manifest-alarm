@@ -45,7 +45,7 @@ enum ReminderManager {
                 guard let fire = cal.date(from: comps), fire > Date() else { continue }
 
                 let content = UNMutableNotificationContent()
-                content.title = String(localized: "reminder_title")
+                content.title = NSLocalizedString("reminder_title", comment: "")
                 content.body = ManifestProvider.manifest(for: fire)
                 content.sound = .default
 

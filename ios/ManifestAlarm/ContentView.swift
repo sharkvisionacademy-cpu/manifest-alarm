@@ -294,7 +294,7 @@ struct HomeView: View {
             }
             if !dailyMode {
                 TextField(
-                    String(localized: "default_manifest"),
+                    NSLocalizedString("default_manifest", comment: ""),
                     text: $customManifest,
                     axis: .vertical
                 )
