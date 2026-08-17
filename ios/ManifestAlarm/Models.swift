@@ -297,6 +297,7 @@ final class AlarmStore: ObservableObject {
         }
         scheduledIDs = newIDs
         authProblem = denied
-        await AlarmPlanner.resyncShadows()
+        // Eski sürümlerden kalan gölge yedek alarmlarını temizle (gölge sistemi kaldırıldı).
+        await AlarmPlanner.cancelLegacyShadows()
     }
 }

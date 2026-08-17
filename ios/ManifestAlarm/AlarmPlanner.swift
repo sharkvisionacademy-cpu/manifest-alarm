@@ -112,9 +112,6 @@ enum AlarmPlanner {
             sound: currentSound()
         )
         try await AlarmManager.shared.schedule(id: id, configuration: configuration)
-        var ids = UserDefaults.standard.stringArray(forKey: "shadowIDs") ?? []
-        ids.append(id.uuidString)
-        UserDefaults.standard.set(ids, forKey: "shadowIDs")
     }
 
     static func stopRinging(idString: String) {
@@ -122,36 +119,17 @@ enum AlarmPlanner {
         try? AlarmManager.shared.stop(id: id)
     }
 
-    /// Yedek koruma: her etkin alarmın bir sonraki çalışından 3 dk sonrasına
-    /// tek seferlik alarm kurulur. Birincil koruma, Durdur'a basınca 3 sn'de bir
-    /// tekrarlayan zincirdir (StopPenaltyIntent); bu yedek ise uygulama tamamen
-    /// kapatıldığında ya da alarm hiç açılmadan sustuğunda (ses tuşu vb.) devreye
-    /// girer. Manifest söylenince iptal edilip yarına taşınır.
-    static func resyncShadows() async {
+    /// Eski sürümlerden kalan "gölge" yedek alarmlarını iptal eder.
+    /// Gölge sistemi KALDIRILDI: her alarmın 3 dk sonrasına yedek alarm kuruyordu
+    /// ve bu, alarm normal kapatıldıktan sonra bile tekrar çalıp "saçma zamanlarda
+    /// çalma" hissi veriyordu. Bu fonksiyon önceki sürümlerin bıraktığı yedekleri temizler.
+    static func cancelLegacyShadows() async {
         let defaults = UserDefaults.standard
         for idString in defaults.stringArray(forKey: "shadowIDs") ?? [] {
             if let id = UUID(uuidString: idString) {
                 await cancel(id: id)
             }
         }
-        var newIDs: [String] = []
-        if let data = defaults.data(forKey: "alarmsJSON"),
-           let items = try? JSONDecoder().decode([AlarmItem].self, from: data) {
-            for item in items where item.enabled {
-                guard let next = SleepMath.nextAlarm([item]) else { continue }
-                let id = UUID()
-                let configuration = AlarmManager.AlarmConfiguration(
-                    schedule: .fixed(next.date.addingTimeInterval(180)),
-                    attributes: attributes(),
-                    stopIntent: StopPenaltyIntent(alarmID: id.uuidString, isGuard: true),
-                    secondaryIntent: OpenSpeechIntent(alarmID: id.uuidString),
-                    sound: currentSound()
-                )
-                if (try? await AlarmManager.shared.schedule(id: id, configuration: configuration)) != nil {
-                    newIDs.append(id.uuidString)
-                }
-            }
-        }
-        defaults.set(newIDs, forKey: "shadowIDs")
+        defaults.removeObject(forKey: "shadowIDs")
     }
 }

@@ -50,6 +50,7 @@ struct ContentView: View {
     @AppStorage("ringingAlarmID") private var ringingAlarmID = ""
     @AppStorage("onboarded") private var onboarded = false
     @ObservedObject private var lang = LanguageManager.shared
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
         Group {
@@ -65,6 +66,14 @@ struct ContentView: View {
         .id(lang.code)
         .environment(\.locale, lang.locale)
         .preferredColorScheme(.dark)
+        // Alarm ekranındaki "Manifesti Söyle" uygulamayı açtığında (OpenSpeechIntent),
+        // UserDefaults'a yazılan ringingAlarmID @AppStorage'a hemen yansımayabiliyor.
+        // Uygulama öne geldiğinde değeri tazeleyip konuşma ekranını güvenilir şekilde aç.
+        .onChange(of: scenePhase) { _, phase in
+            guard phase == .active else { return }
+            let current = UserDefaults.standard.string(forKey: "ringingAlarmID") ?? ""
+            if current != ringingAlarmID { ringingAlarmID = current }
+        }
     }
 }
 
@@ -811,20 +820,24 @@ struct SpeechDismissView: View {
         }
     }
 
-    /// Konuşma ekranı açıkken alarm sesini kısık, döngüde çalar; manifest söylenince susar.
-    /// 10 saniye içinde söylenmezse ses yeniden tam seviyeye çıkar (baskı geri gelir).
+    /// Konuşma ekranı açıkken alarm sesini ÇOK KISIK, döngüde çalar; manifest söylenince susar.
+    /// Ses düşük tutulur çünkü yüksek sesle çalan alarm mikrofona sızıp konuşma tanımayı
+    /// boğuyordu (kullanıcı bu ekranda zaten uyanık). 10 sn içinde söylenmezse ses yükselir.
+    /// Ayrıca hafif gecikmeyle başlatılır ki ses tanıma motoru (mikrofon) önce oturisin.
     private func startUrgencySound() {
         let file = alarmSound == "default" ? "chimes" : alarmSound
         guard let url = Bundle.main.url(forResource: file, withExtension: "wav") else { return }
-        loopPlayer = try? AVAudioPlayer(contentsOf: url)
-        loopPlayer?.numberOfLoops = -1
-        loopPlayer?.volume = 0.55
-        loopPlayer?.prepareToPlay()
-        loopPlayer?.play()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { [self] in
+            loopPlayer = try? AVAudioPlayer(contentsOf: url)
+            loopPlayer?.numberOfLoops = -1
+            loopPlayer?.volume = 0.18
+            loopPlayer?.prepareToPlay()
+            loopPlayer?.play()
+        }
 
-        // 10 sn içinde manifest söylenmezse tam sese çık
+        // 10 sn içinde manifest söylenmezse baskıyı artır (yine de tanımayı boğmayacak seviye).
         let work = DispatchWorkItem { [self] in
-            loopPlayer?.volume = 1.0
+            loopPlayer?.volume = 0.55
         }
         escalateWork = work
         DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: work)
@@ -849,8 +862,6 @@ struct SpeechDismissView: View {
         // Uygulamaya dönünce (HomeView) tam ekran reklam göstermek için işaretle.
         UserDefaults.standard.set(true, forKey: "showAdAfterAlarm")
         AlarmPlanner.stopRinging(idString: ringingAlarmID)
-        // Manifest söylendi: koruma alarmlarını yarına taşı
-        Task { await AlarmPlanner.resyncShadows() }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             UserDefaults.standard.set(false, forKey: "manifestSpoken")
             ringingAlarmID = ""
