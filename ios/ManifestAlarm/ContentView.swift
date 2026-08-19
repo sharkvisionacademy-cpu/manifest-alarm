@@ -809,7 +809,15 @@ struct SpeechDismissView: View {
             }
         }
         .onAppear {
-            speech.start()
+            // KRİTİK: Sistem alarmı (AlarmKit) hâlâ çalıyor ve ses oturumunu (AVAudioSession)
+            // tutuyor; bu yüzden audioEngine.start() çöküp mikrofon/ses tanıma HİÇ başlamıyordu
+            // ("dinleme aktif olmuyor", buton "Manifesti Söyle"de kalıyor). Önce alarmı durdur
+            // (oturumu boşalt), kısa bekleme sonrası mikrofonu başlat. Baskı için uygulamanın
+            // kendi kısık döngü sesi (startUrgencySound) devrede kalır; söylenmezse ses yükselir.
+            AlarmPlanner.stopRinging(idString: ringingAlarmID)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
+                speech.start()
+            }
             startUrgencySound()
             // Kullanıcı manifest söylerken sonraki reklamı hazırla (dönüşte hemen çıksın).
             InterstitialManager.shared.preload()
