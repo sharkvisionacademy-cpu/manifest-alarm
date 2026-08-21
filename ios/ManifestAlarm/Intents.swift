@@ -18,7 +18,13 @@ struct OpenSpeechIntent: LiveActivityIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult {
-        UserDefaults.standard.set(alarmID, forKey: "ringingAlarmID")
+        let d = UserDefaults.standard
+        d.set(alarmID, forKey: "ringingAlarmID")
+        // Kullanıcı "Manifesti Söyle"ye bastı: konuşma ekranı açılınca dinlemeyi
+        // otomatik başlatsın (alarmı durdurup mikrofonu açar). AlarmObserver'ın
+        // ön planda otomatik açtığı durumda bu işaret konmaz; orada alarm çalmaya
+        // devam eder ve kullanıcı butona basınca başlar.
+        d.set(true, forKey: "speakRequested")
         return .result()
     }
 }

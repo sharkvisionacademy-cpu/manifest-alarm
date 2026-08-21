@@ -767,7 +767,7 @@ struct SpeechDismissView: View {
                     .multilineTextAlignment(.center)
             } else {
                 Button {
-                    speech.start()
+                    beginListening()
                 } label: {
                     Label(
                         speech.isListening
@@ -809,22 +809,38 @@ struct SpeechDismissView: View {
             }
         }
         .onAppear {
-            // KRİTİK: Sistem alarmı (AlarmKit) hâlâ çalıyor ve ses oturumunu (AVAudioSession)
-            // tutuyor; bu yüzden audioEngine.start() çöküp mikrofon/ses tanıma HİÇ başlamıyordu
-            // ("dinleme aktif olmuyor", buton "Manifesti Söyle"de kalıyor). Önce alarmı durdur
-            // (oturumu boşalt), kısa bekleme sonrası mikrofonu başlat. Baskı için uygulamanın
-            // kendi kısık döngü sesi (startUrgencySound) devrede kalır; söylenmezse ses yükselir.
-            AlarmPlanner.stopRinging(idString: ringingAlarmID)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
-                speech.start()
+            // ÖNEMLİ: Alarmı burada OTOMATİK durdurmuyoruz — yoksa alarm ön planda
+            // (AlarmObserver) otomatik açıldığında anında susuyordu ("alarm çalmıyor").
+            // Alarm kendi yüksek sesiyle çalmaya devam eder. Mikrofonu ancak kullanıcı
+            // niyet belirtince (aşağıda) başlatırız; o an alarmı durdurup oturumu boşaltırız.
+            // Kullanıcı sistem alarmındaki "Manifesti Söyle"ye bastıysa (OpenSpeechIntent
+            // speakRequested işaretler) dinlemeyi otomatik başlat; aksi halde alarm çalmaya
+            // devam eder ve kullanıcı "Dinlemeyi Başlat" butonuna basınca başlar.
+            let d = UserDefaults.standard
+            if d.bool(forKey: "speakRequested") {
+                d.set(false, forKey: "speakRequested")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { beginListening() }
             }
-            startUrgencySound()
             // Kullanıcı manifest söylerken sonraki reklamı hazırla (dönüşte hemen çıksın).
             InterstitialManager.shared.preload()
         }
         .onDisappear {
             stopUrgencySound()
             speech.stop()
+        }
+    }
+
+    /// Kullanıcı manifesti söylemeye başlamak istediğinde çağrılır (buton ya da
+    /// "Manifesti Söyle"den otomatik). ÖNCE çalan sistem alarmını durdurur — böylece
+    /// alarm ses oturumunu bırakır ve mikrofon/ses tanıma başlayabilir (aksi halde
+    /// audioEngine çöküyordu). Sonra kendi kısık baskı sesimizi ve mikrofonu başlatır.
+    private func beginListening() {
+        guard !speech.isListening else { return }
+        AlarmPlanner.stopRinging(idString: ringingAlarmID)
+        startUrgencySound()
+        // Kısa gecikme: alarm sesi kapanıp ses oturumu boşalsın, sonra mikrofonu başlat.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            speech.start()
         }
     }
 
